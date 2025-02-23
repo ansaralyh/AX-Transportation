@@ -300,6 +300,120 @@ const Home = () => {
           </div>
         </div>
       </div>
+
+      {/* section-5 */}
+
+      <div className="bg-[#F7F7F7] py-20">
+        <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-16 xl:px-36">
+          {/* Text Section */}
+          <div className="text-center mb-12">
+            <h3 className="text-[20px] font-normal uppercase tracking-wide">
+            Why Choose AX Transportation?
+            </h3>
+            <h2 className="text-[48px] font-normal leading-tight mt-2">
+            Why Partner with AX <br /> Transportation
+            </h2>
+          
+          </div>
+
+          {/* Cards Section */}
+          <div className="flex gap-[80px] justify-center">
+            {/* Card 1 */}
+            <div className="relative w-80 bg-[#1B1717] h-[301px] text-white p-6 rounded-2xl shadow-lg mt-[60px]">
+              {/* Truck Icon */}
+              <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 w-20 h-20 bg-white flex items-center justify-center rounded-full">
+                <img
+                  src="/public/assets/4323784 1.png"
+                  alt="Truck Icon"
+                  className="w-14 h-14"
+                />
+              </div>
+
+              {/* Content */}
+              <div className="mt-10 text-center">
+                <h2 className="text-[24px] font-bold text-center">
+                Real-Time GPS <br />Tracking
+                </h2>
+                <p className="text-[15px] mt-2 leading-[22.5px]">
+                Monitor your fleet with precision.
+                </p>
+              </div>
+
+              {/* Bottom Yellow Portion Under the Card */}
+              <div className="absolute -bottom-8 -left-4 w-20 h-18 bg-orange-500 rounded-lg z-0"></div>
+            </div>
+
+            {/* Card 2 */}
+            <div className="relative w-80 bg-[#1B1717] h-[301px] text-white p-6 rounded-2xl shadow-lg">
+              {/* Truck Icon */}
+              <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 w-20 h-20 bg-white flex items-center justify-center rounded-full">
+                <img
+                  src="/public/assets/3931551 1.png"
+                  alt="Fuel Icon"
+                  className="w-20 h-20"
+                />
+              </div>
+
+              {/* Content */}
+              <div className="mt-10 text-center">
+                <h2 className="text-[24px] font-bold text-center">Driver Performance <br /></h2>
+                <p className="text-[15px] mt-2 leading-[22.5px]">
+                "Track and improve driver efficiency."
+                </p>
+              </div>
+
+              {/* Bottom Yellow Portion Under the Card */}
+              <div className="absolute -bottom-8 -left-4 w-20 h-18 bg-orange-500 rounded-lg z-0"></div>
+            </div>
+
+            {/* Card 3 */}
+            <div className="relative w-80 bg-[#1B1717] h-[301px] text-white p-6 rounded-2xl shadow-lg mt-[60px]">
+              {/* Truck Icon */}
+              <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 w-20 h-20 bg-white flex items-center justify-center rounded-full">
+                <img
+                  src="/public/assets/warning-3d-icon-download-in-png-blend-fbx-gltf-file-formats--alert-error-danger-sign-notification-pack-network-communication-icons-5220289 1.png"
+                  alt="24/7 Icon"
+                  className="w-17 h-17"
+                />
+              </div>
+
+              {/* Content */}
+              <div className="mt-10 text-center">
+                <h2 className="text-[24px] font-bold text-center">Driver Performance <br /></h2>
+                <p className="text-[15px] mt-2 leading-[22.5px]">
+                "Track and improve driver efficiency."
+                </p>
+              </div>
+
+              {/* Bottom Yellow Portion Under the Card */}
+              <div className="absolute -bottom-8 -left-4 w-20 h-18 bg-orange-500 rounded-lg z-0"></div>
+            </div>
+            {/* Card 3 */}
+            <div className="relative w-80 bg-[#1B1717] h-[301px] text-white p-6 rounded-2xl shadow-lg ">
+              {/* Truck Icon */}
+              <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 w-20 h-20 bg-white flex items-center justify-center rounded-full">
+                <img
+                  src="/public/assets/evaluation-3d-icon-download-in-png-blend-fbx-gltf-file-formats--assessment-analysis-customer-survey-service-business-pack-ethics-laws-icons-6704058 1.png"
+                  alt="24/7 Icon"
+                  className="w-17 h-17"
+                />
+              </div>
+
+              {/* Content */}
+              <div className="mt-10 text-center">
+                <h2 className="text-[24px] font-bold text-center">Driver Performance <br /></h2>
+                <p className="text-[15px] mt-2 leading-[22.5px]">
+                "Track and improve driver efficiency."
+                </p>
+              </div>
+
+              {/* Bottom Yellow Portion Under the Card */}
+              <div className="absolute -bottom-8 -left-4 w-20 h-18 bg-orange-500 rounded-lg z-0"></div>
+            </div>
+          
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
