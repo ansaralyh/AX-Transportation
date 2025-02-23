@@ -126,76 +126,90 @@ const Home = () => {
           </div>
         </div>
       </div>
-    {/* Section-three */}
-<div className="bg-[#D9D9D938] py-20">
-  <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-16 xl:px-36 flex gap-[60px] justify-center">
-    <div className="relative w-80 bg-[#1B1717] h-[334px] text-white p-6 rounded-2xl shadow-lg mt-[60px]">
-      {/* Truck Icon */}
-      <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 w-20 h-20 bg-white flex items-center justify-center rounded-full">
-        <img
-          src="/public/assets/10740605 1.png"
-          alt="Truck Icon"
-          className="w-14 h-14"
-        />
-      </div>
+      {/* Section-three */}
+<div className="bg-[#F7F7F7] py-20">
+  <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-16 xl:px-36">
+    
+    {/* Text Section */}
+    <div className="text-center mb-12">
+      <h3 className="text-[20px] font-normal uppercase tracking-wide">
+        What We Do
+      </h3>
+      <h2 className="text-[48px] font-normal leading-tight mt-2">
+        Comprehensive Freight Hauling <br /> & Mobile Fueling Services
+      </h2>
+      <p className="text-[34px] text-gray-600 mt-4">
+        At AX Transportation, we offer a full range of hauling <br />
+        and fueling services tailored to your needs.
+      </p>
+    </div>
 
-      {/* Content */}
-      <div className="mt-10 text-center">
-        <h2 className="text-[24px] font-bold">
-          Freight <br /> Hauling
-        </h2>
-        <p className="text-[15px] mt-2 leading-[22.5px]">
-          We specialize in transporting all calibers of freight, from dry goods
-          and food to industrial machinery like scissor lifts, forklifts, boom
-          lifts, and steel. No job is too big or small for our experienced team.
-        </p>
-      </div>
+    {/* Cards Section */}
+    <div className="flex gap-[80px] justify-center">
+      {/* Card 1 */}
+      <div className="relative w-80 bg-[#1B1717] h-[334px] text-white p-6 rounded-2xl shadow-lg mt-[60px]">
+        {/* Truck Icon */}
+        <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 w-20 h-20 bg-white flex items-center justify-center rounded-full">
+          <img src="/public/assets/10740605 1.png" alt="Truck Icon" className="w-14 h-14" />
+        </div>
+
+        {/* Content */}
+        <div className="mt-10 text-center">
+          <h2 className="text-[24px] font-bold">Freight <br /> Hauling</h2>
+          <p className="text-[15px] mt-2 leading-[22.5px]">
+            We specialize in transporting all calibers of freight, from dry
+            goods and food to industrial machinery like scissor lifts,
+            forklifts, boom lifts, and steel. No job is too big or small for
+            our experienced team.
+          </p>
+        </div>
+
         {/* Bottom Yellow Portion Under the Card */}
-  <div className="absolute -bottom-8 -left-4 w-20 h-18 bg-orange-500 rounded-lg z-10"></div>
-</div>
-    <div className="relative w-80 bg-[#1B1717] h-[334px] text-white p-6 rounded-2xl shadow-lg">
-      {/* Truck Icon */}
-      <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 w-20 h-20 bg-white flex items-center justify-center rounded-full">
-        <img
-          src="/public/assets/10740605 1.png"
-          alt="Truck Icon"
-          className="w-14 h-14"
-        />
+        <div className="absolute -bottom-8 -left-4 w-20 h-18 bg-orange-500 rounded-lg z-0"></div>
       </div>
 
-      {/* Content */}
-      <div className="mt-10 text-center">
-        <h2 className="text-[24px] font-bold">
-          Freight <br /> Hauling
-        </h2>
-        <p className="text-[15px] mt-2 leading-[22.5px]">
-          We specialize in transporting all calibers of freight, from dry goods
-          and food to industrial machinery like scissor lifts, forklifts, boom
-          lifts, and steel. No job is too big or small for our experienced team.
-        </p>
-      </div>
+      {/* Card 2 */}
+      <div className="relative w-80 bg-[#1B1717] h-[334px] text-white p-6 rounded-2xl shadow-lg">
+        {/* Truck Icon */}
+        <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 w-20 h-20 bg-white flex items-center justify-center rounded-full">
+          <img src="/public/assets/fuel-pump-location-3d-icon-download-in-png-blend-fbx-gltf-file-formats--petrol-station-gas-pack-maps-and-navigation-icons-5740237 1.png" alt="Fuel Icon" className="w-20 h-20" />
+        </div>
+
+        {/* Content */}
+        <div className="mt-10 text-center">
+          <h2 className="text-[24px] font-bold">Mobile Fueling</h2>
+          <p className="text-[15px] mt-2 leading-[22.5px]">
+            AX Transportation’s Mobile Fuel Division offers on-site fueling
+            services, delivering clear diesel, red diesel (dyed), and unleaded
+            fuels to remote job sites and locations.
+          </p>
+        </div>
+
         {/* Bottom Yellow Portion Under the Card */}
-  <div className="absolute -bottom-8 -left-4 w-20 h-18 bg-orange-500 rounded-lg z-10"></div>
-</div>
-    <div className="relative w-80 bg-[#1B1717] h-[334px] text-white p-6 rounded-2xl shadow-lg z-0 mt-[60px]">
-  {/* Truck Icon */}
-  <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 w-20 h-20 bg-white flex items-center justify-center rounded-full">
-    <img src="/public/assets/10740605 1.png" alt="Truck Icon" className="w-14 h-14" />
-  </div>
+        <div className="absolute -bottom-8 -left-4 w-20 h-18 bg-orange-500 rounded-lg z-0"></div>
+      </div>
 
-  {/* Content */}
-  <div className="mt-10 text-center">
-    <h2 className="text-[24px] font-bold">Freight <br /> Hauling</h2>
-    <p className="text-[15px] mt-2 leading-[22.5px]">
-      We specialize in transporting all calibers of freight, from dry goods
-      and food to industrial machinery like scissor lifts, forklifts, boom
-      lifts, and steel. No job is too big or small for our experienced team.
-    </p>
-  </div>
+      {/* Card 3 */}
+      <div className="relative w-80 bg-[#1B1717] h-[334px] text-white p-6 rounded-2xl shadow-lg mt-[60px]">
+        {/* Truck Icon */}
+        <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 w-20 h-20 bg-white flex items-center justify-center rounded-full">
+          <img src="/public/assets/9531254 1.png" alt="24/7 Icon" className="w-20 h-20" />
+        </div>
 
-  {/* Bottom Yellow Portion Under the Card */}
-  <div className="absolute -bottom-8 -left-4 w-20 h-18 bg-orange-500 rounded-lg z-10"></div>
-</div>
+        {/* Content */}
+        <div className="mt-10 text-center">
+          <h2 className="text-[24px] font-bold">24/7 Availability</h2>
+          <p className="text-[15px] mt-2 leading-[22.5px]">
+            We operate 24 hours a day, 7 days a week, ensuring your freight
+            and fueling needs are met on time—no matter when or where you need
+            us.
+          </p>
+        </div>
+
+        {/* Bottom Yellow Portion Under the Card */}
+        <div className="absolute -bottom-8 -left-4 w-20 h-18 bg-orange-500 rounded-lg z-0"></div>
+      </div>
+    </div>
 
   </div>
 </div>
