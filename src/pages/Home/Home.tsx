@@ -72,7 +72,9 @@ const Home = () => {
                     <path d="M16 3.13a4 4 0 0 1 0 7.75" />
                   </svg>
                 </div>
-                <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-1">1000+</h3>
+                <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-1">
+                  1000+
+                </h3>
                 <p className="text-gray-400">User</p>
               </div>
 
@@ -94,7 +96,9 @@ const Home = () => {
                     <line x1="15" y1="9" x2="15.01" y2="9" />
                   </svg>
                 </div>
-                <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-1">100</h3>
+                <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-1">
+                  100
+                </h3>
                 <p className="text-gray-400">Satisficed</p>
               </div>
 
@@ -113,15 +117,89 @@ const Home = () => {
                     <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
                   </svg>
                 </div>
-                <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-1">100%</h3>
+                <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-1">
+                  100%
+                </h3>
                 <p className="text-gray-400">Security</p>
               </div>
             </div>
           </div>
         </div>
       </div>
-      {/* Section-three */}
-      <div className="bg-[#D9D9D938] h-[738px]"></div>
+    {/* Section-three */}
+<div className="bg-[#D9D9D938] py-20">
+  <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-16 xl:px-36 flex gap-[60px] justify-center">
+    <div className="relative w-80 bg-[#1B1717] h-[334px] text-white p-6 rounded-2xl shadow-lg mt-[60px]">
+      {/* Truck Icon */}
+      <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 w-20 h-20 bg-white flex items-center justify-center rounded-full">
+        <img
+          src="/public/assets/10740605 1.png"
+          alt="Truck Icon"
+          className="w-14 h-14"
+        />
+      </div>
+
+      {/* Content */}
+      <div className="mt-10 text-center">
+        <h2 className="text-[24px] font-bold">
+          Freight <br /> Hauling
+        </h2>
+        <p className="text-[15px] mt-2 leading-[22.5px]">
+          We specialize in transporting all calibers of freight, from dry goods
+          and food to industrial machinery like scissor lifts, forklifts, boom
+          lifts, and steel. No job is too big or small for our experienced team.
+        </p>
+      </div>
+        {/* Bottom Yellow Portion Under the Card */}
+  <div className="absolute -bottom-8 -left-4 w-20 h-18 bg-orange-500 rounded-lg z-10"></div>
+</div>
+    <div className="relative w-80 bg-[#1B1717] h-[334px] text-white p-6 rounded-2xl shadow-lg">
+      {/* Truck Icon */}
+      <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 w-20 h-20 bg-white flex items-center justify-center rounded-full">
+        <img
+          src="/public/assets/10740605 1.png"
+          alt="Truck Icon"
+          className="w-14 h-14"
+        />
+      </div>
+
+      {/* Content */}
+      <div className="mt-10 text-center">
+        <h2 className="text-[24px] font-bold">
+          Freight <br /> Hauling
+        </h2>
+        <p className="text-[15px] mt-2 leading-[22.5px]">
+          We specialize in transporting all calibers of freight, from dry goods
+          and food to industrial machinery like scissor lifts, forklifts, boom
+          lifts, and steel. No job is too big or small for our experienced team.
+        </p>
+      </div>
+        {/* Bottom Yellow Portion Under the Card */}
+  <div className="absolute -bottom-8 -left-4 w-20 h-18 bg-orange-500 rounded-lg z-10"></div>
+</div>
+    <div className="relative w-80 bg-[#1B1717] h-[334px] text-white p-6 rounded-2xl shadow-lg z-0 mt-[60px]">
+  {/* Truck Icon */}
+  <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 w-20 h-20 bg-white flex items-center justify-center rounded-full">
+    <img src="/public/assets/10740605 1.png" alt="Truck Icon" className="w-14 h-14" />
+  </div>
+
+  {/* Content */}
+  <div className="mt-10 text-center">
+    <h2 className="text-[24px] font-bold">Freight <br /> Hauling</h2>
+    <p className="text-[15px] mt-2 leading-[22.5px]">
+      We specialize in transporting all calibers of freight, from dry goods
+      and food to industrial machinery like scissor lifts, forklifts, boom
+      lifts, and steel. No job is too big or small for our experienced team.
+    </p>
+  </div>
+
+  {/* Bottom Yellow Portion Under the Card */}
+  <div className="absolute -bottom-8 -left-4 w-20 h-18 bg-orange-500 rounded-lg z-10"></div>
+</div>
+
+  </div>
+</div>
+
     </div>
   );
 };
