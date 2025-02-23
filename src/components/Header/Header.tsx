@@ -1,12 +1,13 @@
 "use client"
 
+
 import { useState } from "react"
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   return (
-    <header className="bg-black relative">
+    <header className="bg-[#282121] relative">
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex items-center justify-between h-[70px]">
           {/* Logo with radial gradient background */}
@@ -19,7 +20,7 @@ const Header = () => {
             />
           </div>
 
-          <nav className="hidden md:flex items-center space-x-4 lg:space-x-8 text-sm text-gray-200">
+          <nav className="hidden md:flex items-center space-x-4 lg:space-x-8 text-sm text-gray-200 text-[20px]">
             <a href="#" className="hover:text-white transition-colors">
               Real-Time Tracking
             </a>
@@ -63,7 +64,7 @@ const Header = () => {
             isMenuOpen ? "translate-x-0" : "translate-x-full"
           } fixed top-0 right-0 bottom-0 z-10 w-[75%] sm:w-[60%] bg-zinc-900 transform transition-transform duration-300 ease-in-out md:hidden`}
         >
-            
+
           <button
             onClick={() => setIsMenuOpen(false)}
             className="absolute top-6 right-4 w-8 h-8 flex items-center justify-center focus:outline-none"
@@ -94,7 +95,6 @@ const Header = () => {
               </a>
             </nav>
 
-            {/* Mobile Auth Buttons */}
             <div className="mt-auto flex flex-col space-y-2">
               <button className="w-full py-2 bg-[#FF6B00] text-white text-sm font-medium rounded hover:bg-[#FF8533] transition-colors">
                 Login
@@ -106,7 +106,6 @@ const Header = () => {
           </div>
         </div>
 
-        {/* Overlay for Mobile Menu */}
         {isMenuOpen && (
           <div className="fixed inset-0 bg-black bg-opacity-50 z-[5] md:hidden" onClick={() => setIsMenuOpen(false)} />
         )}
