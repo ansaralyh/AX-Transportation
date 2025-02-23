@@ -42,7 +42,7 @@ const Home = () => {
         </div>
       </div>
       {/* Section-two */}
-      <div className="bg-black h-[20vh] border-2"></div>
+      <div className="bg-black w-full h-[20vh] border-2"></div>
     </div>
   )
 }
