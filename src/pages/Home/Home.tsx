@@ -492,7 +492,7 @@ const Home = () => {
             {/* Jobs */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {/* Job 1 */}
-              <div className="bg-white h-[190px] w-full flex flex-col font-bold items-center justify-center rounded-lg shadow-lg">
+              <div className="bg-white h-[190px] w-full flex flex-col font-bold items-center justify-center  shadow-lg">
                 <img
                   src="/public/assets/equipment-service-technician-line-icon-illustration-vector 1.png"
                   alt=""
@@ -503,7 +503,7 @@ const Home = () => {
                 </p>
               </div>
               {/* Job 2 */}
-              <div className="bg-white h-[190px] w-full flex flex-col font-bold items-center justify-center rounded-lg shadow-lg">
+              <div className="bg-white h-[190px] w-full flex flex-col font-bold items-center justify-center  shadow-lg">
                 <img
                   src="/public/assets/2459586-200 1.png"
                   alt=""
@@ -514,7 +514,7 @@ const Home = () => {
                 </p>
               </div>
               {/* Job 3 */}
-              <div className="bg-white h-[190px] w-full flex flex-col font-bold items-center justify-center rounded-lg shadow-lg">
+              <div className="bg-white h-[190px] w-full flex flex-col font-bold items-center justify-center  shadow-lg">
                 <img
                   src="/public/assets/equipment-service-technician-line-icon-illustration-vector 1.png"
                   alt=""
@@ -525,7 +525,7 @@ const Home = () => {
                 </p>
               </div>
               {/* Job 4 */}
-              <div className="bg-white h-[190px] w-full flex flex-col font-bold items-center justify-center rounded-lg shadow-lg">
+              <div className="bg-white h-[190px] w-full flex flex-col font-bold items-center justify-center shadow-lg ">
                 <img
                   src="/public/assets/istockphoto-1211333525-612x612 1.png"
                   alt=""
@@ -541,6 +541,74 @@ const Home = () => {
           {/* Apply Now Button */}
           <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-16 xl:px-36 text-center mt-12">
             <button className="rounded-md w-[254px] bg-[#FB8A00] px-8 py-3 text-[18px] font-medium text-white transition-colors duration-200 hover:bg-[#E67A00]">
+              Apply Now
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Section-7 */}
+      <div className="bg-white py-">
+      
+
+        {/* Job Openings Section - Full Width Black Background */}
+        <div className="w-full bg-[#FB8A00] ">
+          <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-16 xl:px-36">
+            <h3 className="text-white text-[32px] text-center mb-8">
+            Why Work with Us
+            </h3>
+            {/* Jobs */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {/* Job 1 */}
+              <div className="bg-black h-[190px] w-full flex flex-col font-bold items-center justify-center  shadow-lg">
+                <img
+                  src="/public/assets/1240401 1.png"
+                  alt=""
+                  className="h-[90px] w-[90px]"
+                />
+                <p className="text-[24px] text-[#FFF] text-center mt-4">
+                Competitive <br /> wages
+                </p>
+              </div>
+              {/* Job 2 */}
+              <div className="bg-black h-[190px] w-full flex flex-col font-bold items-center justify-center shadow-lg">
+                <img
+                  src="/public/assets/4859642 1.png"
+                  alt=""
+                  className="h-[100px] w-[100px]"
+                />
+                <p className="text-[24px] text-[#FFF] text-center mt-4">
+                Flexible <br /> schedules
+                </p>
+              </div>
+              {/* Job 3 */}
+              <div className="bg-black h-[190px] w-full flex flex-col font-bold items-center justify-center  shadow-lg">
+                <img
+                  src="/public/assets/16648620 1.png"
+                  alt=""
+                  className="h-[90px] w-[90px]"
+                />
+                <p className="text-[24px] text-[#FFF] text-center mt-4">
+                Opportunities for <br /> career growth
+                </p>
+              </div>
+              {/* Job 4 */}
+              <div className="bg-black h-[190px] w-full flex flex-col font-bold items-center justify-center  shadow-lg">
+                <img
+                  src="/public/assets/2966327 1.png"
+                  alt=""
+                  className="h-[90px] w-[90px]"
+                />
+                <p className="text-[24px] text-[#FFF] text-center mt-4">
+                Health benefits <br /> and more
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Apply Now Button */}
+          <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-16 xl:px-36 text-center mt-12">
+            <button className="rounded-md w-[254px] bg-black px-8 py-3 text-[18px] font-medium text-white transition-colors duration-200 ">
               Apply Now
             </button>
           </div>
