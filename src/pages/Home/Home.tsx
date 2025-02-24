@@ -1,3 +1,4 @@
+import { Facebook, Github, Instagram, Twitter } from "lucide-react";
 import Header from "../../components/Header/Header";
 
 const Home = () => {
@@ -621,25 +622,102 @@ const Home = () => {
       <div className=" bg-white py-20 flex justify-center items-center gap-8">
         {/* left-text */}
         <div className="flex flex-col  ">
-          <p className="text-[20px] text-[#000000] font-normal mb-6">Mobile California CARB Inspections</p>
-          <h1 className="text-[48px] text-[#000000] font-normal mb-6">Mobile California CARB <br /> Inspection Services</h1>
-          <p className="text-[#000000] font-normal text-[24px] mb-6">
-            "Ensure Your Equipment Meets California’s Strict <br /> Emissions Standards
-            with Our Convenient Mobile <br /> Service.
+          <p className="text-[20px] text-[#000000] font-normal mb-6">
+            Mobile California CARB Inspections
           </p>
-          <button className="bg-[#FB8A00] w-[562px] h-[84px] rounded-lg text-[24px] text-white">Schedule Your Mobile Inspection Now</button>
+          <h1 className="text-[48px] text-[#000000] font-normal mb-6">
+            Mobile California CARB <br /> Inspection Services
+          </h1>
+          <p className="text-[#000000] font-normal text-[24px] mb-6">
+            "Ensure Your Equipment Meets California’s Strict <br /> Emissions
+            Standards with Our Convenient Mobile <br /> Service.
+          </p>
+          <button className="bg-[#FB8A00] w-[562px] h-[84px] rounded-lg text-[24px] text-white">
+            Schedule Your Mobile Inspection Now
+          </button>
         </div>
         {/* Right-cards */}
         <div className="flex flex-col gap-6">
-        <div className="w-[646px] h-[161px]  border-gray-300 flex justify-center items-center text-[24px] font-semibold text-gray-700 bg-white rounded-lg shadow-2xl">
-  Mobile Inspection Price: $175.00 per vehicle
-</div>
-        <div className="w-[646px] h-[161px]  border-gray-300 flex justify-center items-center text-[24px] font-semibold text-gray-700 bg-white rounded-lg shadow-2xl">
-  Mobile Inspection Price: $175.00 per vehicle
-</div>
-        <div className="w-[646px] h-[161px]  border-gray-300 flex justify-center items-center text-[24px] font-semibold text-gray-700 bg-white rounded-lg shadow-2xl">
-  Mobile Inspection Price: $175.00 per vehicle
-</div>
+          <div className="w-[646px] h-[161px]  border-gray-300 flex justify-center items-center text-[24px] font-semibold text-gray-700 bg-white rounded-lg shadow-2xl">
+            Mobile Inspection Price: $175.00 per vehicle
+          </div>
+          <div className="w-[646px] h-[161px]  border-gray-300 flex justify-center items-center text-[24px] font-semibold text-gray-700 bg-white rounded-lg shadow-2xl">
+            Mobile Inspection Price: $175.00 per vehicle
+          </div>
+          <div className="w-[646px] h-[161px]  border-gray-300 flex justify-center items-center text-[24px] font-semibold text-gray-700 bg-white rounded-lg shadow-2xl">
+            Mobile Inspection Price: $175.00 per vehicle
+          </div>
+        </div>
+      </div>
+
+      {/* Footer */}
+      <footer className="bg-[#282121] text-white p-8">
+        <div className="container mx-auto h-400px flex flex-col md:flex-row justify-between items-start">
+          {/* Logo Section */}
+          <div className="relative w-[150px] sm:w-[200px] h-[250px] flex items-center mb-8 md:mb-0">
+            <div className="absolute w-[250px] sm:w-[300px] h-full top-[-30px] left-[-220px] bg-[radial-gradient(circle,_#ffffff_0%,_rgba(255,255,255,0.3)_30%,_transparent_70%)]" />
+            <img
+              src="/public/assets/image 54.png"
+              alt="AXT Transportation Logo"
+              className="relative left-[-150px] top-[-30px] z-10 w-[120px] sm:w-[150px] h-auto"
+            />
+          </div>
+
+          {/* Left Section - Services */}
+          <div className="w-full md:w-1/3 mt-7 mb-8 md:mb-0">
+            <h3 className="text-lg font-semibold mb-4">Services</h3>
+            <ul className="space-y-2">
+              <li>Reel-Time Tracking</li>
+              <li>Driver Profiles</li>
+              <li>Maintenance</li>
+              <li>Reports</li>
+              <li>Contact</li>
+            </ul>
+          </div>
+
+          {/* Right Section - Corporate */}
+          <div className="w-full md:w-1/3 mt-7 mb-8 md:mb-0">
+            <h3 className="text-lg font-semibold mb-4">Corporate</h3>
+            <ul className="space-y-2">
+              <li>Contact Us</li>
+              <li>1722 W. Bonanza Rd.</li>
+              <li>Las Vegas, NV 89106, USA</li>
+              <li>1-702-478-1860</li>
+              <li>General Inquiry: info@axtransportation.com</li>
+              <li>Load Inquiry: load@axtransportation.com</li>
+            </ul>
+          </div>
+
+          {/* Image Section */}
+          <div className="w-full md:w-1/3 flex justify-end">
+            <img
+              className="w-[382px] h-[254px]"
+              src="../../../public/assets/footerimg.png"
+              alt="Footer Image"
+            />
+          </div>
+        </div>
+
+        {/* Bottom Section - Copyright */}
+      </footer>
+      <div className="border-t border-gray-800 bg-[#FB8A00] h-[60px] flex items-center justify-around text-center">
+        <p className="text-sm text-[#fff]">
+          &copy; {new Date().getFullYear()} AX Transportation. All rights
+          reserved.
+        </p>
+        <div className="flex items-center justify-center gap-2">
+          <div className="h-[40px] w-[40px] rounded-full flex justify-center items-center text-white bg-gray-500">
+            <Facebook />
+          </div>
+          <div className="h-[40px] w-[40px] rounded-full flex justify-center items-center text-white bg-gray-500">
+            <Instagram />
+          </div>
+          <div className="h-[40px] w-[40px] rounded-full flex justify-center items-center text-white bg-gray-500">
+            <Twitter />
+          </div>
+          <div className="h-[40px] w-[40px] rounded-full flex justify-center items-center text-white bg-gray-500">
+            <Github />
+          </div>
         </div>
       </div>
     </div>

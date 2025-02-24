@@ -11,7 +11,7 @@ const Header = () => {
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex items-center justify-between h-[70px]">
           {/* Logo with radial gradient background */}
-          <div className="relative w-[150px] sm:w-[200px] h-full flex items-center">
+          <div className="relative w-[150px] sm:w-[200px] h-[200px] flex items-center">
             <div className="absolute w-[250px] sm:w-[300px] h-full left-[-50px] bg-[radial-gradient(circle,_#ffffff_0%,_rgba(255,255,255,0.3)_30%,_transparent_70%)]" />
             <img
               src="/public/assets/image 54.png"
