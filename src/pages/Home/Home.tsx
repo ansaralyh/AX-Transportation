@@ -51,86 +51,89 @@ const Home = () => {
         </div>
       </div>
 
-      {/* Section-two */}
-      <div className="bg-white w-full mt-20 relative pb-24 md:pb-32 lg:pb-40">
-        <div className="absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[90%] max-w-[1003px] bg-black rounded border-2 py-8 px-4 top-[40px] border-2 border-white">
-          <div className="container mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {/* User Count */}
-              <div className="flex flex-col items-center text-center">
-                <div className="mb-2">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-8 w-8 text-[#FB8A00]"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-                    <circle cx="9" cy="7" r="4" />
-                    <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-                    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-                  </svg>
-                </div>
-                <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-1">
-                  1000+
-                </h3>
-                <p className="text-gray-400">User</p>
-              </div>
-
-              {/* Satisfaction Count */}
-              <div className="flex flex-col items-center text-center">
-                <div className="mb-2">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-8 w-8 text-[#FB8A00]"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <circle cx="12" cy="12" r="10" />
-                    <path d="M8 14s1.5 2 4 2 4-2 4-2" />
-                    <line x1="9" y1="9" x2="9.01" y2="9" />
-                    <line x1="15" y1="9" x2="15.01" y2="9" />
-                  </svg>
-                </div>
-                <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-1">
-                  100
-                </h3>
-                <p className="text-gray-400">Satisfied</p>
-              </div>
-
-              {/* Security Count */}
-              <div className="flex flex-col items-center text-center">
-                <div className="mb-2">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-8 w-8 text-[#FB8A00]"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                  </svg>
-                </div>
-                <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-1">
-                  100%
-                </h3>
-                <p className="text-gray-400">Security</p>
-              </div>
-            </div>
+    {/* Section Two */}
+<div className="bg-white w-full mt-20 py-20">
+  {/* Black Box Container */}
+  <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-16 xl:px-36">
+    {/* Black Box */}
+    <div className="bg-black rounded-lg border-2 border-white py-8 px-6 sm:px-8 md:px-12 lg:px-16">
+      {/* Stats Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
+        {/* User Count */}
+        <div className="flex flex-col items-center text-center">
+          <div className="mb-4">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-12 w-12 text-[#FB8A00]"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+              <circle cx="9" cy="7" r="4" />
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+              <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+            </svg>
           </div>
+          <h3 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-2">
+            1000+
+          </h3>
+          <p className="text-gray-400 text-lg">User</p>
+        </div>
+
+        {/* Satisfaction Count */}
+        <div className="flex flex-col items-center text-center">
+          <div className="mb-4">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-12 w-12 text-[#FB8A00]"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <circle cx="12" cy="12" r="10" />
+              <path d="M8 14s1.5 2 4 2 4-2 4-2" />
+              <line x1="9" y1="9" x2="9.01" y2="9" />
+              <line x1="15" y1="9" x2="15.01" y2="9" />
+            </svg>
+          </div>
+          <h3 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-2">
+            100
+          </h3>
+          <p className="text-gray-400 text-lg">Satisfied</p>
+        </div>
+
+        {/* Security Count */}
+        <div className="flex flex-col items-center text-center">
+          <div className="mb-4">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-12 w-12 text-[#FB8A00]"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+            </svg>
+          </div>
+          <h3 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-2">
+            100%
+          </h3>
+          <p className="text-gray-400 text-lg">Security</p>
         </div>
       </div>
+    </div>
+  </div>
+</div>
 
       {/* Section-three */}
       <div className="bg-[#F7F7F7] py-20">
@@ -232,89 +235,115 @@ const Home = () => {
         </div>
       </div>
 
-      {/* Section-4 */}
-      <div className="bg-white py-10">
-        <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-16 xl:px-36">
-          <div className="flex flex-col lg:flex-row justify-between items-center">
-            {/* Left Column - Text Content */}
-            <div className="w-full lg:w-1/2 mb-8 lg:mb-0 bg-[#F7F7F7] px-10 py-12 rounded-lg relative">
-              <h3 className="text-[24px] font-normal uppercase tracking-wide">
-                Our Equipment & What We Haul
-              </h3>
-              <h2 className="text-[48px] font-normal leading-tight mt-2">
-                State-of-the-Art Fleet & Diverse Freight Options
-              </h2>
-              <p className="text-[24px] text-[#000000] mt-4">
-                With a versatile fleet, AX Transportation ensures your goods
-                arrive safely, securely, and on time.
+{/* Section-4 */}
+<div className="bg-white py-10">
+  <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-16 xl:px-36">
+    <div className="flex flex-col lg:flex-row justify-between items-center relative">
+      {/* Left Column - Text Content */}
+      <div className="w-full lg:w-1/2 mb-8 lg:mb-0 bg-[#F7F7F7] px-6 sm:px-8 md:px-10 py-8 sm:py-10 md:py-12 rounded-lg">
+        <h3 className="text-[20px] sm:text-[24px] font-normal uppercase tracking-wide">
+          Our Equipment & What We Haul
+        </h3>
+        <h2 className="text-[36px] sm:text-[48px] font-normal leading-tight mt-2">
+          State-of-the-Art Fleet & Diverse Freight Options
+        </h2>
+        <p className="text-[18px] sm:text-[24px] text-[#000000] mt-4">
+          With a versatile fleet, AX Transportation ensures your goods
+          arrive safely, securely, and on time.
+        </p>
+
+        {/* Bullet Points */}
+        <ul className="mt-6 space-y-4">
+          <li className="flex items-center gap-4 sm:gap-5">
+            <img
+              src="/public/assets/Ellipse 2804 (1).png"
+              alt=""
+              className="w-6 h-6 sm:w-8 sm:h-8"
+            />
+            <div>
+              <h4 className="font-bold text-[20px] sm:text-[24px]">Dry Van</h4>
+              <p className="text-black text-[14px] sm:text-[16px]">
+                Perfect for transporting dry goods, food, and other
+                non-perishable items. Our dry vans are equipped to
+                handle various freight sizes and ensure your cargo stays
+                safe and secure.
               </p>
-
-              {/* Bullet Points */}
-              <ul className="mt-6 space-y-4">
-                <li className="flex items-center gap-5">
-                  <img src="/public/assets/Ellipse 2804 (1).png" alt="" />
-                  <div>
-                    <h4 className="font-bold text-[24px]">Dry Van</h4>
-                    <p className="text-black">
-                      Perfect for transporting dry goods, food, and other
-                      non-perishable items. Our dry vans are equipped to
-                      handle various freight sizes and ensure your cargo stays
-                      safe and secure.
-                    </p>
-                  </div>
-                </li>
-                <li className="flex items-center gap-5">
-                  <img src="/public/assets/Ellipse 2804 (1).png" alt="" />
-                  <div>
-                    <h4 className="font-bold text-[24px]">
-                      Heavy Equipment Hauling
-                    </h4>
-                    <p className="text-black">
-                      We handle construction and industrial equipment such as
-                      scissor lifts, forklifts, boom lifts, and steel,
-                      providing the right equipment to safely transport your
-                      machinery.
-                    </p>
-                  </div>
-                </li>
-                <li className="flex items-center gap-5">
-                  <img src="/public/assets/Ellipse 2804 (1).png" alt="" />
-                  <div>
-                    <h4 className="font-bold text-[24px]">Reefer Trailers</h4>
-                    <p className="text-black">
-                      Designed to transport perishable items at controlled
-                      temperatures, ensuring your temperature-sensitive goods
-                      arrive in pristine condition.
-                    </p>
-                  </div>
-                </li>
-                <li className="flex items-center gap-5">
-                  <img src="/public/assets/Ellipse 2804 (1).png" alt="" />
-                  <div>
-                    <h4 className="font-bold text-[24px]">
-                      Mobile Fueling Tankers
-                    </h4>
-                    <p className="text-black">
-                      Our mobile fueling trucks ensure your remote job sites
-                      stay powered, with delivery of clear diesel, red
-                      diesel, and unleaded fuel right to where you need it.
-                    </p>
-                  </div>
-                </li>
-              </ul>
             </div>
-
-            {/* Right Column - Image */}
-            <div className="w-full lg:w-1/2 flex justify-center lg:justify-end absolute left-[630px]">
-              <img
-                src="/public/assets/Rectangle 34625717.png"
-                alt="Fleet and Freight Options"
-                className="max-w-full h-auto rounded-lg shadow-lg"
-              />
+          </li>
+          <li className="flex items-center gap-4 sm:gap-5">
+            <img
+              src="/public/assets/Ellipse 2804 (1).png"
+              alt=""
+              className="w-6 h-6 sm:w-8 sm:h-8"
+            />
+            <div>
+              <h4 className="font-bold text-[20px] sm:text-[24px]">
+                Heavy Equipment Hauling
+              </h4>
+              <p className="text-black text-[14px] sm:text-[16px]">
+                We handle construction and industrial equipment such as
+                scissor lifts, forklifts, boom lifts, and steel,
+                providing the right equipment to safely transport your
+                machinery.
+              </p>
             </div>
-          </div>
-        </div>
+          </li>
+          <li className="flex items-center gap-4 sm:gap-5">
+            <img
+              src="/public/assets/Ellipse 2804 (1).png"
+              alt=""
+              className="w-6 h-6 sm:w-8 sm:h-8"
+            />
+            <div>
+              <h4 className="font-bold text-[20px] sm:text-[24px]">Reefer Trailers</h4>
+              <p className="text-black text-[14px] sm:text-[16px]">
+                Designed to transport perishable items at controlled
+                temperatures, ensuring your temperature-sensitive goods
+                arrive in pristine condition.
+              </p>
+            </div>
+          </li>
+          <li className="flex items-center gap-4 sm:gap-5">
+            <img
+              src="/public/assets/Ellipse 2804 (1).png"
+              alt=""
+              className="w-6 h-6 sm:w-8 sm:h-8"
+            />
+            <div>
+              <h4 className="font-bold text-[20px] sm:text-[24px]">
+                Mobile Fueling Tankers
+              </h4>
+              <p className="text-black text-[14px] sm:text-[16px]">
+                Our mobile fueling trucks ensure your remote job sites
+                stay powered, with delivery of clear diesel, red
+                diesel, and unleaded fuel right to where you need it.
+              </p>
+            </div>
+          </li>
+        </ul>
       </div>
+
+      {/* Right Column - Image */}
+      {/* Visible on larger screens (lg and above) */}
+      <div className="hidden lg:block absolute left-[630px]">
+        <img
+          src="/public/assets/Rectangle 34625717.png"
+          alt="Fleet and Freight Options"
+          className="max-w-full h-auto rounded-lg shadow-lg"
+        />
+      </div>
+
+      {/* Visible on smaller screens (below lg) */}
+      <div className="w-full lg:hidden mt-8">
+        <img
+          src="/public/assets/Rectangle 34625717.png"
+          alt="Fleet and Freight Options"
+          className="max-w-full h-auto rounded-lg shadow-lg"
+        />
+      </div>
+    </div>
+  </div>
+</div>
 
       {/* Section-5 */}
       <div className="bg-[#F7F7F7] py-20">
