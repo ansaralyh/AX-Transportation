@@ -51,89 +51,89 @@ const Home = () => {
         </div>
       </div>
 
-    {/* Section Two */}
-<div className="bg-white w-full mt-20 py-20">
-  {/* Black Box Container */}
-  <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-16 xl:px-36">
-    {/* Black Box */}
-    <div className="bg-black rounded-lg border-2 border-white py-8 px-6 sm:px-8 md:px-12 lg:px-16">
-      {/* Stats Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
-        {/* User Count */}
-        <div className="flex flex-col items-center text-center">
-          <div className="mb-4">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-12 w-12 text-[#FB8A00]"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-              <circle cx="9" cy="7" r="4" />
-              <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-              <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-            </svg>
-          </div>
-          <h3 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-2">
-            1000+
-          </h3>
-          <p className="text-gray-400 text-lg">User</p>
-        </div>
+      {/* Section Two */}
+      <div className="bg-white w-full mt-20 py-20">
+        {/* Black Box Container */}
+        <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-16 xl:px-36">
+          {/* Black Box */}
+          <div className="bg-black rounded-lg border-2 border-white py-8 px-6 sm:px-8 md:px-12 lg:px-16">
+            {/* Stats Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
+              {/* User Count */}
+              <div className="flex flex-col items-center text-center">
+                <div className="mb-4">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-12 w-12 text-[#FB8A00]"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                    <circle cx="9" cy="7" r="4" />
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                  </svg>
+                </div>
+                <h3 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-2">
+                  1000+
+                </h3>
+                <p className="text-gray-400 text-lg">User</p>
+              </div>
 
-        {/* Satisfaction Count */}
-        <div className="flex flex-col items-center text-center">
-          <div className="mb-4">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-12 w-12 text-[#FB8A00]"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <circle cx="12" cy="12" r="10" />
-              <path d="M8 14s1.5 2 4 2 4-2 4-2" />
-              <line x1="9" y1="9" x2="9.01" y2="9" />
-              <line x1="15" y1="9" x2="15.01" y2="9" />
-            </svg>
-          </div>
-          <h3 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-2">
-            100
-          </h3>
-          <p className="text-gray-400 text-lg">Satisfied</p>
-        </div>
+              {/* Satisfaction Count */}
+              <div className="flex flex-col items-center text-center">
+                <div className="mb-4">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-12 w-12 text-[#FB8A00]"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <circle cx="12" cy="12" r="10" />
+                    <path d="M8 14s1.5 2 4 2 4-2 4-2" />
+                    <line x1="9" y1="9" x2="9.01" y2="9" />
+                    <line x1="15" y1="9" x2="15.01" y2="9" />
+                  </svg>
+                </div>
+                <h3 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-2">
+                  100
+                </h3>
+                <p className="text-gray-400 text-lg">Satisfied</p>
+              </div>
 
-        {/* Security Count */}
-        <div className="flex flex-col items-center text-center">
-          <div className="mb-4">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-12 w-12 text-[#FB8A00]"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-            </svg>
+              {/* Security Count */}
+              <div className="flex flex-col items-center text-center">
+                <div className="mb-4">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-12 w-12 text-[#FB8A00]"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                  </svg>
+                </div>
+                <h3 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-2">
+                  100%
+                </h3>
+                <p className="text-gray-400 text-lg">Security</p>
+              </div>
+            </div>
           </div>
-          <h3 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-2">
-            100%
-          </h3>
-          <p className="text-gray-400 text-lg">Security</p>
         </div>
       </div>
-    </div>
-  </div>
-</div>
 
       {/* Section-three */}
       <div className="bg-[#F7F7F7] py-20">
@@ -235,115 +235,118 @@ const Home = () => {
         </div>
       </div>
 
-{/* Section-4 */}
-<div className="bg-white py-10">
-  <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-16 xl:px-36">
-    <div className="flex flex-col lg:flex-row justify-between items-center relative">
-      {/* Left Column - Text Content */}
-      <div className="w-full lg:w-1/2 mb-8 lg:mb-0 bg-[#F7F7F7] px-6 sm:px-8 md:px-10 py-8 sm:py-10 md:py-12 rounded-lg">
-        <h3 className="text-[20px] sm:text-[24px] font-normal uppercase tracking-wide">
-          Our Equipment & What We Haul
-        </h3>
-        <h2 className="text-[36px] sm:text-[48px] font-normal leading-tight mt-2">
-          State-of-the-Art Fleet & Diverse Freight Options
-        </h2>
-        <p className="text-[18px] sm:text-[24px] text-[#000000] mt-4">
-          With a versatile fleet, AX Transportation ensures your goods
-          arrive safely, securely, and on time.
-        </p>
+      {/* Section-4 */}
+      <div className="bg-white py-10">
+        <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-16 xl:px-36">
+          <div className="flex flex-col lg:flex-row justify-between items-center relative">
+            {/* Left Column - Text Content */}
+            <div className="w-full lg:w-1/2 mb-8 lg:mb-0 bg-[#F7F7F7] px-6 sm:px-8 md:px-10 py-8 sm:py-10 md:py-12 rounded-lg">
+              <h3 className="text-[20px] sm:text-[24px] font-normal uppercase tracking-wide">
+                Our Equipment & What We Haul
+              </h3>
+              <h2 className="text-[36px] sm:text-[48px] font-normal leading-tight mt-2">
+                State-of-the-Art Fleet & Diverse Freight Options
+              </h2>
+              <p className="text-[18px] sm:text-[24px] text-[#000000] mt-4">
+                With a versatile fleet, AX Transportation ensures your goods
+                arrive safely, securely, and on time.
+              </p>
 
-        {/* Bullet Points */}
-        <ul className="mt-6 space-y-4">
-          <li className="flex items-center gap-4 sm:gap-5">
-            <img
-              src="/public/assets/Ellipse 2804 (1).png"
-              alt=""
-              className="w-6 h-6 sm:w-8 sm:h-8"
-            />
-            <div>
-              <h4 className="font-bold text-[20px] sm:text-[24px]">Dry Van</h4>
-              <p className="text-black text-[14px] sm:text-[16px]">
-                Perfect for transporting dry goods, food, and other
-                non-perishable items. Our dry vans are equipped to
-                handle various freight sizes and ensure your cargo stays
-                safe and secure.
-              </p>
+              {/* Bullet Points */}
+              <ul className="mt-6 space-y-4">
+                <li className="flex items-center gap-4 sm:gap-5">
+                  <img
+                    src="/public/assets/Ellipse 2804 (1).png"
+                    alt=""
+                    className="w-6 h-6 sm:w-8 sm:h-8"
+                  />
+                  <div>
+                    <h4 className="font-bold text-[20px] sm:text-[24px]">
+                      Dry Van
+                    </h4>
+                    <p className="text-black text-[14px] sm:text-[16px]">
+                      Perfect for transporting dry goods, food, and other
+                      non-perishable items. Our dry vans are equipped to handle
+                      various freight sizes and ensure your cargo stays safe and
+                      secure.
+                    </p>
+                  </div>
+                </li>
+                <li className="flex items-center gap-4 sm:gap-5">
+                  <img
+                    src="/public/assets/Ellipse 2804 (1).png"
+                    alt=""
+                    className="w-6 h-6 sm:w-8 sm:h-8"
+                  />
+                  <div>
+                    <h4 className="font-bold text-[20px] sm:text-[24px]">
+                      Heavy Equipment Hauling
+                    </h4>
+                    <p className="text-black text-[14px] sm:text-[16px]">
+                      We handle construction and industrial equipment such as
+                      scissor lifts, forklifts, boom lifts, and steel, providing
+                      the right equipment to safely transport your machinery.
+                    </p>
+                  </div>
+                </li>
+                <li className="flex items-center gap-4 sm:gap-5">
+                  <img
+                    src="/public/assets/Ellipse 2804 (1).png"
+                    alt=""
+                    className="w-6 h-6 sm:w-8 sm:h-8"
+                  />
+                  <div>
+                    <h4 className="font-bold text-[20px] sm:text-[24px]">
+                      Reefer Trailers
+                    </h4>
+                    <p className="text-black text-[14px] sm:text-[16px]">
+                      Designed to transport perishable items at controlled
+                      temperatures, ensuring your temperature-sensitive goods
+                      arrive in pristine condition.
+                    </p>
+                  </div>
+                </li>
+                <li className="flex items-center gap-4 sm:gap-5">
+                  <img
+                    src="/public/assets/Ellipse 2804 (1).png"
+                    alt=""
+                    className="w-6 h-6 sm:w-8 sm:h-8"
+                  />
+                  <div>
+                    <h4 className="font-bold text-[20px] sm:text-[24px]">
+                      Mobile Fueling Tankers
+                    </h4>
+                    <p className="text-black text-[14px] sm:text-[16px]">
+                      Our mobile fueling trucks ensure your remote job sites
+                      stay powered, with delivery of clear diesel, red diesel,
+                      and unleaded fuel right to where you need it.
+                    </p>
+                  </div>
+                </li>
+              </ul>
             </div>
-          </li>
-          <li className="flex items-center gap-4 sm:gap-5">
-            <img
-              src="/public/assets/Ellipse 2804 (1).png"
-              alt=""
-              className="w-6 h-6 sm:w-8 sm:h-8"
-            />
-            <div>
-              <h4 className="font-bold text-[20px] sm:text-[24px]">
-                Heavy Equipment Hauling
-              </h4>
-              <p className="text-black text-[14px] sm:text-[16px]">
-                We handle construction and industrial equipment such as
-                scissor lifts, forklifts, boom lifts, and steel,
-                providing the right equipment to safely transport your
-                machinery.
-              </p>
-            </div>
-          </li>
-          <li className="flex items-center gap-4 sm:gap-5">
-            <img
-              src="/public/assets/Ellipse 2804 (1).png"
-              alt=""
-              className="w-6 h-6 sm:w-8 sm:h-8"
-            />
-            <div>
-              <h4 className="font-bold text-[20px] sm:text-[24px]">Reefer Trailers</h4>
-              <p className="text-black text-[14px] sm:text-[16px]">
-                Designed to transport perishable items at controlled
-                temperatures, ensuring your temperature-sensitive goods
-                arrive in pristine condition.
-              </p>
-            </div>
-          </li>
-          <li className="flex items-center gap-4 sm:gap-5">
-            <img
-              src="/public/assets/Ellipse 2804 (1).png"
-              alt=""
-              className="w-6 h-6 sm:w-8 sm:h-8"
-            />
-            <div>
-              <h4 className="font-bold text-[20px] sm:text-[24px]">
-                Mobile Fueling Tankers
-              </h4>
-              <p className="text-black text-[14px] sm:text-[16px]">
-                Our mobile fueling trucks ensure your remote job sites
-                stay powered, with delivery of clear diesel, red
-                diesel, and unleaded fuel right to where you need it.
-              </p>
-            </div>
-          </li>
-        </ul>
-      </div>
 
-      {/* Right Column - Image */}
-      {/* Visible on larger screens (lg and above) */}
-      <div className="hidden lg:block absolute left-[630px]">
-        <img
-          src="/public/assets/Rectangle 34625717.png"
-          alt="Fleet and Freight Options"
-          className="max-w-full h-auto rounded-lg shadow-lg"
-        />
-      </div>
+            {/* Right Column - Image */}
+            {/* Visible on larger screens (lg and above) */}
+            <div className="hidden lg:block absolute left-[630px]">
+              <img
+                src="/public/assets/Rectangle 34625717.png"
+                alt="Fleet and Freight Options"
+                className="max-w-full h-auto rounded-lg shadow-lg"
+              />
+            </div>
 
-      {/* Visible on smaller screens (below lg) */}
-      <div className="w-full lg:hidden mt-8">
-        <img
-          src="/public/assets/Rectangle 34625717.png"
-          alt="Fleet and Freight Options"
-          className="max-w-full h-auto rounded-lg shadow-lg"
-        />
+            {/* Visible on smaller screens (below lg) */}
+            <div className="w-full lg:hidden mt-8">
+              <img
+                src="/public/assets/Rectangle 34625717.png"
+                alt="Fleet and Freight Options"
+                className="max-w-full h-auto rounded-lg shadow-lg"
+              />
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</div>
 
       {/* Section-5 */}
       <div className="bg-[#F7F7F7] py-20">
@@ -548,14 +551,12 @@ const Home = () => {
       </div>
 
       {/* Section-7 */}
-      <div className="bg-white py-">
-      
-
+      <div className="bg-white py-20">
         {/* Job Openings Section - Full Width Black Background */}
         <div className="w-full bg-[#FB8A00] ">
-          <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-16 xl:px-36">
+          <div className="container mx-auto  px-4 sm:px-6 md:px-8 lg:px-16 xl:px-36">
             <h3 className="text-white text-[32px] text-center mb-8">
-            Why Work with Us
+              Why Work with Us
             </h3>
             {/* Jobs */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -567,7 +568,7 @@ const Home = () => {
                   className="h-[90px] w-[90px]"
                 />
                 <p className="text-[24px] text-[#FFF] text-center mt-4">
-                Competitive <br /> wages
+                  Competitive <br /> wages
                 </p>
               </div>
               {/* Job 2 */}
@@ -578,7 +579,7 @@ const Home = () => {
                   className="h-[100px] w-[100px]"
                 />
                 <p className="text-[24px] text-[#FFF] text-center mt-4">
-                Flexible <br /> schedules
+                  Flexible <br /> schedules
                 </p>
               </div>
               {/* Job 3 */}
@@ -589,7 +590,7 @@ const Home = () => {
                   className="h-[90px] w-[90px]"
                 />
                 <p className="text-[24px] text-[#FFF] text-center mt-4">
-                Opportunities for <br /> career growth
+                  Opportunities for <br /> career growth
                 </p>
               </div>
               {/* Job 4 */}
@@ -600,18 +601,45 @@ const Home = () => {
                   className="h-[90px] w-[90px]"
                 />
                 <p className="text-[24px] text-[#FFF] text-center mt-4">
-                Health benefits <br /> and more
+                  Health benefits <br /> and more
                 </p>
               </div>
             </div>
           </div>
 
           {/* Apply Now Button */}
-          <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-16 xl:px-36 text-center mt-12">
-            <button className="rounded-md w-[254px] bg-black px-8 py-3 text-[18px] font-medium text-white transition-colors duration-200 ">
+          <div className="container  mx-auto px-4 sm:px-6 md:px-8 lg:px-16 xl:px-36 text-center mt-12">
+            <button className="rounded-md mb-8 w-[254px] bg-black px-8 py-3 text-[18px] font-medium text-white transition-colors duration-200 ">
               Apply Now
             </button>
           </div>
+        </div>
+      </div>
+
+      {/* Section-8 */}
+
+      <div className=" bg-white py-20 flex justify-center items-center gap-8">
+        {/* left-text */}
+        <div className="flex flex-col  ">
+          <p className="text-[20px] text-[#000000] font-normal mb-6">Mobile California CARB Inspections</p>
+          <h1 className="text-[48px] text-[#000000] font-normal mb-6">Mobile California CARB <br /> Inspection Services</h1>
+          <p className="text-[#000000] font-normal text-[24px] mb-6">
+            "Ensure Your Equipment Meets California’s Strict <br /> Emissions Standards
+            with Our Convenient Mobile <br /> Service.
+          </p>
+          <button className="bg-[#FB8A00] w-[562px] h-[84px] rounded-lg text-[24px] text-white">Schedule Your Mobile Inspection Now</button>
+        </div>
+        {/* Right-cards */}
+        <div className="flex flex-col gap-6">
+        <div className="w-[646px] h-[161px]  border-gray-300 flex justify-center items-center text-[24px] font-semibold text-gray-700 bg-white rounded-lg shadow-2xl">
+  Mobile Inspection Price: $175.00 per vehicle
+</div>
+        <div className="w-[646px] h-[161px]  border-gray-300 flex justify-center items-center text-[24px] font-semibold text-gray-700 bg-white rounded-lg shadow-2xl">
+  Mobile Inspection Price: $175.00 per vehicle
+</div>
+        <div className="w-[646px] h-[161px]  border-gray-300 flex justify-center items-center text-[24px] font-semibold text-gray-700 bg-white rounded-lg shadow-2xl">
+  Mobile Inspection Price: $175.00 per vehicle
+</div>
         </div>
       </div>
     </div>
