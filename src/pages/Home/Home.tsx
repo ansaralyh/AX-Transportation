@@ -4,6 +4,7 @@ const Home = () => {
   return (
     <div className="bg-[linear-gradient(to_bottom,#282121,#000000)] min-h-screen">
       <Header />
+
       {/* Hero Section */}
       <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-16 xl:px-36 mt-8 sm:mt-12 md:mt-16 lg:mt-[70px]">
         <div className="flex flex-col lg:flex-row justify-between items-center lg:items-start">
@@ -44,16 +45,18 @@ const Home = () => {
             <img
               src="/assets/shipping 1.png"
               alt="Shipping illustration"
-              className="max-w-full h-auto ]"
+              className="max-w-full h-auto"
             />
           </div>
         </div>
       </div>
+
       {/* Section-two */}
-      <div className="bg-white w-full mt-20 relative pb-24 md:pb-32 lg:pb-40 ">
+      <div className="bg-white w-full mt-20 relative pb-24 md:pb-32 lg:pb-40">
         <div className="absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[90%] max-w-[1003px] bg-black rounded border-2 py-8 px-4 top-[40px] border-2 border-white">
           <div className="container mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {/* User Count */}
               <div className="flex flex-col items-center text-center">
                 <div className="mb-2">
                   <svg
@@ -78,6 +81,7 @@ const Home = () => {
                 <p className="text-gray-400">User</p>
               </div>
 
+              {/* Satisfaction Count */}
               <div className="flex flex-col items-center text-center">
                 <div className="mb-2">
                   <svg
@@ -99,9 +103,10 @@ const Home = () => {
                 <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-1">
                   100
                 </h3>
-                <p className="text-gray-400">Satisficed</p>
+                <p className="text-gray-400">Satisfied</p>
               </div>
 
+              {/* Security Count */}
               <div className="flex flex-col items-center text-center">
                 <div className="mb-2">
                   <svg
@@ -126,6 +131,7 @@ const Home = () => {
           </div>
         </div>
       </div>
+
       {/* Section-three */}
       <div className="bg-[#F7F7F7] py-20">
         <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-16 xl:px-36">
@@ -144,9 +150,9 @@ const Home = () => {
           </div>
 
           {/* Cards Section */}
-          <div className="flex gap-[80px] justify-center">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* Card 1 */}
-            <div className="relative w-80 bg-[#1B1717] h-[334px] text-white p-6 rounded-2xl shadow-lg mt-[60px]">
+            <div className="relative bg-[#1B1717] h-[334px] text-white p-6 rounded-2xl shadow-lg mt-[60px]">
               {/* Truck Icon */}
               <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 w-20 h-20 bg-white flex items-center justify-center rounded-full">
                 <img
@@ -174,8 +180,8 @@ const Home = () => {
             </div>
 
             {/* Card 2 */}
-            <div className="relative w-80 bg-[#1B1717] h-[334px] text-white p-6 rounded-2xl shadow-lg">
-              {/* Truck Icon */}
+            <div className="relative bg-[#1B1717] h-[334px] text-white p-6 rounded-2xl shadow-lg">
+              {/* Fuel Icon */}
               <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 w-20 h-20 bg-white flex items-center justify-center rounded-full">
                 <img
                   src="/public/assets/fuel-pump-location-3d-icon-download-in-png-blend-fbx-gltf-file-formats--petrol-station-gas-pack-maps-and-navigation-icons-5740237 1.png"
@@ -199,8 +205,8 @@ const Home = () => {
             </div>
 
             {/* Card 3 */}
-            <div className="relative w-80 bg-[#1B1717] h-[334px] text-white p-6 rounded-2xl shadow-lg mt-[60px]">
-              {/* Truck Icon */}
+            <div className="relative bg-[#1B1717] h-[334px] text-white p-6 rounded-2xl shadow-lg mt-[60px]">
+              {/* 24/7 Icon */}
               <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 w-20 h-20 bg-white flex items-center justify-center rounded-full">
                 <img
                   src="/public/assets/9531254 1.png"
@@ -227,12 +233,12 @@ const Home = () => {
       </div>
 
       {/* Section-4 */}
-      <div className="bg-white py-10 ">
-        <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-16 xl:px-36 ">
-          <div className="flex flex-col lg:flex-row justify-between items-center relative ">
+      <div className="bg-white py-10">
+        <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-16 xl:px-36">
+          <div className="flex flex-col lg:flex-row justify-between items-center">
             {/* Left Column - Text Content */}
-            <div className="  h-[872px] w-[800px] mb-8 lg:mb-0 bg-[#F7F7F7] px-10">
-              <h3 className="text-[24px] font-normal uppercase tracking-wide mt-[79px]">
+            <div className="w-full lg:w-1/2 mb-8 lg:mb-0 bg-[#F7F7F7] px-10 py-12 rounded-lg relative">
+              <h3 className="text-[24px] font-normal uppercase tracking-wide">
                 Our Equipment & What We Haul
               </h3>
               <h2 className="text-[48px] font-normal leading-tight mt-2">
@@ -246,43 +252,52 @@ const Home = () => {
               {/* Bullet Points */}
               <ul className="mt-6 space-y-4">
                 <li className="flex items-center gap-5">
-                  {/* <span className="text-[#FB8A00] text-[60px] mr-3">&#8226;</span> */}
                   <img src="/public/assets/Ellipse 2804 (1).png" alt="" />
                   <div>
                     <h4 className="font-bold text-[24px]">Dry Van</h4>
                     <p className="text-black">
-                    Perfect for transporting dry goods, food, and other non-perishable items. Our dry vans <br /> are equipped to handle various freight sizes and ensure your cargo stays safe and secure
+                      Perfect for transporting dry goods, food, and other
+                      non-perishable items. Our dry vans are equipped to
+                      handle various freight sizes and ensure your cargo stays
+                      safe and secure.
                     </p>
                   </div>
                 </li>
                 <li className="flex items-center gap-5">
-                <img src="/public/assets/Ellipse 2804 (1).png" alt="" />
+                  <img src="/public/assets/Ellipse 2804 (1).png" alt="" />
                   <div>
                     <h4 className="font-bold text-[24px]">
                       Heavy Equipment Hauling
                     </h4>
                     <p className="text-black">
-                    We handle construction and industrial equipment such as scissor lifts, forklifts, boom <br />lifts, and steel, providing the right equipment to safely transport your machinery.
+                      We handle construction and industrial equipment such as
+                      scissor lifts, forklifts, boom lifts, and steel,
+                      providing the right equipment to safely transport your
+                      machinery.
                     </p>
                   </div>
                 </li>
                 <li className="flex items-center gap-5">
-                <img src="/public/assets/Ellipse 2804 (1).png" alt="" />
+                  <img src="/public/assets/Ellipse 2804 (1).png" alt="" />
                   <div>
                     <h4 className="font-bold text-[24px]">Reefer Trailers</h4>
                     <p className="text-black">
-                    Designed to transport perishable items at controlled temperatures, ensuring your <br /> temperature-sensitive goods arrive in pristine condition
+                      Designed to transport perishable items at controlled
+                      temperatures, ensuring your temperature-sensitive goods
+                      arrive in pristine condition.
                     </p>
                   </div>
                 </li>
-                <li className="flex  items-center gap-5">
-                <img src="/public/assets/Ellipse 2804 (1).png" alt="" />
+                <li className="flex items-center gap-5">
+                  <img src="/public/assets/Ellipse 2804 (1).png" alt="" />
                   <div>
                     <h4 className="font-bold text-[24px]">
                       Mobile Fueling Tankers
                     </h4>
                     <p className="text-black">
-                    Our mobile fueling trucks ensure your remote job sites stay powered, with delivery of <br /> clear diesel, red diesel, and unleaded fuel right to where you need it.
+                      Our mobile fueling trucks ensure your remote job sites
+                      stay powered, with delivery of clear diesel, red
+                      diesel, and unleaded fuel right to where you need it.
                     </p>
                   </div>
                 </li>
@@ -290,7 +305,7 @@ const Home = () => {
             </div>
 
             {/* Right Column - Image */}
-            <div className="w-full lg:w-1/2 flex justify-center lg:justify-end absolute left-[750px]">
+            <div className="w-full lg:w-1/2 flex justify-center lg:justify-end absolute left-[630px]">
               <img
                 src="/public/assets/Rectangle 34625717.png"
                 alt="Fleet and Freight Options"
@@ -301,25 +316,23 @@ const Home = () => {
         </div>
       </div>
 
-      {/* section-5 */}
-
+      {/* Section-5 */}
       <div className="bg-[#F7F7F7] py-20">
         <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-16 xl:px-36">
           {/* Text Section */}
           <div className="text-center mb-12">
             <h3 className="text-[20px] font-normal uppercase tracking-wide">
-            Why Choose AX Transportation?
+              Why Choose AX Transportation?
             </h3>
             <h2 className="text-[48px] font-normal leading-tight mt-2">
-            Why Partner with AX <br /> Transportation
+              Why Partner with AX <br /> Transportation
             </h2>
-          
           </div>
 
           {/* Cards Section */}
-          <div className="flex gap-[80px] justify-center">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {/* Card 1 */}
-            <div className="relative w-80 bg-[#1B1717] h-[301px] text-white p-6 rounded-2xl shadow-lg mt-[60px]">
+            <div className="relative bg-[#1B1717] h-[301px] text-white p-6 rounded-2xl shadow-lg mt-[40px]">
               {/* Truck Icon */}
               <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 w-20 h-20 bg-white flex items-center justify-center rounded-full">
                 <img
@@ -332,10 +345,10 @@ const Home = () => {
               {/* Content */}
               <div className="mt-10 text-center">
                 <h2 className="text-[24px] font-bold text-center">
-                Real-Time GPS <br />Tracking
+                  Real-Time GPS <br /> Tracking
                 </h2>
                 <p className="text-[15px] mt-2 leading-[22.5px]">
-                Monitor your fleet with precision.
+                  Monitor your fleet with precision.
                 </p>
               </div>
 
@@ -344,8 +357,8 @@ const Home = () => {
             </div>
 
             {/* Card 2 */}
-            <div className="relative w-80 bg-[#1B1717] h-[301px] text-white p-6 rounded-2xl shadow-lg">
-              {/* Truck Icon */}
+            <div className="relative bg-[#1B1717] h-[301px] text-white p-6 rounded-2xl shadow-lg">
+              {/* Fuel Icon */}
               <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 w-20 h-20 bg-white flex items-center justify-center rounded-full">
                 <img
                   src="/public/assets/3931551 1.png"
@@ -356,9 +369,11 @@ const Home = () => {
 
               {/* Content */}
               <div className="mt-10 text-center">
-                <h2 className="text-[24px] font-bold text-center">Driver Performance <br /></h2>
+                <h2 className="text-[24px] font-bold text-center">
+                  Driver Performance <br />
+                </h2>
                 <p className="text-[15px] mt-2 leading-[22.5px]">
-                "Track and improve driver efficiency."
+                  Track and improve driver efficiency.
                 </p>
               </div>
 
@@ -367,8 +382,8 @@ const Home = () => {
             </div>
 
             {/* Card 3 */}
-            <div className="relative w-80 bg-[#1B1717] h-[301px] text-white p-6 rounded-2xl shadow-lg mt-[60px]">
-              {/* Truck Icon */}
+            <div className="relative bg-[#1B1717] h-[301px] text-white p-6 rounded-2xl shadow-lg  mt-[40px]">
+              {/* Warning Icon */}
               <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 w-20 h-20 bg-white flex items-center justify-center rounded-full">
                 <img
                   src="/public/assets/warning-3d-icon-download-in-png-blend-fbx-gltf-file-formats--alert-error-danger-sign-notification-pack-network-communication-icons-5220289 1.png"
@@ -379,18 +394,21 @@ const Home = () => {
 
               {/* Content */}
               <div className="mt-10 text-center">
-                <h2 className="text-[24px] font-bold text-center">Driver Performance <br /></h2>
+                <h2 className="text-[24px] font-bold text-center">
+                  Driver Performance <br />
+                </h2>
                 <p className="text-[15px] mt-2 leading-[22.5px]">
-                "Track and improve driver efficiency."
+                  Track and improve driver efficiency.
                 </p>
               </div>
 
               {/* Bottom Yellow Portion Under the Card */}
               <div className="absolute -bottom-8 -left-4 w-20 h-18 bg-orange-500 rounded-lg z-0"></div>
             </div>
-            {/* Card 3 */}
-            <div className="relative w-80 bg-[#1B1717] h-[301px] text-white p-6 rounded-2xl shadow-lg ">
-              {/* Truck Icon */}
+
+            {/* Card 4 */}
+            <div className="relative bg-[#1B1717] h-[301px] text-white p-6 rounded-2xl shadow-lg">
+              {/* Evaluation Icon */}
               <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 w-20 h-20 bg-white flex items-center justify-center rounded-full">
                 <img
                   src="/public/assets/evaluation-3d-icon-download-in-png-blend-fbx-gltf-file-formats--assessment-analysis-customer-survey-service-business-pack-ethics-laws-icons-6704058 1.png"
@@ -401,16 +419,101 @@ const Home = () => {
 
               {/* Content */}
               <div className="mt-10 text-center">
-                <h2 className="text-[24px] font-bold text-center">Driver Performance <br /></h2>
+                <h2 className="text-[24px] font-bold text-center">
+                  Driver Performance <br />
+                </h2>
                 <p className="text-[15px] mt-2 leading-[22.5px]">
-                "Track and improve driver efficiency."
+                  Track and improve driver efficiency.
                 </p>
               </div>
 
               {/* Bottom Yellow Portion Under the Card */}
               <div className="absolute -bottom-8 -left-4 w-20 h-18 bg-orange-500 rounded-lg z-0"></div>
             </div>
-          
+          </div>
+        </div>
+      </div>
+
+      {/* Section-6 */}
+      <div className="bg-white py-20">
+        {/* Text Section */}
+        <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-16 xl:px-36 text-center mb-12">
+          <h3 className="text-[20px] font-normal uppercase tracking-wide text-[#000000]">
+            Employment Opportunities
+          </h3>
+          <h2 className="text-[48px] font-normal leading-tight mt-2 text-[#000000]">
+            Join Our Team at AX Transportation
+          </h2>
+          <p className="text-[23px] text-center mt-4 text-[#000000]">
+            We're always looking for motivated individuals to help drive our{" "}
+            <br /> success.
+          </p>
+          <p className="text-[20px] text-[#000000] text-center">
+            At AX Transportation, we believe in the power of teamwork and are
+            looking for <br /> dedicated professionals to join our team.
+          </p>
+        </div>
+
+        {/* Job Openings Section - Full Width Black Background */}
+        <div className="w-full bg-black py-20">
+          <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-16 xl:px-36">
+            <h3 className="text-white text-[32px] text-center mb-8">
+              Current Openings
+            </h3>
+            {/* Jobs */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {/* Job 1 */}
+              <div className="bg-white h-[190px] w-full flex flex-col font-bold items-center justify-center rounded-lg shadow-lg">
+                <img
+                  src="/public/assets/equipment-service-technician-line-icon-illustration-vector 1.png"
+                  alt=""
+                  className="h-[90px] w-[90px]"
+                />
+                <p className="text-[24px] text-[#000000] text-center mt-4">
+                  Class A CDL <br /> Drivers
+                </p>
+              </div>
+              {/* Job 2 */}
+              <div className="bg-white h-[190px] w-full flex flex-col font-bold items-center justify-center rounded-lg shadow-lg">
+                <img
+                  src="/public/assets/2459586-200 1.png"
+                  alt=""
+                  className="h-[100px] w-[100px]"
+                />
+                <p className="text-[24px] text-[#000000] text-center mt-4">
+                  Fuel Delivery <br /> Technicians
+                </p>
+              </div>
+              {/* Job 3 */}
+              <div className="bg-white h-[190px] w-full flex flex-col font-bold items-center justify-center rounded-lg shadow-lg">
+                <img
+                  src="/public/assets/equipment-service-technician-line-icon-illustration-vector 1.png"
+                  alt=""
+                  className="h-[90px] w-[90px]"
+                />
+                <p className="text-[24px] text-[#000000] text-center mt-4">
+                  Dispatch & <br /> Operations Staff
+                </p>
+              </div>
+              {/* Job 4 */}
+              <div className="bg-white h-[190px] w-full flex flex-col font-bold items-center justify-center rounded-lg shadow-lg">
+                <img
+                  src="/public/assets/istockphoto-1211333525-612x612 1.png"
+                  alt=""
+                  className="h-[90px] w-[90px]"
+                />
+                <p className="text-[24px] text-[#000000] text-center mt-4">
+                  Maintenance <br /> Technicians
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Apply Now Button */}
+          <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-16 xl:px-36 text-center mt-12">
+            <button className="rounded-md w-[254px] bg-[#FB8A00] px-8 py-3 text-[18px] font-medium text-white transition-colors duration-200 hover:bg-[#E67A00]">
+              Apply Now
+            </button>
           </div>
         </div>
       </div>
