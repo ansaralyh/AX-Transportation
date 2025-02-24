@@ -498,7 +498,7 @@ const Home = () => {
               {/* Job 1 */}
               <div className="bg-white h-[190px] w-full flex flex-col font-bold items-center justify-center  shadow-lg">
                 <img
-                  src="/public/assets/equipment-service-technician-line-icon-illustration-vector 1.png"
+                  src="/assets/equipment-service-technician-line-icon-illustration-vector 1.png"
                   alt=""
                   className="h-[90px] w-[90px]"
                 />
@@ -509,7 +509,7 @@ const Home = () => {
               {/* Job 2 */}
               <div className="bg-white h-[190px] w-full flex flex-col font-bold items-center justify-center  shadow-lg">
                 <img
-                  src="/public/assets/2459586-200 1.png"
+                  src="/assets/2459586-200 1.png"
                   alt=""
                   className="h-[100px] w-[100px]"
                 />
@@ -520,7 +520,7 @@ const Home = () => {
               {/* Job 3 */}
               <div className="bg-white h-[190px] w-full flex flex-col font-bold items-center justify-center  shadow-lg">
                 <img
-                  src="/public/assets/equipment-service-technician-line-icon-illustration-vector 1.png"
+                  src="/assets/equipment-service-technician-line-icon-illustration-vector 1.png"
                   alt=""
                   className="h-[90px] w-[90px]"
                 />
@@ -531,7 +531,7 @@ const Home = () => {
               {/* Job 4 */}
               <div className="bg-white h-[190px] w-full flex flex-col font-bold items-center justify-center shadow-lg ">
                 <img
-                  src="/public/assets/istockphoto-1211333525-612x612 1.png"
+                  src="/assets/istockphoto-1211333525-612x612 1.png"
                   alt=""
                   className="h-[90px] w-[90px]"
                 />
@@ -564,7 +564,7 @@ const Home = () => {
               {/* Job 1 */}
               <div className="bg-black h-[190px] w-full flex flex-col font-bold items-center justify-center  shadow-lg">
                 <img
-                  src="/public/assets/1240401 1.png"
+                  src="/assets/1240401 1.png"
                   alt=""
                   className="h-[90px] w-[90px]"
                 />
@@ -575,7 +575,7 @@ const Home = () => {
               {/* Job 2 */}
               <div className="bg-black h-[190px] w-full flex flex-col font-bold items-center justify-center shadow-lg">
                 <img
-                  src="/public/assets/4859642 1.png"
+                  src="/assets/4859642 1.png"
                   alt=""
                   className="h-[100px] w-[100px]"
                 />
@@ -586,7 +586,7 @@ const Home = () => {
               {/* Job 3 */}
               <div className="bg-black h-[190px] w-full flex flex-col font-bold items-center justify-center  shadow-lg">
                 <img
-                  src="/public/assets/16648620 1.png"
+                  src="/assets/16648620 1.png"
                   alt=""
                   className="h-[90px] w-[90px]"
                 />
@@ -597,7 +597,7 @@ const Home = () => {
               {/* Job 4 */}
               <div className="bg-black h-[190px] w-full flex flex-col font-bold items-center justify-center  shadow-lg">
                 <img
-                  src="/public/assets/2966327 1.png"
+                  src="/assets/2966327 1.png"
                   alt=""
                   className="h-[90px] w-[90px]"
                 />
