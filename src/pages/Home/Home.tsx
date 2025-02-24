@@ -160,7 +160,7 @@ const Home = () => {
               {/* Truck Icon */}
               <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 w-20 h-20 bg-white flex items-center justify-center rounded-full">
                 <img
-                  src="/public/assets/10740605 1.png"
+                  src="/assets/10740605 1.png"
                   alt="Truck Icon"
                   className="w-14 h-14"
                 />
@@ -188,7 +188,7 @@ const Home = () => {
               {/* Fuel Icon */}
               <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 w-20 h-20 bg-white flex items-center justify-center rounded-full">
                 <img
-                  src="/public/assets/fuel-pump-location-3d-icon-download-in-png-blend-fbx-gltf-file-formats--petrol-station-gas-pack-maps-and-navigation-icons-5740237 1.png"
+                  src="/assets/fuel-pump-location-3d-icon-download-in-png-blend-fbx-gltf-file-formats--petrol-station-gas-pack-maps-and-navigation-icons-5740237 1.png"
                   alt="Fuel Icon"
                   className="w-20 h-20"
                 />
@@ -213,7 +213,7 @@ const Home = () => {
               {/* 24/7 Icon */}
               <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 w-20 h-20 bg-white flex items-center justify-center rounded-full">
                 <img
-                  src="/public/assets/9531254 1.png"
+                  src="/assets/9531254 1.png"
                   alt="24/7 Icon"
                   className="w-20 h-20"
                 />
@@ -257,7 +257,7 @@ const Home = () => {
               <ul className="mt-6 space-y-4">
                 <li className="flex items-center gap-4 sm:gap-5">
                   <img
-                    src="/public/assets/Ellipse 2804 (1).png"
+                    src="/assets/Ellipse 2804 (1).png"
                     alt=""
                     className="w-6 h-6 sm:w-8 sm:h-8"
                   />
@@ -275,7 +275,7 @@ const Home = () => {
                 </li>
                 <li className="flex items-center gap-4 sm:gap-5">
                   <img
-                    src="/public/assets/Ellipse 2804 (1).png"
+                    src="/assets/Ellipse 2804 (1).png"
                     alt=""
                     className="w-6 h-6 sm:w-8 sm:h-8"
                   />
@@ -292,7 +292,7 @@ const Home = () => {
                 </li>
                 <li className="flex items-center gap-4 sm:gap-5">
                   <img
-                    src="/public/assets/Ellipse 2804 (1).png"
+                    src="/assets/Ellipse 2804 (1).png"
                     alt=""
                     className="w-6 h-6 sm:w-8 sm:h-8"
                   />
@@ -309,7 +309,7 @@ const Home = () => {
                 </li>
                 <li className="flex items-center gap-4 sm:gap-5">
                   <img
-                    src="/public/assets/Ellipse 2804 (1).png"
+                    src="/assets/Ellipse 2804 (1).png"
                     alt=""
                     className="w-6 h-6 sm:w-8 sm:h-8"
                   />
@@ -331,7 +331,7 @@ const Home = () => {
             {/* Visible on larger screens (lg and above) */}
             <div className="hidden lg:block absolute left-[630px]">
               <img
-                src="/public/assets/Rectangle 34625717.png"
+                src="/assets/Rectangle 34625717.png"
                 alt="Fleet and Freight Options"
                 className="max-w-full h-auto rounded-lg shadow-lg"
               />
@@ -340,7 +340,7 @@ const Home = () => {
             {/* Visible on smaller screens (below lg) */}
             <div className="w-full lg:hidden mt-8">
               <img
-                src="/public/assets/Rectangle 34625717.png"
+                src="/assets/Rectangle 34625717.png"
                 alt="Fleet and Freight Options"
                 className="max-w-full h-auto rounded-lg shadow-lg"
               />
@@ -369,7 +369,7 @@ const Home = () => {
               {/* Truck Icon */}
               <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 w-20 h-20 bg-white flex items-center justify-center rounded-full">
                 <img
-                  src="/public/assets/4323784 1.png"
+                  src="/assets/4323784 1.png"
                   alt="Truck Icon"
                   className="w-14 h-14"
                 />
@@ -394,7 +394,7 @@ const Home = () => {
               {/* Fuel Icon */}
               <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 w-20 h-20 bg-white flex items-center justify-center rounded-full">
                 <img
-                  src="/public/assets/3931551 1.png"
+                  src="/assets/3931551 1.png"
                   alt="Fuel Icon"
                   className="w-20 h-20"
                 />
@@ -419,7 +419,7 @@ const Home = () => {
               {/* Warning Icon */}
               <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 w-20 h-20 bg-white flex items-center justify-center rounded-full">
                 <img
-                  src="/public/assets/warning-3d-icon-download-in-png-blend-fbx-gltf-file-formats--alert-error-danger-sign-notification-pack-network-communication-icons-5220289 1.png"
+                  src="/assets/warning-3d-icon-download-in-png-blend-fbx-gltf-file-formats--alert-error-danger-sign-notification-pack-network-communication-icons-5220289 1.png"
                   alt="24/7 Icon"
                   className="w-17 h-17"
                 />
@@ -444,7 +444,7 @@ const Home = () => {
               {/* Evaluation Icon */}
               <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 w-20 h-20 bg-white flex items-center justify-center rounded-full">
                 <img
-                  src="/public/assets/evaluation-3d-icon-download-in-png-blend-fbx-gltf-file-formats--assessment-analysis-customer-survey-service-business-pack-ethics-laws-icons-6704058 1.png"
+                  src="/assets/evaluation-3d-icon-download-in-png-blend-fbx-gltf-file-formats--assessment-analysis-customer-survey-service-business-pack-ethics-laws-icons-6704058 1.png"
                   alt="24/7 Icon"
                   className="w-17 h-17"
                 />
@@ -657,7 +657,7 @@ const Home = () => {
           <div className="relative w-[150px] sm:w-[200px] h-[250px] flex items-center mb-8 md:mb-0">
             <div className="absolute w-[250px] sm:w-[300px] h-full top-[-30px] left-[-220px] bg-[radial-gradient(circle,_#ffffff_0%,_rgba(255,255,255,0.3)_30%,_transparent_70%)]" />
             <img
-              src="/public/assets/image 54.png"
+              src="/assets/image 54.png"
               alt="AXT Transportation Logo"
               className="relative left-[-150px] top-[-30px] z-10 w-[120px] sm:w-[150px] h-auto"
             />
@@ -692,7 +692,7 @@ const Home = () => {
           <div className="w-full md:w-1/3 flex justify-end">
             <img
               className="w-[382px] h-[254px]"
-              src="../../../public/assets/footerimg.png"
+              src="/assets/footerimg.png"
               alt="Footer Image"
             />
           </div>

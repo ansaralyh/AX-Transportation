@@ -14,7 +14,7 @@ const Header = () => {
           <div className="relative w-[150px] sm:w-[200px] h-[200px] flex items-center">
             <div className="absolute w-[250px] sm:w-[300px] h-full left-[-50px] bg-[radial-gradient(circle,_#ffffff_0%,_rgba(255,255,255,0.3)_30%,_transparent_70%)]" />
             <img
-              src="/public/assets/image 54.png"
+              src="/assets/image 54.png"
               alt="AXT Transportation Logo"
               className="relative z-10 w-[120px] sm:w-[150px] h-auto"
             />
