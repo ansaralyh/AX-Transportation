@@ -341,7 +341,7 @@ const Home = () => {
             {/* Visible on smaller screens (below lg) */}
             <div className="w-full lg:hidden mt-8">
               <img
-                src="/public/assets/truck.jpg"
+                src="/assets/truck.jpg"
                 alt="Fleet and Freight Options"
                 className="max-w-full h-auto rounded-lg shadow-lg"
               />
