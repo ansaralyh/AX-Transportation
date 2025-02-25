@@ -1,11 +1,20 @@
 import React from "react";
 import { FaUser } from "react-icons/fa";
+
 const SignIn = () => {
   return (
-    <div className="flex h-screen bg-gray-200">
-      {/* Left Section - Signup Form */}
-      <div className="w-1/2 flex items-center justify-center bg-white p-10">
-        <div className="w-[540px] h-[703px] p-8 bg-[#FFFFFF] rounded-lg shadow-2xl">
+    <div className="flex flex-col h-screen md:flex-row-reverse bg-gray-200">
+      {/* Right Section - Image (Displayed on top in mobile view) */}
+      <div className="w-full h-64 md:w-1/2 md:h-full">
+        <img
+          src="/public/assets/truck.jpg"
+          alt="Truck"
+          className="w-full h-full object-cover"
+        />
+      </div>
+      {/* Left Section - SignIn Form */}
+      <div className="w-full md:w-1/2 flex items-center justify-center bg-white p-6 md:p-10">
+        <div className="w-full max-w-md p-6 bg-white rounded-lg shadow-2xl">
           <div className="flex justify-center mb-6">
             <img
               src="/public/assets/image 54.png"
@@ -18,107 +27,49 @@ const SignIn = () => {
             Enter details to create your account
           </p>
           <form>
-            {/* Name Input */}
-           
             {/* Email/Phone Input */}
             <input
               type="text"
-              placeholder="E-mail or phone numbers"
+              placeholder="E-mail or phone number"
               className="w-full px-4 py-2 mb-4 bg-gray-100 rounded focus:bg-gray-200 focus:outline-none hover:bg-gray-200 transition"
             />
-            {/* Password Inputs */}
-            <div className="flex space-x-4">
-              <input
-                type="password"
-                placeholder="Password"
-                className="w-full px-4 py-2 bg-gray-100 rounded focus:bg-gray-200 focus:outline-none hover:bg-gray-200 transition"
-              />
-              
-            </div>
-            {/* Sign Up Button */}
+            {/* Password Input */}
+            <input
+              type="password"
+              placeholder="Password"
+              className="w-full px-4 py-2 mb-4 bg-gray-100 rounded focus:bg-gray-200 focus:outline-none hover:bg-gray-200 transition"
+            />
+            {/* Sign In Button */}
             <button className="w-full bg-orange-500 text-white py-2 rounded mt-4 hover:bg-orange-600 transition">
-              Sign up
+              Sign In
             </button>
           </form>
-          {/* Social Sign Up Buttons */}
-          <div className="flex justify-between mt-4">
-            {/* Google Sign Up */}
-            <button className="flex items-center justify-center px-4 py-2 bg-gray-100 rounded w-1/2 mr-2 hover:bg-gray-200 transition">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 48 48"
-                className="h-5 w-5 mr-2"
-              >
-                <path
-                  fill="#FFC107"
-                  d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.657-6.08 8-11.303 8-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 12.955 4 4 12.955 4 24s8.955 20 20 20 20-8.955 20-20c0-1.341-.138-2.65-.389-3.917z"
-                />
-                <path
-                  fill="#FF3D00"
-                  d="m6.306 14.691 6.571 4.819C14.655 15.108 18.961 12 24 12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 16.318 4 9.656 8.337 6.306 14.691z"
-                />
-                <path
-                  fill="#4CAF50"
-                  d="M24 44c5.166 0 9.86-1.977 13.409-5.192l-6.19-5.238A11.91 11.91 0 0 1 24 36c-5.202 0-9.619-3.317-11.283-7.946l-6.522 5.025C9.505 39.556 16.227 44 24 44z"
-                />
-                <path
-                  fill="#1976D2"
-                  d="M43.611 20.083H42V20H24v8h11.303a12.04 12.04 0 0 1-4.087 5.571l.003-.002 6.19 5.238C36.971 39.205 44 34 44 24c0-1.341-.138-2.65-.389-3.917z"
-                />
-              </svg>
-              Sign up with Google
+          {/* Social Sign In Buttons */}
+          <div className="flex flex-col md:flex-row justify-between mt-4 gap-2">
+            <button className="flex items-center justify-center px-4 py-2 bg-gray-100 rounded hover:bg-gray-200 transition w-full">
+              Sign in with Google
             </button>
-            {/* Facebook Sign Up */}
-            <button className="flex items-center justify-center px-4 py-2 bg-gray-100 rounded w-1/2 ml-2 hover:bg-gray-200 transition">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 48 48"
-                className="h-5 w-5 mr-2"
-              >
-                <path
-                  fill="#039BE5"
-                  d="M24 5A19 19 0 1 0 24 43A19 19 0 1 0 24 5Z"
-                />
-                <path
-                  fill="#FFF"
-                  d="M26.572 29.036h4.917l.772-4.995h-5.69v-2.73c0-2.075.678-3.915 2.619-3.915h3.119v-4.359c-.548-.074-1.707-.236-3.897-.236-4.573 0-7.254 2.415-7.254 7.917v3.323h-4.701v4.995h4.701v13.729C22.089 42.905 23.032 43 24 43c.968 0 1.911-.095 2.807-.281V29.036z"
-                />
-              </svg>
-              Sign up with Facebook
+            <button className="flex items-center justify-center px-4 py-2 bg-gray-100 rounded hover:bg-gray-200 transition w-full">
+              Sign in with Facebook
             </button>
           </div>
-          {/* Sign In Link */}
+          {/* Sign Up Link */}
           <p className="text-center mt-4">
-            Already have an account?{" "}
+            Don't have an account? {" "}
             <a href="#" className="text-orange-500 hover:underline">
-              Sign in
+              Sign up
             </a>
           </p>
-
-          {/* Driver Register Button */}
-
-
-<div className="flex gap-4 mt-8">
-  <button className="bg-orange-200 text-black py-2 px-4 rounded flex items-center justify-center gap-2 shadow-md hover:bg-orange-300 transition w-1/2">
-    <FaUser className="text-black" />
-    Driver Register
-  </button>
-  <button className="bg-orange-200 text-black py-2 px-4 rounded flex items-center justify-center gap-2 shadow-md hover:bg-orange-300 transition w-1/2">
-    <FaUser className="text-black" />
-    Admin Register
-  </button>
-</div>
-
-
+          {/* Register Buttons */}
+          <div className="flex flex-col md:flex-row gap-4 mt-6">
+            <button className="bg-orange-200 text-black py-2 px-4 rounded flex items-center justify-center gap-2 shadow-md hover:bg-orange-300 transition w-full">
+              <FaUser className="text-black" /> Driver Register
+            </button>
+            <button className="bg-orange-200 text-black py-2 px-4 rounded flex items-center justify-center gap-2 shadow-md hover:bg-orange-300 transition w-full">
+              <FaUser className="text-black" /> Admin Register
+            </button>
+          </div>
         </div>
-      </div>
-      {/* Right Section - Image */}
-      <div className="w-1/2 h-full">
-        <img
-          src="/public/assets/truck.jpg"
-          alt="Truck"
-          className="w-full h-full object-cover"
-        />
       </div>
     </div>
   );
