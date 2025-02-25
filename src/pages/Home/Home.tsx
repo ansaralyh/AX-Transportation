@@ -332,7 +332,7 @@ const Home = () => {
             {/* Visible on larger screens (lg and above) */}
             <div className="hidden lg:block absolute left-[630px]">
               <img
-                src="/assets/Rectangle 34625717.png"
+                src="/assets/truck.jpg"
                 alt="Fleet and Freight Options"
                 className="max-w-full h-auto rounded-lg shadow-lg"
               />
@@ -341,7 +341,7 @@ const Home = () => {
             {/* Visible on smaller screens (below lg) */}
             <div className="w-full lg:hidden mt-8">
               <img
-                src="/assets/Rectangle 34625717.png"
+                src="/public/assets/truck.jpg"
                 alt="Fleet and Freight Options"
                 className="max-w-full h-auto rounded-lg shadow-lg"
               />
@@ -635,9 +635,11 @@ const Home = () => {
             <br className="hidden lg:block" /> Emissions Standards with Our
             Convenient Mobile <br className="hidden lg:block" /> Service.
           </p>
-          <button className="bg-[#FB8A00] w-full sm:w-[562px] h-[84px] rounded-lg text-lg sm:text-[24px] text-white">
-            Schedule Your Mobile Inspection Now
-          </button>
+          <div className="flex justify-center">
+  <button className="bg-[#FB8A00] w-[300px] md:w-[400px] lg:w-[562px] h-[60px] md:h-[70px] lg:h-[84px] rounded-lg text-[16px] md:text-[20px] lg:text-[24px] text-white hidden sm:block">
+    Schedule Your Mobile Inspection Now
+  </button>
+</div>
         </div>
 
         {/* Right Cards Section */}
