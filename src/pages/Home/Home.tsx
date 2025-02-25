@@ -620,41 +620,42 @@ const Home = () => {
 
       {/* Section-8 */}
 
-      <div className="bg-white py-20 flex flex-col lg:flex-row justify-center items-center gap-8 px-4 sm:px-6 md:px-8 lg:px-16 xl:px-36">
-        {/* Left Text Section */}
-        <div className="flex flex-col w-full lg:w-1/2 text-center lg:text-left">
-          <p className="text-[20px] sm:text-[24px] text-[#000000] font-normal mb-6">
-            Mobile California CARB Inspections
-          </p>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[48px] text-[#000000] font-normal mb-6">
-            Mobile California CARB <br className="hidden lg:block" /> Inspection
-            Services
-          </h1>
-          <p className="text-[#000000] font-normal text-lg sm:text-xl lg:text-[24px] mb-6">
-            "Ensure Your Equipment Meets California’s Strict{" "}
-            <br className="hidden lg:block" /> Emissions Standards with Our
-            Convenient Mobile <br className="hidden lg:block" /> Service.
-          </p>
-          <div className="flex justify-center">
-  <button className="bg-[#FB8A00] w-[300px] md:w-[400px] lg:w-[562px] h-[60px] md:h-[70px] lg:h-[84px] rounded-lg text-[16px] md:text-[20px] lg:text-[24px] text-white hidden sm:block">
-    Schedule Your Mobile Inspection Now
-  </button>
-</div>
-        </div>
+    <div className="bg-white py-20 flex flex-col lg:flex-row justify-center items-center gap-8 px-4 sm:px-6 md:px-8 lg:px-16 xl:px-36">
+  {/* Left Text Section */}
+  <div className="flex flex-col w-full lg:w-1/2 text-center lg:text-left">
+    <p className="text-[20px] sm:text-[24px] text-[#000000] font-normal mb-6">
+      Mobile California CARB Inspections
+    </p>
+    <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[48px] text-[#000000] font-normal mb-6">
+      Mobile California CARB <br className="hidden lg:block" /> Inspection
+      Services
+    </h1>
+    <p className="text-[#000000] font-normal text-lg sm:text-xl lg:text-[24px] mb-6">
+      "Ensure Your Equipment Meets California’s Strict{" "}
+      <br className="hidden lg:block" /> Emissions Standards with Our
+      Convenient Mobile <br className="hidden lg:block" /> Service.
+    </p>
+    {/* Button */}
+    <div className="flex justify-center lg:justify-start">
+      <button className="bg-[#FB8A00] w-[300px] md:w-[400px] lg:w-[562px] h-[60px] md:h-[70px] lg:h-[84px] rounded-lg text-[16px] md:text-[20px] lg:text-[24px] text-white hidden sm:block">
+        Schedule Your Mobile Inspection Now
+      </button>
+    </div>
+  </div>
 
-        {/* Right Cards Section */}
-        <div className="flex flex-col gap-6 w-full lg:w-1/2">
-          <div className="w-full h-[161px] border-gray-300 flex justify-center items-center text-lg sm:text-[24px] font-semibold text-gray-700 bg-white rounded-lg shadow-2xl">
-            Mobile Inspection Price: $175.00 per vehicle
-          </div>
-          <div className="w-full h-[161px] border-gray-300 flex justify-center items-center text-lg sm:text-[24px] font-semibold text-gray-700 bg-white rounded-lg shadow-2xl">
-            Mobile Inspection Price: $175.00 per vehicle
-          </div>
-          <div className="w-full h-[161px] border-gray-300 flex justify-center items-center text-lg sm:text-[24px] font-semibold text-gray-700 bg-white rounded-lg shadow-2xl">
-            Mobile Inspection Price: $175.00 per vehicle
-          </div>
-        </div>
-      </div>
+{/* Right Cards Section */}
+<div className="flex flex-col gap-6 w-full lg:w-1/2">
+  <div className="w-full h-[161px] border-gray-300 flex justify-center items-center text-center text-[16px] sm:text-[18px] md:text-[20px] lg:text-[24px] font-semibold text-gray-700 bg-white rounded-lg shadow-2xl">
+    Mobile Inspection Price: $175.00 per vehicle
+  </div>
+  <div className="w-full h-[161px] border-gray-300 flex justify-center items-center text-center text-[16px] sm:text-[18px] md:text-[20px] lg:text-[24px] font-semibold text-gray-700 bg-white rounded-lg shadow-2xl">
+    Mobile Inspection Price: $175.00 per vehicle
+  </div>
+  <div className="w-full h-[161px] border-gray-300 flex justify-center items-center text-center text-[16px] sm:text-[18px] md:text-[20px] lg:text-[24px] font-semibold text-gray-700 bg-white rounded-lg shadow-2xl">
+    Mobile Inspection Price: $175.00 per vehicle
+  </div>
+</div>
+</div>
 
       {/* Footer */}
       <footer className="bg-[#282121] text-white p-8">
