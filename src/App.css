@@ -1,2 +1,12 @@
 @import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=Prosto+One&display=swap');
+
+.footer{
+    /* border:1px solid red */
+}
+
+.logo{
+    /* border:1px solid red; */
+    /* position:absolute; */
+    /* left:200px; */
+}

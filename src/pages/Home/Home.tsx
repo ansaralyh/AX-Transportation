@@ -1,5 +1,6 @@
 import { Facebook, Github, Instagram, Twitter } from "lucide-react";
 import Header from "../../components/Header/Header";
+// import './App.css'
 
 const Home = () => {
   return (
@@ -154,7 +155,7 @@ const Home = () => {
           </div>
 
           {/* Cards Section */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 sm:mb:8 lg:grid-cols-3 gap-8">
             {/* Card 1 */}
             <div className="relative bg-[#1B1717] h-[334px] text-white p-6 rounded-2xl shadow-lg mt-[60px]">
               {/* Truck Icon */}
@@ -619,32 +620,35 @@ const Home = () => {
 
       {/* Section-8 */}
 
-      <div className=" bg-white py-20 flex justify-center items-center gap-8">
-        {/* left-text */}
-        <div className="flex flex-col  ">
-          <p className="text-[20px] text-[#000000] font-normal mb-6">
+      <div className="bg-white py-20 flex flex-col lg:flex-row justify-center items-center gap-8 px-4 sm:px-6 md:px-8 lg:px-16 xl:px-36">
+        {/* Left Text Section */}
+        <div className="flex flex-col w-full lg:w-1/2 text-center lg:text-left">
+          <p className="text-[20px] sm:text-[24px] text-[#000000] font-normal mb-6">
             Mobile California CARB Inspections
           </p>
-          <h1 className="text-[48px] text-[#000000] font-normal mb-6">
-            Mobile California CARB <br /> Inspection Services
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[48px] text-[#000000] font-normal mb-6">
+            Mobile California CARB <br className="hidden lg:block" /> Inspection
+            Services
           </h1>
-          <p className="text-[#000000] font-normal text-[24px] mb-6">
-            "Ensure Your Equipment Meets California’s Strict <br /> Emissions
-            Standards with Our Convenient Mobile <br /> Service.
+          <p className="text-[#000000] font-normal text-lg sm:text-xl lg:text-[24px] mb-6">
+            "Ensure Your Equipment Meets California’s Strict{" "}
+            <br className="hidden lg:block" /> Emissions Standards with Our
+            Convenient Mobile <br className="hidden lg:block" /> Service.
           </p>
-          <button className="bg-[#FB8A00] w-[562px] h-[84px] rounded-lg text-[24px] text-white">
+          <button className="bg-[#FB8A00] w-full sm:w-[562px] h-[84px] rounded-lg text-lg sm:text-[24px] text-white">
             Schedule Your Mobile Inspection Now
           </button>
         </div>
-        {/* Right-cards */}
-        <div className="flex flex-col gap-6">
-          <div className="w-[646px] h-[161px]  border-gray-300 flex justify-center items-center text-[24px] font-semibold text-gray-700 bg-white rounded-lg shadow-2xl">
+
+        {/* Right Cards Section */}
+        <div className="flex flex-col gap-6 w-full lg:w-1/2">
+          <div className="w-full h-[161px] border-gray-300 flex justify-center items-center text-lg sm:text-[24px] font-semibold text-gray-700 bg-white rounded-lg shadow-2xl">
             Mobile Inspection Price: $175.00 per vehicle
           </div>
-          <div className="w-[646px] h-[161px]  border-gray-300 flex justify-center items-center text-[24px] font-semibold text-gray-700 bg-white rounded-lg shadow-2xl">
+          <div className="w-full h-[161px] border-gray-300 flex justify-center items-center text-lg sm:text-[24px] font-semibold text-gray-700 bg-white rounded-lg shadow-2xl">
             Mobile Inspection Price: $175.00 per vehicle
           </div>
-          <div className="w-[646px] h-[161px]  border-gray-300 flex justify-center items-center text-[24px] font-semibold text-gray-700 bg-white rounded-lg shadow-2xl">
+          <div className="w-full h-[161px] border-gray-300 flex justify-center items-center text-lg sm:text-[24px] font-semibold text-gray-700 bg-white rounded-lg shadow-2xl">
             Mobile Inspection Price: $175.00 per vehicle
           </div>
         </div>
@@ -652,54 +656,56 @@ const Home = () => {
 
       {/* Footer */}
       <footer className="bg-[#282121] text-white p-8">
-        <div className="container mx-auto h-400px flex flex-col md:flex-row justify-between items-start">
-          {/* Logo Section */}
-          <div className="relative w-[150px] sm:w-[200px] h-[250px] flex items-center mb-8 md:mb-0">
-            <div className="absolute w-[250px] sm:w-[300px] h-full top-[-30px] left-[-220px] bg-[radial-gradient(circle,_#ffffff_0%,_rgba(255,255,255,0.3)_30%,_transparent_70%)]" />
-            <img
-              src="/assets/image 54.png"
-              alt="AXT Transportation Logo"
-              className="relative left-[-150px] top-[-30px] z-10 w-[120px] sm:w-[150px] h-auto"
-            />
-          </div>
+  <div className="footer container mx-auto flex flex-col md:flex-row justify-between items-start">
+    {/* Logo Section */}
+    <div className="relative w-[150px] sm:w-[200px] h-[250px] flex items-center mb-8 md:mb-0">
+  {/* White Radial Gradient Background */}
+  <div className="absolute w-[250px] sm:w-[300px] h-full top-[-30px] left-[-98px] sm:left-[-220px] bg-[radial-gradient(circle,_#ffffff_0%,_rgba(255,255,255,0.3)_30%,_transparent_70%)] logo" />
 
-          {/* Left Section - Services */}
-          <div className="w-full md:w-1/3 mt-7 mb-8 md:mb-0">
-            <h3 className="text-lg font-semibold mb-4">Services</h3>
-            <ul className="space-y-2">
-              <li>Reel-Time Tracking</li>
-              <li>Driver Profiles</li>
-              <li>Maintenance</li>
-              <li>Reports</li>
-              <li>Contact</li>
-            </ul>
-          </div>
+  {/* Logo Image */}
+  <img
+    src="/assets/image 54.png"
+    alt="AXT Transportation Logo"
+    className="relative left-[-26px] sm:left-[-150px] top-[-30px] z-10 w-[120px] sm:w-[150px] h-auto"
+  />
+</div>
 
-          {/* Right Section - Corporate */}
-          <div className="w-full md:w-1/3 mt-7 mb-8 md:mb-0">
-            <h3 className="text-lg font-semibold mb-4">Corporate</h3>
-            <ul className="space-y-2">
-              <li>Contact Us</li>
-              <li>1722 W. Bonanza Rd.</li>
-              <li>Las Vegas, NV 89106, USA</li>
-              <li>1-702-478-1860</li>
-              <li>General Inquiry: info@axtransportation.com</li>
-              <li>Load Inquiry: load@axtransportation.com</li>
-            </ul>
-          </div>
+    {/* Left Section - Services */}
+    <div className="w-full md:w-1/3 mt-7 mb-8 md:mb-0">
+      <h3 className="text-lg font-semibold mb-4">Services</h3>
+      <ul className="space-y-2">
+        <li>Reel-Time Tracking</li>
+        <li>Driver Profiles</li>
+        <li>Maintenance</li>
+        <li>Reports</li>
+        <li>Contact</li>
+      </ul>
+    </div>
 
-          {/* Image Section */}
-          <div className="w-full md:w-1/3 flex justify-end">
-            <img
-              className="w-[382px] h-[254px]"
-              src="/assets/footerimg.png"
-              alt="Footer Image"
-            />
-          </div>
-        </div>
+    {/* Right Section - Corporate */}
+    <div className="w-full md:w-1/3 mt-7 mb-8 md:mb-0">
+      <h3 className="text-lg font-semibold mb-4">Corporate</h3>
+      <ul className="space-y-2">
+        <li>Contact Us</li>
+        <li>1722 W. Bonanza Rd.</li>
+        <li>Las Vegas, NV 89106, USA</li>
+        <li>1-702-478-1860</li>
+        <li>General Inquiry: info@axtransportation.com</li>
+        <li>Load Inquiry: load@axtransportation.com</li>
+      </ul>
+    </div>
 
-        {/* Bottom Section - Copyright */}
-      </footer>
+    {/* Image Section */}
+    <div className="w-full md:w-1/3 mt-7 mb-8 md:mb-0">
+      <img
+        className="w-full max-w-[382px] h-auto"
+        src="/assets/footerimg.png"
+        alt="Footer Image"
+      />
+    </div>
+  </div>
+
+</footer>
       <div className="border-t border-gray-800 bg-[#FB8A00] h-[60px] flex items-center justify-around text-center">
         <p className="text-sm text-[#fff]">
           &copy; {new Date().getFullYear()} AX Transportation. All rights
