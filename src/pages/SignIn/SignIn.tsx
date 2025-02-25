@@ -1,6 +1,6 @@
 import React from "react";
 import { FaUser } from "react-icons/fa";
-const SignUp = () => {
+const SignIn = () => {
   return (
     <div className="flex h-screen bg-gray-200">
       {/* Left Section - Signup Form */}
@@ -13,17 +13,13 @@ const SignUp = () => {
               className="h-10"
             />
           </div>
-          <h2 className="text-2xl font-semibold text-center mb-4">Sign Up</h2>
+          <h2 className="text-2xl font-semibold text-center mb-4">Sign In</h2>
           <p className="text-gray-600 text-center mb-6">
             Enter details to create your account
           </p>
           <form>
             {/* Name Input */}
-            <input
-              type="text"
-              placeholder="Your name"
-              className="w-full px-4 py-2 mb-4 bg-gray-100 rounded focus:bg-gray-200 focus:outline-none hover:bg-gray-200 transition"
-            />
+           
             {/* Email/Phone Input */}
             <input
               type="text"
@@ -35,13 +31,9 @@ const SignUp = () => {
               <input
                 type="password"
                 placeholder="Password"
-                className="w-1/2 px-4 py-2 bg-gray-100 rounded focus:bg-gray-200 focus:outline-none hover:bg-gray-200 transition"
+                className="w-full px-4 py-2 bg-gray-100 rounded focus:bg-gray-200 focus:outline-none hover:bg-gray-200 transition"
               />
-              <input
-                type="password"
-                placeholder="Confirm Password"
-                className="w-1/2 px-4 py-2 bg-gray-100 rounded focus:bg-gray-200 focus:outline-none hover:bg-gray-200 transition"
-              />
+              
             </div>
             {/* Sign Up Button */}
             <button className="w-full bg-orange-500 text-white py-2 rounded mt-4 hover:bg-orange-600 transition">
@@ -132,4 +124,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default SignIn;
