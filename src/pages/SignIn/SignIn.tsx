@@ -26,7 +26,7 @@ const SignIn = () => {
           </div>
           <h2 className="text-2xl font-semibold text-center mb-4">Sign In</h2>
           <p className="text-gray-600 text-center mb-6">
-            Enter details to create your account
+            Enter details to login to your account
           </p>
           <form>
             {/* Email/Phone Input */}
