@@ -2,6 +2,7 @@
 
 
 import { useState } from "react"
+import { Link } from "react-router-dom"
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -40,12 +41,16 @@ const Header = () => {
 
           <div className="flex items-center">
             <div className="hidden md:flex items-center space-x-2">
-              <button className="px-3 sm:px-4 py-1.5 bg-[#FF6B00] text-white text-sm font-medium rounded hover:bg-[#FF8533] transition-colors">
-                Login
-              </button>
+            <Link to="/sign-in">
+  <button className="px-3 sm:px-4 py-1.5 bg-[#FF6B00] text-white text-sm font-medium rounded hover:bg-[#FF8533] transition-colors">
+    Login
+  </button>
+</Link>
+<Link to="/sign-up">
               <button className="px-3 sm:px-4 py-1.5 text-white text-sm font-medium rounded hover:bg-white/10 transition-colors">
                 Sign Up
               </button>
+</Link>
             </div>
 
             <button

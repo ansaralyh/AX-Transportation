@@ -1,5 +1,6 @@
 import React from "react";
 import { FaUser } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const SignUp = () => {
   return (
@@ -68,18 +69,25 @@ const SignUp = () => {
           {/* Sign In Link */}
           <p className="text-center mt-4">
             Already have an account? {" "}
+            <Link to='/sign-in'>
             <a href="#" className="text-orange-500 hover:underline">
               Sign in
             </a>
+            </Link>
           </p>
           {/* Register Buttons */}
           <div className="flex flex-col md:flex-row gap-4 mt-6">
+            <Link to="/driver-form">
+
             <button className="bg-orange-200 text-black py-2 px-4 rounded flex items-center justify-center gap-2 shadow-md hover:bg-orange-300 transition w-full">
               <FaUser className="text-black" /> Driver Register
             </button>
+            </Link>
+            <Link to="/">
             <button className="bg-orange-200 text-black py-2 px-4 rounded flex items-center justify-center gap-2 shadow-md hover:bg-orange-300 transition w-full">
               <FaUser className="text-black" /> Admin Register
             </button>
+            </Link>
           </div>
         </div>
       </div>
