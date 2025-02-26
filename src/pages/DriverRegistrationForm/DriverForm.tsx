@@ -324,12 +324,13 @@ const DriverForm = () => {
                 <span>Click to Upload</span>
               </span>
             </label>
-            {/* Resume */}
+            {/* National ID or Passport Copy */}
             <h3 className="text-lg font-semibold mb-2">
-              Upload National ID or Passport
+            National ID or Passport Copy
             </h3>
-            <div className="border border-dashed border-gray-300 p-4 mb-6 rounded flex justify-center items-center">
-              <button className="text-gray-500 flex items-center text-sm">
+            <label className="border border-dashed border-gray-300 p-4 mb-6 rounded flex justify-center items-center cursor-pointer">
+              <input type="file" className="hidden" />
+              <span className="text-gray-500 flex items-center text-sm">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-4 w-4 mr-1"
@@ -344,15 +345,17 @@ const DriverForm = () => {
                     d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0l-4 4m4-4v12"
                   />
                 </svg>
-                <span>Upload National ID or Passport</span>
-              </button>
-            </div>
-            {/* Recent Photograph */}
+                <span>Click to Upload</span>
+              </span>
+            </label>
+            
+            {/* Recent photograph Copy */}
             <h3 className="text-lg font-semibold mb-2">
-              Upload Recent Photograph
+            Recent photograph Copy
             </h3>
-            <div className="border border-dashed border-gray-300 p-4 mb-6 rounded flex justify-center items-center">
-              <button className="text-gray-500 flex items-center text-sm">
+            <label className="border border-dashed border-gray-300 p-4 mb-6 rounded flex justify-center items-center cursor-pointer">
+              <input type="file" className="hidden" />
+              <span className="text-gray-500 flex items-center text-sm">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-4 w-4 mr-1"
@@ -367,16 +370,16 @@ const DriverForm = () => {
                     d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0l-4 4m4-4v12"
                   />
                 </svg>
-                <span>Upload Recent Photograph</span>
-              </button>
-            </div>
-
-            {/* Recent Medical Fitness Certificate */}
+                <span>Click to Upload</span>
+              </span>
+            </label>
+            {/* Medical Fitness Certificate Copy */}
             <h3 className="text-lg font-semibold mb-2">
-              Upload Medical Fitness Certificate
+            Medical Fitness Certificate Copy
             </h3>
-            <div className="border border-dashed border-gray-300 p-4 mb-6 rounded flex justify-center items-center">
-              <button className="text-gray-500 flex items-center text-sm">
+            <label className="border border-dashed border-gray-300 p-4 mb-6 rounded flex justify-center items-center cursor-pointer">
+              <input type="file" className="hidden" />
+              <span className="text-gray-500 flex items-center text-sm">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-4 w-4 mr-1"
@@ -391,9 +394,10 @@ const DriverForm = () => {
                     d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0l-4 4m4-4v12"
                   />
                 </svg>
-                <span>Upload Medical Fitness Certificate</span>
-              </button>
-            </div>
+                <span>Click to Upload</span>
+              </span>
+            </label>
+            
             <button className="w-full h-[54px] bg-orange-500 text-white p-2  mb-4">
               SUBMIT
             </button>
