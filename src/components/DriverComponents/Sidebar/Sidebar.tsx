@@ -1,5 +1,5 @@
 import React from "react";
-import { X, LayoutGrid, MapPin, IdCard, Briefcase,LogOut, FileText, Wrench, Mail, Settings } from "lucide-react";
+import { X, LayoutGrid, MapPin, IdCard, Briefcase, LogOut, FileText, Wrench, Mail, Settings } from "lucide-react";
 
 // Sidebar Props Interface
 interface SidebarProps {
@@ -20,25 +20,27 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggleSidebar }) => {
       {/* Background Overlay - Click to Close Sidebar */}
       {isOpen && (
         <div
-          className="fixed inset-0 bg-white bg-opacity-50 z-40 md:hidden"
+          className="fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden"
           onClick={toggleSidebar}
         />
       )}
 
-      {/* Sidebar */}
+      {/* Sidebar Container - Uses Flexbox for Proper Layout */}
       <div
         className={`fixed top-0 left-0 h-screen w-[279px] bg-[#231D1D] text-white z-50 shadow-lg transition-transform
+        flex flex-col justify-between
         ${isOpen ? "translate-x-0" : "-translate-x-full"} md:translate-x-0`}
       >
-       <button 
-  className="md:hidden absolute top-4 right-4 text-white z-[60]" 
-  onClick={() => {
-    console.log("Close button clicked!");
-    toggleSidebar();
-  }}
->
-  <X size={24} />
-</button>
+        {/* Close Button */}
+        <button 
+          className="md:hidden absolute top-4 right-4 text-white z-[60]" 
+          onClick={() => {
+            console.log("Close button clicked!");
+            toggleSidebar();
+          }}
+        >
+          <X size={24} />
+        </button>
 
         {/* Sidebar Logo */}
         <div className="relative w-full flex justify-center items-center py-8">
@@ -53,8 +55,8 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggleSidebar }) => {
         </div>
 
         {/* Sidebar Items */}
-        <nav className="mt-20">
-          <ul className="space-y-3">
+        <nav className="flex-grow overflow-y-auto">
+          <ul className="space-y-3 px-4">
             <SidebarItem icon={LayoutGrid} text="Dashboards" />
             <SidebarItem icon={MapPin} text="Real-Time Tracking" />
             <SidebarItem icon={IdCard} text="Drivers" />
@@ -66,13 +68,13 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggleSidebar }) => {
           </ul>
         </nav>
 
-        <div className="absolute bottom-4 left-0 w-full px-4">
-  <button className="flex items-center w-full px-4 py-3 text-lg text-white hover:bg-red-600 rounded-lg">
-    <LogOut className="w-6 h-6 mr-3 text-orange-500" /> 
-    Log Out
-  </button>
-</div>
-
+        {/* Logout Button - Properly Aligned at Bottom */}
+        <div className="px-6 pb-2">
+          <button className="flex items-center w-full px-4 py-3 text-lg text-white hover:bg-red-600 rounded-lg">
+            <LogOut className="w-6 h-6 mr-3 text-orange-500" /> 
+            Log Out
+          </button>
+        </div>
       </div>
     </>
   );
