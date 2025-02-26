@@ -8,7 +8,7 @@ const SignUp = () => {
       {/* Right Section - Image (Displayed on top in mobile view) */}
       <div className="w-full h-64 md:w-1/2 md:h-full">
         <img
-          src="/public/assets/truck.jpg"
+          src="/assets/truck.jpg"
           alt="Truck"
           className="w-full h-full object-cover"
         />
@@ -18,7 +18,7 @@ const SignUp = () => {
         <div className="w-full max-w-md p-6 bg-white rounded-lg shadow-2xl">
           <div className="flex justify-center mb-6">
             <img
-              src="/public/assets/image 54.png"
+              src="/assets/image 54.png"
               alt="Logo"
               className="h-10"
             />
