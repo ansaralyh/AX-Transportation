@@ -43,7 +43,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggleSidebar }) => {
         </button>
 
         {/* Sidebar Logo */}
-        <div className="relative w-full flex justify-center items-center py-8">
+        <div className="relative w-full flex justify-center items-center py-10">
           <div className="absolute w-[250px] sm:w-[300px] h-[250px] sm:h-[300px] flex items-center justify-center">
             <div className="absolute inset-0 bg-white opacity-30 blur-3xl rounded-full" />
           </div>
@@ -56,7 +56,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggleSidebar }) => {
 
         {/* Sidebar Items */}
         <nav className="flex-grow overflow-y-auto">
-          <ul className="space-y-3 px-4">
+          <ul className="space-y-3 px-4 lg:mt-22">
             <SidebarItem icon={LayoutGrid} text="Dashboards" />
             <SidebarItem icon={MapPin} text="Real-Time Tracking" />
             <SidebarItem icon={IdCard} text="Drivers" />
