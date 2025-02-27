@@ -1,4 +1,6 @@
+// src/components/DriverComponents/Sidebar/Sidebar.tsx
 import React from "react";
+import { Link } from "react-router-dom";
 import { X, LayoutGrid, MapPin, IdCard, Briefcase, LogOut, FileText, Wrench, Mail, Settings } from "lucide-react";
 
 // Sidebar Props Interface
@@ -11,7 +13,18 @@ interface SidebarProps {
 interface SidebarItemProps {
   icon: React.ElementType;
   text: string;
+  to: string;
 }
+
+// Sidebar Item Component
+const SidebarItem: React.FC<SidebarItemProps> = ({ icon: Icon, text, to }) => (
+  <li className="flex items-center px-6 py-3 text-lg cursor-pointer transition-colors hover:bg-orange-500 rounded-lg">
+    <Link to={to} className="flex items-center w-full">
+      <Icon className="w-5 h-5 mr-4" />
+      {text}
+    </Link>
+  </li>
+);
 
 // Sidebar Component
 const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggleSidebar }) => {
@@ -25,19 +38,16 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggleSidebar }) => {
         />
       )}
 
-      {/* Sidebar Container - Uses Flexbox for Proper Layout */}
+      {/* Sidebar Container */}
       <div
         className={`fixed top-0 left-0 h-screen w-[279px] bg-[#231D1D] text-white z-50 shadow-lg transition-transform
         flex flex-col justify-between
         ${isOpen ? "translate-x-0" : "-translate-x-full"} md:translate-x-0`}
       >
         {/* Close Button */}
-        <button 
-          className="md:hidden absolute top-4 right-4 text-white z-[60]" 
-          onClick={() => {
-            console.log("Close button clicked!");
-            toggleSidebar();
-          }}
+        <button
+          className="md:hidden absolute top-4 right-4 text-white z-[60]"
+          onClick={toggleSidebar}
         >
           <X size={24} />
         </button>
@@ -57,21 +67,21 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggleSidebar }) => {
         {/* Sidebar Items */}
         <nav className="flex-grow overflow-y-auto">
           <ul className="space-y-3 px-4 lg:mt-22">
-            <SidebarItem icon={LayoutGrid} text="Dashboards" />
-            <SidebarItem icon={MapPin} text="Real-Time Tracking" />
-            <SidebarItem icon={IdCard} text="Drivers" />
-            <SidebarItem icon={Briefcase} text="Trips" />
-            <SidebarItem icon={FileText} text="Reports" />
-            <SidebarItem icon={Wrench} text="Maintenance" />
-            <SidebarItem icon={Mail} text="Contact" />
-            <SidebarItem icon={Settings} text="Settings" />
+            <SidebarItem icon={LayoutGrid} text="Dashboards" to="/driver-dashboard" />
+            <SidebarItem icon={MapPin} text="Real-Time Tracking" to="/driver-dashboard/real-time-tracking" />
+            <SidebarItem icon={IdCard} text="Drivers" to="/driver-dashboard/drivers" />
+            <SidebarItem icon={Briefcase} text="Trips" to="/driver-dashboard/trips" />
+            <SidebarItem icon={FileText} text="Reports" to="/driver-dashboard/reports" />
+            <SidebarItem icon={Wrench} text="Maintenance" to="/driver-dashboard/maintenance" />
+            <SidebarItem icon={Mail} text="Contact" to="/driver-dashboard/contact" />
+            <SidebarItem icon={Settings} text="Settings" to="/driver-dashboard/settings" />
           </ul>
         </nav>
 
-        {/* Logout Button - Properly Aligned at Bottom */}
+        {/* Logout Button */}
         <div className="px-6 pb-2">
           <button className="flex items-center w-full px-4 py-3 text-lg text-white hover:bg-red-600 rounded-lg">
-            <LogOut className="w-6 h-6 mr-3 text-orange-500" /> 
+            <LogOut className="w-6 h-6 mr-3 text-orange-500" />
             Log Out
           </button>
         </div>
@@ -79,13 +89,5 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggleSidebar }) => {
     </>
   );
 };
-
-// Sidebar Item Component
-const SidebarItem: React.FC<SidebarItemProps> = ({ icon: Icon, text }) => (
-  <li className="flex items-center px-6 py-3 text-lg cursor-pointer transition-colors hover:bg-orange-500 rounded-lg">
-    <Icon className="w-5 h-5 mr-4" />
-    {text}
-  </li>
-);
 
 export default Sidebar;
