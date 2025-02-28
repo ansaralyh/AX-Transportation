@@ -10,12 +10,13 @@ const DashboardContent = () => {
       placeholder="Q Search Driver"
       className="w-full h-[44px] p-2 border-none bg-[#F4F6F9]  rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F4F6F9]"
     />
+
       </div>
       <div className=' w-full'></div>
       </div>
       <h2>Upcoming Assignments</h2>
       <div className='border-2 border-green-500 w-full h-[340px]'>
-ef
+
       </div>
       <div className='border-2 border-green-500 w-full h-[340px] mt-20'>
 
