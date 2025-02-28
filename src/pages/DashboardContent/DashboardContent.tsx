@@ -4,7 +4,7 @@ import PerformanceCard from "../../components/DriverComponents/UiComponents/Perf
 const DashboardContent = () => {
   return (
     <div className="mt-4 ml-6 bg-[#F6F6F6]">
-      <div className="border-3 flex g">
+      <div className=" flex g">
         <div className="rounded bg-[#FFFFFF] shadow-2xl w-[600px] h-[842px] px-4">
           <h1 className="text-[#092C4C] text-3xl font-bold mb-6">Drivers</h1>
           <input
@@ -27,19 +27,88 @@ const DashboardContent = () => {
             </button>
           </div>
         </div>
-        <div className=" w-full border-1 border-red-500 pt-7">
+        <div className=" w-full  pt-7">
           <h2 className="text-[#092C4C] font-bold text-[32px] ml-[72px]">
             Performance
           </h2>
           {/* Upper cards - performance */}
           <div className="ml-[72px] mt-5 flex">
-            <PerformanceCard/>
+            <PerformanceCard />
+          </div>
+          {/* Documents Section */}
+          <div className="mt-10 ml-8 p-6 bg-white shadow-2xl rounded-lg">
+            <h2 className="text-[#092C4C] text-2xl font-bold mb-4">
+              Documents
+            </h2>
+            <div className="space-y-4 h-[292px]">
+              <div className="flex items-center p-4 border border-orange-400 rounded-lg">
+                <span className="text-orange-500 mr-4">📇</span>
+                <p className="text-lg font-semibold">Driver's License</p>
+              </div>
+              <div className="flex items-center p-4 border border-orange-400 rounded-lg">
+                <span className="text-orange-500 mr-4">📄</span>
+                <p className="text-lg font-semibold">Insurance Papers</p>
+              </div>
+              <div className="flex items-center p-4 border border-orange-400 rounded-lg">
+                <span className="text-orange-500 mr-4">📜</span>
+                <p className="text-lg font-semibold">Medical Certificate</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <h2>Upcoming Assignments</h2>
-      <div className="border-2 border-green-500 w-full h-[340px]"></div>
-      <div className="border-2 border-green-500 w-full h-[340px] mt-20"></div>
+     {/* Upcoming Assignments Section */}
+     <h2 className="text-[#092C4C] text-2xl font-bold mt-10">Upcoming Assignments</h2>
+      <div className="overflow-x-auto mt-4 bg-white shadow-lg rounded-lg">
+        <table className="min-w-full border border-gray-200">
+          <thead>
+            <tr className="bg-orange-100 text-left ">
+              <th className="py-6 px-4 ">Date</th>
+              <th className="py-6 px-4 ">Vehicle</th>
+              <th className="py-6 px-4 ">Route</th>
+              <th className="py-6 px-4 ">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            {[1, 2, 3, 4].map((_, index) => (
+              <tr key={index} className={index % 2 === 0 ? "bg-gray-100" : "bg-white"}>
+                <td className="py-6 px-4 ">1/12/2025</td>
+                <td className="py-6 px-4 ">Truck B</td>
+                <td className="py-6 px-4 ">Route Y</td>
+                <td className="py-6 px-4 ">Assigned</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+     {/* Upcoming Assignments Section */}
+     <h2 className="text-[#092C4C] text-2xl font-bold mt-10">Recent Trips</h2>
+      <div className="overflow-x-auto mt-4 bg-white shadow-lg rounded-lg">
+        <table className="min-w-full border border-gray-200">
+          <thead>
+            <tr className="bg-orange-100 text-left ">
+              <th className="py-6 px-4 ">Date</th>
+              <th className="py-6 px-4 ">Vehicle</th>
+              <th className="py-6 px-4 ">Route</th>
+              <th className="py-6 px-4 ">Status</th>
+              <th className="py-6 px-4 ">Distance</th>
+            </tr>
+          </thead>
+          <tbody>
+            {[1, 2, 3, 4].map((_, index) => (
+              <tr key={index} className={index % 2 === 0 ? "bg-gray-100" : "bg-white"}>
+                <td className="py-6 px-4 ">1/12/2025</td>
+                <td className="py-6 px-4 ">Truck B</td>
+                <td className="py-6 px-4 ">Route Y</td>
+                <td className="py-6 px-4 ">Assigned</td>
+                <td className="py-6 px-4 ">45Km</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+
     </div>
   );
 };
