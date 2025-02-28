@@ -1,8 +1,9 @@
 import Card from "../../components/DriverComponents/UiComponents/Card";
+import PerformanceCard from "../../components/DriverComponents/UiComponents/PerformanceCard";
 
 const DashboardContent = () => {
   return (
-    <div className="mt-4 ml-6">
+    <div className="mt-4 ml-6 bg-[#F6F6F6]">
       <div className="border-3 flex g">
         <div className="rounded bg-[#FFFFFF] shadow-2xl w-[600px] h-[842px] px-4">
           <h1 className="text-[#092C4C] text-3xl font-bold mb-6">Drivers</h1>
@@ -26,7 +27,15 @@ const DashboardContent = () => {
             </button>
           </div>
         </div>
-        <div className=" w-full"></div>
+        <div className=" w-full border-1 border-red-500 pt-7">
+          <h2 className="text-[#092C4C] font-bold text-[32px] ml-[72px]">
+            Performance
+          </h2>
+          {/* Upper cards - performance */}
+          <div className="ml-[72px] mt-5 flex">
+            <PerformanceCard/>
+          </div>
+        </div>
       </div>
       <h2>Upcoming Assignments</h2>
       <div className="border-2 border-green-500 w-full h-[340px]"></div>
