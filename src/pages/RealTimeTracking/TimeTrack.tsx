@@ -57,7 +57,7 @@ const TimeTrack = ({
   },
 }: DriverProfileProps) => {
   return (
-    <div>
+    <div className="md:ml-[279px]">
       <h1 className="font-semibold text-4xl my-3.5">Interactive Map</h1>
       <iframe
         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d53155171.15103263!2d-160.60217620000003!3d35.5948225!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8859f3568d8b6629%3A0xab51504f9034595b!2sMG%20Road%20Bar%20%26%20Lounge!5e0!3m2!1sen!2s!4v1740770472017!5m2!1sen!2s"
