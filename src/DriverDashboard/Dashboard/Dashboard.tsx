@@ -15,7 +15,11 @@ const Dashboard: React.FC = () => {
     <div className="relative h-screen w-full">
       <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
       <Navbar toggleSidebar={toggleSidebar} />
-      <div className="p-4 md:ml-[279px]  transition-all">
+
+      <div className="p-4   transition-all">
+
+      <div className="p-4  bg-[#F6F6F6] transition-all">
+
         <Outlet /> {/* This will render the nested routes */}
       </div>
     </div>
