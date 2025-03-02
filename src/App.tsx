@@ -15,6 +15,7 @@ import Reports from "./pages/Reports/Reports";
 import Maintenance from "./pages/Maintenance/Maintenance";
 import Settings from "./pages/Settings/Settings";
 import DashboardContent from "./pages/DashboardContent/DashboardContent";
+import DriverDetails from "./pages/Drivers/DriverDetails/DriverDetails";
 
 function App() {
   return (
@@ -32,9 +33,10 @@ function App() {
 
         {/* Dashboard Route with Nested Routes */}
         <Route path="/driver-dashboard" element={<DriverDashboard />}>
-          <Route index element={<DashboardContent />} /> {/* Default content */}
+          <Route index element={<DashboardContent />} />
           <Route path="real-time-tracking" element={<RealTimeTracking />} />
           <Route path="drivers" element={<Drivers />} />
+          <Route path="driver-details" element={<DriverDetails />} />
           <Route path="trips" element={<Trips />} />
           <Route path="reports" element={<Reports />} />
           <Route path="maintenance" element={<Maintenance />} />
