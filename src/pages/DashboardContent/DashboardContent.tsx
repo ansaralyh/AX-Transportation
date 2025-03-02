@@ -1,5 +1,6 @@
 import Card from "../../components/DriverComponents/UiComponents/Card";
 import PerformanceCard from "../../components/DriverComponents/UiComponents/PerformanceCard";
+import PerformanceCardData from "./PerformanceCardData";
 
 const DashboardContent = () => {
   return (
@@ -32,8 +33,13 @@ const DashboardContent = () => {
             Performance
           </h2>
           {/* Upper cards - performance */}
-          <div className="ml-[72px] mt-5 flex">
-            <PerformanceCard />
+          <div className="ml-[72px] mt-5 flex flex-wrap gap-8">
+            {PerformanceCardData.map((item, index) => (
+
+              <PerformanceCard key={index} data={item} />
+            )
+
+           )}
           </div>
           {/* Documents Section */}
           <div className="mt-10 ml-8 p-6 bg-white shadow-2xl rounded-lg">
@@ -57,8 +63,10 @@ const DashboardContent = () => {
           </div>
         </div>
       </div>
-     {/* Upcoming Assignments Section */}
-     <h2 className="text-[#092C4C] text-2xl font-bold mt-10">Upcoming Assignments</h2>
+      {/* Upcoming Assignments Section */}
+      <h2 className="text-[#092C4C] text-2xl font-bold mt-10">
+        Upcoming Assignments
+      </h2>
       <div className="overflow-x-auto mt-4 bg-white shadow-lg rounded-lg">
         <table className="min-w-full border border-gray-200">
           <thead>
@@ -71,7 +79,10 @@ const DashboardContent = () => {
           </thead>
           <tbody>
             {[1, 2, 3, 4].map((_, index) => (
-              <tr key={index} className={index % 2 === 0 ? "bg-gray-100" : "bg-white"}>
+              <tr
+                key={index}
+                className={index % 2 === 0 ? "bg-gray-100" : "bg-white"}
+              >
                 <td className="py-6 px-4 ">1/12/2025</td>
                 <td className="py-6 px-4 ">Truck B</td>
                 <td className="py-6 px-4 ">Route Y</td>
@@ -81,8 +92,8 @@ const DashboardContent = () => {
           </tbody>
         </table>
       </div>
-     {/* Upcoming Assignments Section */}
-     <h2 className="text-[#092C4C] text-2xl font-bold mt-10">Recent Trips</h2>
+      {/* Upcoming Assignments Section */}
+      <h2 className="text-[#092C4C] text-2xl font-bold mt-10">Recent Trips</h2>
       <div className="overflow-x-auto mt-4 bg-white shadow-lg rounded-lg">
         <table className="min-w-full border border-gray-200">
           <thead>
@@ -96,7 +107,10 @@ const DashboardContent = () => {
           </thead>
           <tbody>
             {[1, 2, 3, 4].map((_, index) => (
-              <tr key={index} className={index % 2 === 0 ? "bg-gray-100" : "bg-white"}>
+              <tr
+                key={index}
+                className={index % 2 === 0 ? "bg-gray-100" : "bg-white"}
+              >
                 <td className="py-6 px-4 ">1/12/2025</td>
                 <td className="py-6 px-4 ">Truck B</td>
                 <td className="py-6 px-4 ">Route Y</td>
@@ -107,8 +121,6 @@ const DashboardContent = () => {
           </tbody>
         </table>
       </div>
-
-
     </div>
   );
 };
