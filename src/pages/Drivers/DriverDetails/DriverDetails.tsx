@@ -3,8 +3,8 @@ import Button from "../../../components/DriverComponents/UiComponents/Button/But
 
 function DriverDetails() {
   return (
-    <div>
-      <div className="p-6">
+    <div className="md:ml-[279px]">
+      <div className="p-6 ">
         <div className="flex justify-between items-center">
           <h1 className="text-3xl font-[Poppins] font-semibold text-[#092C4C]">
             Driver Payroll Management

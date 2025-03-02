@@ -23,6 +23,7 @@ const Dashboard: React.FC = () => {
         <Outlet /> {/* This will render the nested routes */}
       </div>
     </div>
+    </div>
   );
 };
 

@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+import Button from "../../components/DriverComponents/UiComponents/Button/Button";
 import Card from "../../components/DriverComponents/UiComponents/Card";
 import PerformanceCard from "../../components/DriverComponents/UiComponents/PerformanceCard";
 import PerformanceCardData from "../DashboardContent/PerformanceCardData";
@@ -9,9 +11,10 @@ const Driver = () => {
         <h1 className="text-[#092C4C] text-2xl sm:text-3xl font-bold">
           Drivers
         </h1>
-        <h2 className="bg-[#FB8A00] w-full sm:w-[283px] h-[50px] sm:h-[64px] px-4 sm:px-[52px] py-[15px] sm:py-[20px] flex justify-center rounded-lg items-center text-xl sm:text-[24px] text-white">
-          Driver payroll
-        </h2>
+        <Link to={'/driver-dashboard/driver-details'}>
+        <Button text="Driver payroll"  />
+        
+        </Link>
       </div>
 
       <div className="rounded bg-[#FFFFFF] sm:bg-[#F6F6F6] flex flex-col justify-center items-center shadow-lg sm:shadow-2xl w-screen sm:w-full h-auto  mt-4">
