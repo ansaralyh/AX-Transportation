@@ -4,7 +4,7 @@ import PerformanceCardData from "./PerformanceCardData";
 
 const DashboardContent = () => {
   return (
-    <div className="mt-4 ml-6 bg-[#F6F6F6]">
+    <div className="mt-4 md:ml-[279px]  bg-[#F6F6F6]">
       <div className=" flex g">
         <div className="rounded bg-[#FFFFFF] shadow-2xl w-[600px] h-[842px] px-4">
           <h1 className="text-[#092C4C] text-3xl font-bold mb-6">Drivers</h1>
