@@ -135,20 +135,20 @@ const TimeTrack = ({
         </div>
       </div>
 
-      <div className="flex space-x-4 gap-7 ml-14">
+      <div className="flex flex-wrap gap-7 justify-center md:justify-start ml-0 md:ml-14">
       {statuses.map((item, index) => (
         <StatusCard key={index} {...item} />
       ))}
     </div>
 
     <div className="bg-gray-100 p-6 rounded-xl mt-10 w-full max-w-7xl mx-auto">
-      <p className="font-bold text-[27px] mb-4">Route Optimization Panel</p>
-      <div className="space-y-4">
-        {routes.map((route, index) => (
-          <RouteCard key={index} {...route} />
-        ))}
-      </div>
-    </div>
+  <p className="font-bold text-[27px] mb-4 text-center md:text-left">Route Optimization Panel</p>
+  <div className="space-y-4">
+    {routes.map((route, index) => (
+      <RouteCard key={index} {...route} />
+    ))}
+  </div>
+</div>
     </div>
   );
 };
