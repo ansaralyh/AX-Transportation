@@ -30,6 +30,12 @@ export interface PerformanceCardType {
       progress: 78,
       progressColor: "bg-blue-500",
     },
+    {
+      title: "Delayed Deliveries",
+      value: "5",
+      progress: 5,
+      progressColor: "bg-[#5C00FB]",
+    },
   ];
   
   export default PerformanceCardData;

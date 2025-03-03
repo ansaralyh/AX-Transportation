@@ -16,13 +16,11 @@ const Dashboard: React.FC = () => {
       <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
       <Navbar toggleSidebar={toggleSidebar} />
 
-      <div className="p-4   transition-all">
-
-      <div className="p-4  bg-[#F6F6F6] transition-all">
-
-        <Outlet /> {/* This will render the nested routes */}
+      <div className="  transition-all">
+        <div className="p-6  bg-[#F6F6F6] transition-all">
+          <Outlet /> {/* This will render the nested routes */}
+        </div>
       </div>
-    </div>
     </div>
   );
 };
