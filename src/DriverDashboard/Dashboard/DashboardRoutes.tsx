@@ -7,7 +7,7 @@ import Reports from "../../pages/Reports/Reports";
 import Maintenance from "../../pages/Maintenance/Maintenance";
 import Contact from "../../pages/Contact/Contact";
 import Settings from "../../pages/Settings/Settings";
-import DashboardContent from "../Dashboard/Dashboard";
+import DashboardContent from "./Dashboard";
 
 const DashboardRoutes = () => {
   return (

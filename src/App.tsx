@@ -11,11 +11,21 @@ import Contact from "./pages/Contact/Contact";
 import RealTimeTracking from "./pages/RealTimeTracking/TimeTrack";
 import Drivers from "./pages/Drivers/Driver";
 import Trips from "./pages/Trips/Trips";
-import Reports from "./pages/Reports/Reports";
 import Maintenance from "./pages/Maintenance/Maintenance";
 import Settings from "./pages/Settings/Settings";
 import DashboardContent from "./pages/DashboardContent/DashboardContent";
 import DriverDetails from "./pages/Drivers/DriverDetails/DriverDetails";
+import Reports from "./pages/Reports/Reports";
+// Admin imports
+import AdminDashboard from "./AdminDashboard/Dashboard/AdminDashboard";
+import AdminHome from './pages/AdminPages/Home/Home'
+import Driver from "./pages/AdminPages/Driver/Driver";
+import ApplicationReview from "./pages/AdminPages/Application/ApplicationReview";
+import Schedules from "./pages/AdminPages/Schedules/Schedules";
+import Tracking from "./pages/AdminPages/VehicleTracking/Tracking";
+import AdminReports from "./pages/AdminPages/Reports/Reports";
+import AdminSettings from "./pages/AdminPages/settings/AdminSettings";
+
 
 function App() {
   return (
@@ -31,7 +41,7 @@ function App() {
         {/* Driver Registration Form Route */}
         <Route path="/driver-form" element={<DriverForm />} />
 
-        {/* Dashboard Route with Nested Routes */}
+        {/*Driver Dashboard Route with Nested Routes */}
         <Route path="/driver-dashboard" element={<DriverDashboard />}>
           <Route index element={<DashboardContent />} />
           <Route path="real-time-tracking" element={<RealTimeTracking />} />
@@ -42,6 +52,17 @@ function App() {
           <Route path="maintenance" element={<Maintenance />} />
           <Route path="contact" element={<Contact />} />
           <Route path="settings" element={<Settings />} />
+        </Route>
+
+        {/*Driver Dashboard Route with Nested Routes */}
+        <Route path="/admin-dashboard" element={<AdminDashboard />}>
+          <Route index element={<AdminHome />} />
+          <Route path="driver" element={<Driver />} />
+          <Route path="application-review" element={<ApplicationReview />} />
+          <Route path="schedules" element={<Schedules />} />
+          <Route path="tracking" element={<Tracking />} />
+          <Route path="reports" element={<AdminReports />} />
+          <Route path="settings" element={<AdminSettings />} />
         </Route>
       </Routes>
     </BrowserRouter>
