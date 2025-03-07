@@ -2,7 +2,7 @@ import React from 'react'
 
 const Driver = () => {
   return (
-    <div>Driver</div>
+    <div className='ml-[279px]'>Driver</div>
   )
 }
 

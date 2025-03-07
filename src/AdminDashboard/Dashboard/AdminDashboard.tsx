@@ -17,7 +17,7 @@ const AdminDashboard: React.FC = () => {
       <Navbar toggleSidebar={toggleSidebar} />
 
       <div className="  transition-all">
-        <div className=" bg-[#F6F6F6] transition-all">
+        <div className=" transition-all">
           <Outlet /> {/* This will render the nested routes */}
         </div>
       </div>

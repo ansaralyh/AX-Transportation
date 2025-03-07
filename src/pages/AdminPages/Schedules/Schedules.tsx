@@ -2,7 +2,7 @@ import React from 'react'
 
 const Schedules = () => {
   return (
-    <div>Schedules</div>
+    <div className='ml-[279px]'>Schedules</div>
   )
 }
 

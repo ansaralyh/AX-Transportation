@@ -2,7 +2,7 @@ import React from 'react'
 
 const AdminSettings = () => {
   return (
-    <div>Settings</div>
+    <div className='ml-[279px]'>Settings</div>
   )
 }
 

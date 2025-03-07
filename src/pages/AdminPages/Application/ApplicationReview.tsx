@@ -2,7 +2,7 @@ import React from 'react'
 
 const ApplicationReview = () => {
   return (
-    <div>ApplicationReview</div>
+    <div className='ml-[279px]'>ApplicationReview</div>
   )
 }
 
