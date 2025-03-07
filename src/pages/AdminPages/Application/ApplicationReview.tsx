@@ -49,24 +49,24 @@ const ApplicationReview = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div>
               <label className="block text-sm font-medium mb-1">Driver Name</label>
-              <input type="text" className="w-full p-2 bg-gray-200 border-none rounded" readOnly />
+              <input type="text" className="w-full p-2 bg-gray-200 border-none rounded outline-none"  />
             </div>
             <div>
               <label className="block text-sm font-medium mb-1">Email Address</label>
-              <input type="email" className="w-full p-2 bg-gray-200 border-none rounded" readOnly />
+              <input type="email" className="w-full p-2 bg-gray-200 border-none rounded outline-none"  />
             </div>
             <div>
               <label className="block text-sm font-medium mb-1">Phone Number</label>
-              <input type="tel" className="w-full p-2 bg-gray-200 border-none rounded" readOnly />
+              <input type="tel" className="w-full p-2 bg-gray-200 border-none rounded outline-none"  />
             </div>
           </div>
           <div className="mt-4">
             <label className="block text-sm font-medium mb-1">Address</label>
-            <input type="text" className="w-full p-2 bg-gray-200 border-none rounded" readOnly />
+            <input type="text" className="w-full p-2 bg-gray-200 border-none rounded outline-none"  />
           </div>
           <div className="mt-4">
             <label className="block text-sm font-medium mb-1">Date of Birth</label>
-            <input type="text" className="w-full p-2 bg-gray-200 border-none rounded" readOnly />
+            <input type="text" className="w-full p-2 bg-gray-200 border-none rounded outline-none"  />
           </div>
         </div>
 
@@ -76,20 +76,20 @@ const ApplicationReview = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div>
               <label className="block text-sm font-medium mb-1">License Number</label>
-              <input type="text" className="w-full p-2 bg-gray-200 border-none rounded" readOnly />
+              <input type="text" className="w-full p-2 bg-gray-200 border-none rounded outline-none"  />
             </div>
             <div>
               <label className="block text-sm font-medium mb-1">License Expiry Date</label>
-              <input type="text" className="w-full p-2 bg-gray-200 border-none rounded" readOnly />
+              <input type="text" className="w-full p-2 bg-gray-200 border-none rounded outline-none"  />
             </div>
             <div>
               <label className="block text-sm font-medium mb-1">Years of Experience</label>
-              <input type="text" className="w-full p-2 bg-gray-200 border-none rounded" readOnly />
+              <input type="text" className="w-full p-2 bg-gray-200 border-none rounded outline-none"  />
             </div>
           </div>
           <div className="mt-4">
             <label className="block text-sm font-medium mb-1">Previous Employment (If Any)</label>
-            <input type="text" className="w-full p-2 bg-gray-200 border-none rounded" readOnly />
+            <input type="text" className="w-full p-2 bg-gray-200 border-none rounded outline-none"  />
           </div>
         </div>
 
@@ -155,7 +155,7 @@ const ApplicationReview = () => {
         <div className="mb-6">
           <label className="block text-sm font-medium mb-2 text-right">Comment</label>
           <textarea
-            className="w-full p-2 border border-gray-200 rounded h-24 text-sm"
+            className="w-full p-2 border border-gray-200 rounded h-24 text-sm outline-none"
             placeholder="Enter your comments here..."
           ></textarea>
         </div>
