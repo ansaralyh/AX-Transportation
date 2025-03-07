@@ -1,7 +1,11 @@
 // src/components/DriverComponents/Sidebar/Sidebar.tsx
 import React from "react";
 import { Link } from "react-router-dom";
-import { X, LayoutGrid, MapPin, IdCard, Briefcase, LogOut, FileText, Wrench,Settings } from "lucide-react";
+import { X, LayoutGrid,FileCheck , LogOut,Settings, } from "lucide-react";
+import { TbSteeringWheelFilled,TbReportSearch  } from "react-icons/tb";
+import { GrSchedules } from "react-icons/gr";
+import { FaMarsStroke } from "react-icons/fa6";
+
 
 // Sidebar Props Interface
 interface SidebarProps {
@@ -68,11 +72,11 @@ const AdminSidebar: React.FC<SidebarProps> = ({ isOpen, toggleSidebar }) => {
         <nav className="flex-grow overflow-y-auto">
           <ul className="space-y-3 px-4 lg:mt-22">
             <SidebarItem icon={LayoutGrid} text="Dashboards" to="/admin-dashboard" />
-            <SidebarItem icon={MapPin} text="Driver" to="/admin-dashboard/driver" />
-            <SidebarItem icon={IdCard} text="Application Review" to="/admin-dashboard/application-review" />
-            <SidebarItem icon={Briefcase} text="Work Scehdule" to="/admin-dashboard/schedules" />
-            <SidebarItem icon={FileText} text="Vahicle Training" to="/admin-dashboard/tracking" />
-            <SidebarItem icon={Wrench} text="Reports" to="/admin-dashboard/reports" />
+            <SidebarItem icon={TbSteeringWheelFilled} text="Driver" to="/admin-dashboard/driver" />
+            <SidebarItem icon={FileCheck } text="Application Review" to="/admin-dashboard/application-review" />
+            <SidebarItem icon={GrSchedules} text="Work Scehdule" to="/admin-dashboard/schedules" />
+            <SidebarItem icon={FaMarsStroke} text="Vahicle Training" to="/admin-dashboard/tracking" />
+            <SidebarItem icon={TbReportSearch } text="Reports" to="/admin-dashboard/reports" />
             <SidebarItem icon={Settings} text="Settings" to="/admin-dashboard/settings" />
           </ul>
         </nav>
