@@ -21,12 +21,12 @@ interface Approve {
   email: string;
   status: string;
 }
-interface History{
-  id:number,
-  date:string,
-  route:string,
-  status:string,
-  earnings:string,
+interface History {
+  id: number;
+  date: string;
+  route: string;
+  status: string;
+  earnings: string;
 }
 const Driver = () => {
   const [drivers] = useState<DriverProfile[]>([
@@ -116,10 +116,34 @@ const Driver = () => {
     },
   ]);
   const history: History[] = [
-    { id: 1, date: "01/02/2025", route: "ROute A", status:'Pending',earnings:'Completed' },
-    { id: 2, date: "01/02/2025", route: "ROute A", status:'Pending',earnings:'Completed' },
-    { id: 3, date: "01/02/2025", route: "ROute A", status:'Pending',earnings:'Completed' },
-    { id: 4, date: "01/02/2025", route: "ROute A", status:'Pending',earnings:'Completed' },
+    {
+      id: 1,
+      date: "01/02/2025",
+      route: "ROute A",
+      status: "Pending",
+      earnings: "Completed",
+    },
+    {
+      id: 2,
+      date: "01/02/2025",
+      route: "ROute A",
+      status: "Pending",
+      earnings: "Completed",
+    },
+    {
+      id: 3,
+      date: "01/02/2025",
+      route: "ROute A",
+      status: "Pending",
+      earnings: "Completed",
+    },
+    {
+      id: 4,
+      date: "01/02/2025",
+      route: "ROute A",
+      status: "Pending",
+      earnings: "Completed",
+    },
   ];
   const applications: Drivers[] = [
     {
@@ -323,16 +347,13 @@ const Driver = () => {
           <h1 className="text-2xl font-bold">View & Edit Driver Profiles</h1>
           <div className="flex gap-4 p-6 bg-white rounded-2xl">
             <button className="flex text-[12px] font-semibold font-[roboto] items-center gap-1 ">
-              <span className="font-medium">📍</span> Assign New
-              Route
+              <span className="font-medium">📍</span> Assign New Route
             </button>
             <button className="flex text-[12px] font-semibold font-[roboto] items-center gap-1 ">
-              <span className="font-medium">🚚</span> Assign New
-              Vehicle
+              <span className="font-medium">🚚</span> Assign New Vehicle
             </button>
             <button className="flex text-[12px] font-semibold font-[roboto] items-center gap-1 ">
-              <span className=" font-medium">🖋</span> Edit
-              Assignment
+              <span className=" font-medium">🖋</span> Edit Assignment
             </button>
           </div>
         </div>
@@ -342,7 +363,6 @@ const Driver = () => {
           spaceBetween={40}
           slidesPerView={3}
           autoplay={{ delay: 6000, disableOnInteraction: false }}
-          
         >
           {drivers.map((driver) => (
             <SwiperSlide key={driver.id}>
@@ -354,7 +374,7 @@ const Driver = () => {
 
       <div className="w-full mt-8">
         <h2 className="text-black text-2xl mb-4 font-[roboto] font-semibold ">
-        Trip History (Past Deliveries & Performance)
+          Trip History (Past Deliveries & Performance)
         </h2>
 
         {!isMobile && (
@@ -367,7 +387,6 @@ const Driver = () => {
                   <th className="py-[20px] px-4">Route</th>
                   <th className="py-[20px] px-4">Status</th>
                   <th className="py-[20px] px-4">Earnings</th>
-                 
                 </tr>
               </thead>
               <tbody>
@@ -381,7 +400,6 @@ const Driver = () => {
                     <td className="py-[20px] px-4">{history.route}</td>
                     <td className="py-[20px] px-4">{history.status}</td>
                     <td className="py-[20px] px-4">{history.earnings}</td>
-                   
                   </tr>
                 ))}
               </tbody>
