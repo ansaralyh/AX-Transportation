@@ -65,16 +65,16 @@ const SignIn = () => {
             </Link>
           </p>
           {/* Register Buttons */}
-          <div className="flex flex-col md:flex-row gap-4 mt-6">
-            <Link to="/driver-form">
+          <div className="flex flex-col md:flex-row justify-center gap-4 mt-6">
+            <Link to="/driver-dashboard">
 
             <button className="bg-orange-200 text-black py-2 px-4 rounded flex items-center justify-center gap-2 shadow-md hover:bg-orange-300 transition w-full">
-              <FaUser className="text-black" /> Driver Register
+              <FaUser className="text-black" /> Driver 
             </button>
             </Link>
-            <Link to="/">
+            <Link to="/admin-dashboard">
             <button className="bg-orange-200 text-black py-2 px-4 rounded flex items-center justify-center gap-2 shadow-md hover:bg-orange-300 transition w-full">
-              <FaUser className="text-black" /> Admin Register
+              <FaUser className="text-black" /> Admin 
             </button>
             </Link>
           </div>
