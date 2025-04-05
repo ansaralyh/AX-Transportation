@@ -1,5 +1,3 @@
-import React from 'react';
-
 const AdminSettings = () => {
   return (
     <div className="md:ml-[279px] sm:ml-0 p-4 sm:p-6 bg-gray-100 min-h-screen">

@@ -44,7 +44,18 @@ function App() {
         {/*Driver Dashboard Route with Nested Routes */}
         <Route path="/driver-dashboard" element={<DriverDashboard />}>
           <Route index element={<DashboardContent />} />
-          <Route path="real-time-tracking" element={<RealTimeTracking />} />
+          <Route path="real-time-tracking" element={<RealTimeTracking driver={{
+            name: "",
+            age: 0,
+            experience: "",
+            status: "",
+            photo: ""
+          }} vehicle={{
+            id: "",
+            location: "",
+            speed: "",
+            eta: ""
+          }} />} />
           <Route path="drivers" element={<Drivers />} />
           <Route path="driver-details" element={<DriverDetails />} />
           <Route path="trips" element={<Trips />} />

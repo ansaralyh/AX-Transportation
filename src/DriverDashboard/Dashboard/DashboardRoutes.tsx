@@ -13,7 +13,26 @@ const DashboardRoutes = () => {
   return (
     <Routes>
       <Route path="/" element={<DashboardContent />} />
-      <Route path="/real-time-tracking" element={<RealTimeTracking />} />
+      <Route 
+        path="/real-time-tracking" 
+        element={
+          <RealTimeTracking 
+            driver={{
+              name: "John",
+              age: 34,
+              experience: "6+ year",
+              status: "Active",
+              photo: "/placeholder.svg?height=100&width=100"
+            }}
+            vehicle={{
+              id: "T442452",
+              location: "Mg road USA",
+              speed: "56 Km",
+              eta: "2 Hours"
+            }}
+          />
+        } 
+      />
       <Route path="/drivers" element={<Drivers />} />
       <Route path="/trips" element={<Trips />} />
       <Route path="/reports" element={<Reports />} />

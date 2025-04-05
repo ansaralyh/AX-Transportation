@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import PerformanceCardData from "../DashboardContent/PerformanceCardData";
 import PerformanceCard from "../../components/DriverComponents/UiComponents/PerformanceCard";
 import { Line } from "react-chartjs-2";
@@ -14,7 +14,7 @@ import {
   Legend,
   type ChartOptions,
 } from "chart.js";
-import { ChevronDown, File } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import { FuelMetric } from "../../components/DriverComponents/FuelReport/FuelMetric";
 import Button from "../../components/DriverComponents/UiComponents/Button/Button";
 

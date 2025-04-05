@@ -69,7 +69,7 @@ import {
               <ResponsiveContainer width="50%" height={200}>
                 <PieChart>
                   <Pie data={pieData} cx="50%" cy="50%" outerRadius={60} dataKey="value">
-                    {pieData.map((entry, index) => (
+                    {pieData.map((_, index) => (
                       <Cell key={`cell-${index}`} fill={COLORS[index]} />
                     ))}
                   </Pie>
@@ -79,7 +79,7 @@ import {
               <ResponsiveContainer width="50%" height={200}>
                 <PieChart>
                   <Pie data={pieData} cx="50%" cy="50%" outerRadius={60} dataKey="value">
-                    {pieData.map((entry, index) => (
+                    {pieData.map((_, index) => (
                       <Cell key={`cell-${index}`} fill={COLORS[index]} />
                     ))}
                   </Pie>

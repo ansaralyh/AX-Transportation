@@ -4,7 +4,6 @@ import {
   MapPin,
   MoreHorizontal,
   Phone,
-  Star,
 } from "lucide-react";
 export type DriverProfile = {
   id: string;
