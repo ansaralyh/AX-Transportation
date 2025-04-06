@@ -101,12 +101,16 @@ const Header = () => {
             </nav>
 
             <div className="mt-auto flex flex-col space-y-2">
-              <button className="w-full py-2 bg-[#FF6B00] text-white text-sm font-medium rounded hover:bg-[#FF8533] transition-colors">
-                Login
-              </button>
-              <button className="w-full py-2 text-white text-sm font-medium rounded border border-white/20 hover:bg-white/10 transition-colors">
-                Sign Up
-              </button>
+              <Link to="/sign-in">
+                <button className="w-full py-2 bg-[#FF6B00] text-white text-sm font-medium rounded hover:bg-[#FF8533] transition-colors">
+                  Login
+                </button>
+              </Link>
+              <Link to="/sign-up">
+                <button className="w-full py-2 text-white text-sm font-medium rounded border border-white/20 hover:bg-white/10 transition-colors">
+                  Sign Up
+                </button>
+              </Link>
             </div>
           </div>
         </div>

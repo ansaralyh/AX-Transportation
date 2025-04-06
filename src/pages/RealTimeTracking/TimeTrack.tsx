@@ -46,7 +46,7 @@ const TimeTrack = ({
     name: "John",
     age: 34,
     experience: "6+ year",
-    status: "Active",
+    status: "Active", 
     photo: "/placeholder.svg?height=100&width=100",
   },
   vehicle = {
@@ -70,10 +70,10 @@ const TimeTrack = ({
         referrerPolicy="no-referrer-when-downgrade"
       ></iframe>
 
-      <div className="flex flex-col md:flex-row rounded-lg  max-w-7xl ">
+      <div className="flex flex-col md:flex-row rounded-lg  max-w-7xl  ">
         {/* Driver Information Section */}
-        <div className="bg-white p-6 rounded-3xl shadow-lg flex flex-col items-center w-80 h-[290px] mx-auto relative">
-          <div className="absolute top-0 w-24 h-24 rounded-full overflow-hidden border-4 border-white shadow-md">
+        <div className="bg-white p-6 rounded-3xl shadow-lg flex flex-col items-center w-80 h-[290px] mx-auto relative bobrder-2 mb-10 border-red-500">
+          <div className="absolute top-0 w-24 h-24 rounded-full overflow-hidden border-4 border-white shadow-md ">
             <img
               src="/assets/user.png"
               alt="danish"
@@ -83,22 +83,22 @@ const TimeTrack = ({
           <div className="w-full  flex gap-32 items-center mt-28">
             <div>
               <p className="text-sm text-gray-500">Name</p>
-              <p className="text-2xl font-bold">{driver.name}</p>
+              <p className="text-2xl font-bold">jhon</p>
             </div>
             <div className="">
               <p className="text-sm text-gray-500">Age</p>
-              <p className="text-2xl font-bold">{driver.age}</p>
+              <p className="text-2xl font-bold">34</p>
             </div>
           </div>
 
           <div className="w-full flex gap-22 mt-4">
             <div>
               <p className="text-sm text-gray-500">Experiences</p>
-              <p className="text-2xl font-bold">{driver.experience}</p>
+              <p className="text-2xl font-bold">5 years</p>
             </div>
             <div className="">
               <p className="text-sm text-gray-500">Driver</p>
-              <p className="text-2xl font-bold">{driver.status}</p>
+              <p className="text-2xl font-bold">active</p>
             </div>
           </div>
         </div>
@@ -108,28 +108,28 @@ const TimeTrack = ({
           <div className="mb-4">
             <h3 className="text-3xl font-medium mb-2">Vehicle ID</h3>
             <div className="p-4 bg-white rounded-md">
-              <p className="text-3xl">{vehicle.id}</p>
+              <p className="text-3xl font-semibold">T12345</p>
             </div>
           </div>
 
           <div className="mb-4">
             <h3 className="text-3xl font-medium mb-2">Last Known Location</h3>
             <div className="p-4 bg-white rounded-md">
-              <p className="text-3xl">{vehicle.location}</p>
+              <p className="text-3xl font-semibold">MG road USA</p>
             </div>
           </div>
 
           <div className="mb-4">
             <h3 className="text-3xl font-medium mb-2">Current Speed</h3>
             <div className="p-4 bg-white rounded-md">
-              <p className="text-3xl">{vehicle.speed}</p>
+              <p className="text-3xl font-semibold">56 KM</p>
             </div>
           </div>
 
           <div className="mb-4">
             <h3 className="text-3xl font-medium mb-2">ETA</h3>
             <div className="p-4 bg-white rounded-md">
-              <p className="text-3xl">{vehicle.eta}</p>
+              <p className="text-3xl font-semibold"> 2 HRS</p>
             </div>
           </div>
         </div>
