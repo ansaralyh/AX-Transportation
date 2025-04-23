@@ -47,11 +47,11 @@ const SignIn: React.FC = () => {
     setError(null);
     mutate(data, {
       onSuccess: (response) => {
-        const userRole = response?.user.role; // Assuming the response contains user role (e.g., 'driver' or 'admin')
+        console.log("inside on success",response)
+        const userRole = response?.data?.user.role; // Assuming the response contains user role (e.g., 'driver' or 'admin')
 
         // Save role to localStorage/sessionStorage for later use
         localStorage.setItem('role', userRole);
-
         // Redirect based on role
         if (userRole === 'admin' || userRole === 'super-admin') {
           navigate("/admin-dashboard/");

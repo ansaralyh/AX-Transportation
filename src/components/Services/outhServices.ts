@@ -20,7 +20,7 @@ export async function login({
 
     localStorage.setItem("isAuthenticated", "true");
     localStorage.setItem("token", token);
-
+console.log(token)
     return response.data;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {
