@@ -119,7 +119,7 @@ const Home = () => {
   // }, [isMobile, selectedTrip]);
 
   const activeDrivers =
-    data?.filter((d) => d.applicationStatus?.status === "active").length ?? 0;
+    data?.filter((d) => d.applicationStatus?.status === "approved").length ?? 0;
   const pendingApplications =
     data?.filter((d) => d.applicationStatus?.status === "pending").length ?? 0;
   const totalTrips = data?.reduce((sum, d) => sum + (d.tripCount || 0), 0) ?? 0;

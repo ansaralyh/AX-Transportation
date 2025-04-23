@@ -46,8 +46,19 @@ const SignIn: React.FC = () => {
   const onSubmit = (data: SignInFormData) => {
     setError(null);
     mutate(data, {
-      onSuccess: () => {
-        navigate("/admin-dashboard/");
+      onSuccess: (response) => {
+        const userRole = response?.user.role; // Assuming the response contains user role (e.g., 'driver' or 'admin')
+
+        // Save role to localStorage/sessionStorage for later use
+        localStorage.setItem('role', userRole);
+
+        // Redirect based on role
+        if (userRole === 'admin' || userRole === 'super-admin') {
+          navigate("/admin-dashboard/");
+        } else if (userRole === 'driver') {
+          navigate("/driver-dashboard/");
+        }
+        
       },
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       onError: (err: any) => {

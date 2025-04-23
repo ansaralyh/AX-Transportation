@@ -54,6 +54,11 @@ export interface Driver {
     accidentDetails?: string;
     violationDetails?: string;
   };
+  uploadedDocuments?: {
+    driverLicenseUrl?: string;
+    insuranceProofUrl?: string;
+    [key: string]: string | undefined; // for future extensibility
+  };
   references: {
     _id?: string;
     name: string;

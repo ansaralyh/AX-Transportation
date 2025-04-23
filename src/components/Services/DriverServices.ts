@@ -1,7 +1,4 @@
 import { Instance } from "../../Apis/GlobelApi";
-import { Driver, DriversApiResponse } from "../../Types/UserTypes/driverTypes";
-// import { Driver } from "../../Types/UserTypes/driverTypes";
-// import { Driver } from "../../types"; 
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export async function getAllDrivers(): Promise<any> {
@@ -22,3 +19,34 @@ export async function getAllDrivers(): Promise<any> {
       );
     }
   }
+
+  export const updateApplicationStatus = async (
+    id: string,
+    token: string
+  ) => {
+    return Instance.put(
+      `/drivers/${id}/approve`,
+      {}, // if no body needed
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+  };
+  
+  export const rejectApplicationStatus = async (
+    id: string,
+    token: string
+  ) => {
+    return Instance.put(
+      `/drivers/${id}/reject`,
+      {}, // if no body needed
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+  };
+  

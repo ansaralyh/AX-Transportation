@@ -1,21 +1,75 @@
-import { useQuery } from "@tanstack/react-query";
-import { getAllDrivers } from "../../../components/Services/DriverServices";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import {
+  getAllDrivers,
+  rejectApplicationStatus,
+  updateApplicationStatus,
+} from "../../../components/Services/DriverServices";
 import { Driver } from "../../../Types/UserTypes/driverTypes";
 import { useState } from "react";
 
 const ApplicationReview = () => {
+  const queryClient = useQueryClient();
   const [selectedDriver, setSelectedDriver] = useState<Driver | null>(null);
   const { data, isLoading, isError, error } = useQuery<Driver[]>({
     queryKey: ["DriverDetails"],
     queryFn: getAllDrivers,
   });
-  const firstJob = selectedDriver?.employmentHistory[0];
-const firstJobExperience = firstJob?.startDate && firstJob?.endDate
-  ? (
-      (new Date(firstJob.endDate).getTime() - new Date(firstJob.startDate).getTime()) /
-      (1000 * 60 * 60 * 24 * 365)
-    ).toFixed(1)
-  : "0.0";
+  const firstJob = selectedDriver?.employmentHistory?.[0];
+
+  let firstJobExperience = "N/A";
+
+  if (firstJob?.startDate && firstJob?.endDate) {
+    const start = new Date(firstJob.startDate);
+    const end = new Date(firstJob.endDate);
+    const diffInMs = end.getTime() - start.getTime();
+
+    if (!isNaN(diffInMs)) {
+      const totalMonths = diffInMs / (1000 * 60 * 60 * 24 * 30.44); // Average month length
+      const years = Math.floor(totalMonths / 12);
+      const months = Math.round(totalMonths % 12);
+
+      firstJobExperience =
+        `${years > 0 ? `${years} year${years > 1 ? "s" : ""}` : ""}${
+          months > 0 ? ` ${months} month${months > 1 ? "s" : ""}` : ""
+        }`.trim() || "0 months";
+    }
+  }
+
+  const mutation = useMutation({
+    mutationFn: async ({
+      id,
+      status,
+      token,
+    }: {
+      id: string;
+      status: "approve" | "reject";
+      token: string;
+    }) => {
+      if (status === "approve") {
+        return updateApplicationStatus(id, token);
+      } else {
+        return rejectApplicationStatus(id, token);
+      }
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries(["DriverDetails"]);
+      setSelectedDriver(null);
+    },
+    onError: (error) => {
+      console.error("Failed to update status:", error);
+    },
+  });
+
+  const handleDecision = (status: "approve" | "reject") => {
+    const token = localStorage.getItem("token");
+    if (!token || !selectedDriver?._id) return;
+
+    mutation.mutate({
+      id: selectedDriver._id,
+      status,
+      token,
+    });
+  };
   return (
     <div className="md:ml-[279px] sm:ml-0 p-4 sm:p-6 bg-gray-100 min-h-screen">
       <h1 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6">Admin</h1>
@@ -189,7 +243,9 @@ const firstJobExperience = firstJob?.startDate && firstJob?.endDate
               <input
                 value={
                   selectedDriver?.cdl.expirationDate
-                    ? new Date(selectedDriver.cdl.expirationDate).toLocaleDateString()
+                    ? new Date(
+                        selectedDriver.cdl.expirationDate
+                      ).toLocaleDateString()
                     : ""
                 }
                 type="text"
@@ -201,7 +257,7 @@ const firstJobExperience = firstJob?.startDate && firstJob?.endDate
                 Years of Experience
               </label>
               <input
-                value={`${firstJobExperience} years`}
+                value={`${firstJobExperience}`}
                 type="text"
                 className="w-full p-2 bg-gray-200 border-none rounded outline-none"
               />
@@ -220,29 +276,53 @@ const firstJobExperience = firstJob?.startDate && firstJob?.endDate
         </div>
 
         {/* Uploaded Documents */}
+        {/* Uploaded Documents */}
         <div>
           <h4 className="text-base font-medium mb-4">Uploaded Documents:</h4>
           <div className="space-y-2">
-            <div className="flex items-center gap-2">
-              <span className="text-sm">Driver's License</span>
-              <button className="text-blue-600 hover:underline text-sm">
-                (View
-              </button>
-              <span className="text-sm">/</span>
-              <button className="text-blue-600 hover:underline text-sm">
-                Download)
-              </button>
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="text-sm">Insurance Proof</span>
-              <button className="text-blue-600 hover:underline text-sm">
-                (View
-              </button>
-              <span className="text-sm">/</span>
-              <button className="text-blue-600 hover:underline text-sm">
-                Download)
-              </button>
-            </div>
+            {selectedDriver?.uploadedDocuments?.driverLicenseUrl && (
+              <div className="flex items-center gap-2">
+                <span className="text-sm">Driver's License</span>
+                <a
+                  href={selectedDriver.uploadedDocuments.driverLicenseUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-600 hover:underline text-sm"
+                >
+                  View
+                </a>
+                <span className="text-sm">/</span>
+                <a
+                  href={selectedDriver.uploadedDocuments.driverLicenseUrl}
+                  download
+                  className="text-blue-600 hover:underline text-sm"
+                >
+                  Download
+                </a>
+              </div>
+            )}
+
+            {selectedDriver?.uploadedDocuments?.insuranceProofUrl && (
+              <div className="flex items-center gap-2">
+                <span className="text-sm">Insurance Proof</span>
+                <a
+                  href={selectedDriver.uploadedDocuments.insuranceProofUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-600 hover:underline text-sm"
+                >
+                  View
+                </a>
+                <span className="text-sm">/</span>
+                <a
+                  href={selectedDriver.uploadedDocuments.insuranceProofUrl}
+                  download
+                  className="text-blue-600 hover:underline text-sm"
+                >
+                  Download
+                </a>
+              </div>
+            )}
           </div>
         </div>
       </div>
@@ -258,13 +338,17 @@ const firstJobExperience = firstJob?.startDate && firstJob?.endDate
             <label className="block text-sm font-medium mb-1">
               Driver Name
             </label>
-            <div className="text-sm">John Doe</div>
+            <div className="text-sm">
+              {selectedDriver?.fullName || "unknown"}
+            </div>
           </div>
           <div>
             <label className="block text-sm font-medium mb-1">
               Email Address
             </label>
-            <div className="text-sm">johndoe@example.com</div>
+            <div className="text-sm">
+              {selectedDriver?.emailAddress || "unknown"}
+            </div>
           </div>
         </div>
 
@@ -273,11 +357,13 @@ const firstJobExperience = firstJob?.startDate && firstJob?.endDate
             <label className="block text-sm font-medium mb-1">
               Phone Number
             </label>
-            <div className="text-sm">+1 234 567 890</div>
+            <div className="text-sm">
+              {selectedDriver?.phoneNumber || "N/A"}
+            </div>
           </div>
           <div>
             <label className="block text-sm font-medium mb-1">License No</label>
-            <div className="text-sm">ABC12345</div>
+            <div className="text-sm">{selectedDriver?.cdl.number || "N/A"}</div>
           </div>
         </div>
 
@@ -285,22 +371,30 @@ const firstJobExperience = firstJob?.startDate && firstJob?.endDate
           <label className="block text-sm font-medium mb-1">
             Application Status:
           </label>
-          <div className="text-sm">Pending</div>
+          <div className="text-sm">
+            {selectedDriver?.applicationStatus.status || "unknown"}
+          </div>
         </div>
 
         <div className="mb-6">
           <label className="block text-sm font-medium mb-2">Decision</label>
           <div className="flex gap-2">
-            <button className="bg-green-500 hover:bg-green-600 text-white text-xs py-1 px-3 rounded">
+            <button
+              onClick={() => handleDecision("approve")}
+              className="bg-green-500 hover:bg-green-600 text-white text-xs py-1 px-3 rounded"
+            >
               Approve
             </button>
-            <button className="bg-red-500 hover:bg-red-600 text-white text-xs py-1 px-3 rounded">
+            <button
+              onClick={() => handleDecision("reject")}
+              className="bg-red-500 hover:bg-red-600 text-white text-xs py-1 px-3 rounded"
+            >
               Reject
             </button>
           </div>
         </div>
 
-        <div className="mb-6">
+        {/* <div className="mb-6">
           <label className="block text-sm font-medium mb-2 text-right">
             Comment
           </label>
@@ -314,7 +408,7 @@ const firstJobExperience = firstJob?.startDate && firstJob?.endDate
           <button className="bg-orange-500 hover:bg-orange-600 text-white font-medium py-1.5 px-4 rounded">
             Submit Decision
           </button>
-        </div>
+        </div> */}
       </div>
     </div>
   );

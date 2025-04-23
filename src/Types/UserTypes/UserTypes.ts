@@ -3,7 +3,7 @@ export interface loginResponse {
     user: {
       id: number;
       email: string;
-      // password: string;
+      role: 'admin' | 'super-admin' | 'driver';
     };
   }
   
