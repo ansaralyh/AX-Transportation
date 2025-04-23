@@ -1,10 +1,13 @@
 // src/components/DriverComponents/Sidebar/Sidebar.tsx
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { X, LayoutGrid,FileCheck , LogOut,Settings, } from "lucide-react";
 import { TbSteeringWheelFilled,TbReportSearch  } from "react-icons/tb";
 import { GrSchedules } from "react-icons/gr";
 import { FaMarsStroke } from "react-icons/fa6";
+import { useMutation } from "@tanstack/react-query";
+import { AdminLogout } from "../../Services/outhServices";
+import { toast } from 'react-toastify';
 
 
 // Sidebar Props Interface
@@ -21,17 +24,39 @@ interface SidebarItemProps {
 }
 
 // Sidebar Item Component
-const SidebarItem: React.FC<SidebarItemProps> = ({ icon: Icon, text, to }) => (
-  <li className="flex items-center px-6 py-3 text-lg cursor-pointer transition-colors hover:bg-orange-500 rounded-lg">
+const SidebarItem: React.FC<SidebarItemProps> = ({ icon: Icon, text, to }) => {
+  const location = useLocation();
+  const isActive = location.pathname === to;
+
+  return (
+    <li
+    className={`flex items-center px-6 py-3 text-lg cursor-pointer transition-colors rounded-lg ${
+      isActive ? "bg-orange-500 text-white" : "hover:bg-orange-500"
+    }`}
+  >
     <Link to={to} className="flex items-center w-full">
-      <Icon className="w-5 h-5 mr-4" />
+      <Icon className={`w-5 h-5 mr-4 ${isActive ? "text-white" : ""}`} />
       {text}
     </Link>
   </li>
-);
+  );
+};
 
 // Sidebar Component
 const AdminSidebar: React.FC<SidebarProps> = ({ isOpen, toggleSidebar }) => {
+const navigate = useNavigate();
+  const {mutate} = useMutation({
+    mutationFn: AdminLogout,
+    onSuccess:()=>{
+navigate('/');
+    },
+    onError:(error)=>{
+      toast.error(`Logout failed: ${error.message}`);
+    }
+  })
+  const onLogout=()=>{
+    mutate();
+  }
   return (
     <>
       {/* Background Overlay - Click to Close Sidebar */}
@@ -83,7 +108,7 @@ const AdminSidebar: React.FC<SidebarProps> = ({ isOpen, toggleSidebar }) => {
 
         {/* Logout Button */}
         <div className="px-6 pb-2">
-          <button className="flex items-center w-full px-4 py-3 text-lg text-white hover:bg-red-600 rounded-lg">
+          <button onClick={onLogout} className="flex items-center w-full px-4 py-3 text-lg text-white hover:bg-red-600 rounded-lg">
             <LogOut className="w-6 h-6 mr-3 text-orange-500" />
             Log Out
           </button>

@@ -18,14 +18,14 @@ import DriverDetails from "./pages/Drivers/DriverDetails/DriverDetails";
 import Reports from "./pages/Reports/Reports";
 // Admin imports
 import AdminDashboard from "./AdminDashboard/Dashboard/AdminDashboard";
-import AdminHome from './pages/AdminPages/Home/Home'
+import AdminHome from "./pages/AdminPages/Home/Home";
 import Driver from "./pages/AdminPages/Driver/Driver";
 import ApplicationReview from "./pages/AdminPages/Application/ApplicationReview";
 import Schedules from "./pages/AdminPages/Schedules/Schedules";
 import Tracking from "./pages/AdminPages/VehicleTracking/Tracking";
 import AdminReports from "./pages/AdminPages/Reports/Reports";
 import AdminSettings from "./pages/AdminPages/settings/AdminSettings";
-
+import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 
 function App() {
   return (
@@ -44,18 +44,26 @@ function App() {
         {/*Driver Dashboard Route with Nested Routes */}
         <Route path="/driver-dashboard" element={<DriverDashboard />}>
           <Route index element={<DashboardContent />} />
-          <Route path="real-time-tracking" element={<RealTimeTracking driver={{
-            name: "",
-            age: 0,
-            experience: "",
-            status: "",
-            photo: ""
-          }} vehicle={{
-            id: "",
-            location: "",
-            speed: "",
-            eta: ""
-          }} />} />
+          <Route
+            path="real-time-tracking"
+            element={
+              <RealTimeTracking
+                driver={{
+                  name: "",
+                  age: 0,
+                  experience: "",
+                  status: "",
+                  photo: "",
+                }}
+                vehicle={{
+                  id: "",
+                  location: "",
+                  speed: "",
+                  eta: "",
+                }}
+              />
+            }
+          />
           <Route path="drivers" element={<Drivers />} />
           <Route path="driver-details" element={<DriverDetails />} />
           <Route path="trips" element={<Trips />} />
@@ -66,7 +74,14 @@ function App() {
         </Route>
 
         {/*Driver Dashboard Route with Nested Routes */}
-        <Route path="/admin-dashboard" element={<AdminDashboard />}>
+        <Route
+          path="/admin-dashboard"
+          element={
+            <ProtectedRoute>
+              <AdminDashboard />
+            </ProtectedRoute>
+          }
+        >
           <Route index element={<AdminHome />} />
           <Route path="driver" element={<Driver />} />
           <Route path="application-review" element={<ApplicationReview />} />

@@ -10,6 +10,9 @@ import DriverCard, {
   DriverProfile,
 } from "../../../components/AdminComponents/DriverCard/DriverCard";
 import "swiper/swiper-bundle.css";
+import { getAllDrivers } from "../../../components/Services/DriverServices";
+import { Driver } from "../../../Types/UserTypes/driverTypes";
+import { useQuery } from "@tanstack/react-query";
 interface Drivers {
   name: string;
   email: string;
@@ -195,6 +198,10 @@ const Driver = () => {
   ];
   const [isMobile, setIsMobile] = useState(false);
   const [selectedTrip, setSelectedTrip] = useState<Drivers | null>(null);
+  const { data, isLoading, isError, error } = useQuery<Driver[]>({
+    queryKey: ["DriverDetails"],
+    queryFn: getAllDrivers,
+  });
   useEffect(() => {
     const checkIfMobile = () => {
       setIsMobile(window.innerWidth < 768);
@@ -211,7 +218,12 @@ const Driver = () => {
       setSelectedTrip(applications[0]);
     }
   }, [isMobile, selectedTrip]);
-
+  const activeDrivers =
+    data?.filter((d) => d.applicationStatus?.status === "active").length ?? 0;
+  const pendingApplications =
+    data?.filter((d) => d.applicationStatus?.status === "pending").length ?? 0;
+  const rejectedApplications =
+    data?.filter((d) => d.applicationStatus?.status === "rejected").length ?? 0;
   return (
     <div className="ml-[279px] p-5 bg-[#F6F6F6]">
       {/* Header Section */}
@@ -227,7 +239,9 @@ const Driver = () => {
           <TbSteeringWheelFilled className="w-12 h-12 text-[#00FF1E] " />
           {/* Centered Number */}
           <div className="w-full flex justify-center">
-            <h2 className="text-[64px] font-medium font-[Poppins]">500</h2>
+            <h2 className="text-[64px] font-medium font-[Poppins]">
+              {activeDrivers}
+            </h2>
           </div>
           <p className="font-[Poppins] text-[#00FF1E] font-medium text-[22px]">
             Active Drivers
@@ -238,7 +252,9 @@ const Driver = () => {
           <CalendarClock className="w-12 h-12 text-[#FFA600] " />
           {/* Centered Number */}
           <div className="w-full flex justify-center">
-            <h2 className="text-[64px] font-medium font-[Poppins]">600</h2>
+            <h2 className="text-[64px] font-medium font-[Poppins]">
+              {pendingApplications}
+            </h2>
           </div>
           <p className="font-[Poppins] text-[#FFA600] font-medium text-[22px]">
             Pending Applications
@@ -249,7 +265,9 @@ const Driver = () => {
           <CalendarX2 className="w-12 h-12 text-[#FF0000] " />
           {/* Centered Number */}
           <div className="w-full flex justify-center">
-            <h2 className="text-[64px] font-medium font-[Poppins]">30</h2>
+            <h2 className="text-[64px] font-medium font-[Poppins]">
+              {rejectedApplications}
+            </h2>
           </div>
           <p className="font-[Poppins] text-[#FF0000] font-medium text-[22px]">
             Reject Application
@@ -264,53 +282,86 @@ const Driver = () => {
           Add New Driver
         </button>
       </div>
-      {!isMobile && (
-        <div className="overflow-x-auto mt-4 bg-white shadow-lg rounded-lg">
-          <table className="w-full border-collapse rounded-lg font-[roboto] shadow-lg">
-            <thead>
-              <tr className="bg-orange-100 font-semibold text-2xl font-[roboto] border-b-12 border-white text-left">
-                <th className="py-[20px] px-4">Driver Name</th>
-                <th className="py-[20px] px-4">Available</th>
-                <th className="py-[20px] px-4">Destination</th>
-                <th className="py-[20px] px-4">Estimated Time</th>
-                <th className="py-[20px] text-center px-4">Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              {applications.map((applications, index) => (
-                <tr
-                  key={index}
-                  className="border-b-12 border-white bg-gray-100 text-2xl hover:bg-gray-100"
-                >
-                  <td className="py-[20px] px-4">{applications.name}</td>
-                  <td className="py-[20px] px-4">{applications.email}</td>
-                  <td className="py-[20px] px-4">{applications.status}</td>
-                  <td className="py-[20px] px-4">{applications.route}</td>
+   
 
-                  <td className="py-[20px] px-4 flex justify-center gap-2">
-                    <button className="bg-[#14EF00] text-white px-3 py-1 rounded-md hover:bg-green-600">
-                      Approval
-                    </button>
-                    <button className="bg-[#FF0000] text-white px-3 py-1 rounded-md hover:bg-red-600">
-                      Reject
-                    </button>
+        
+      {!isMobile && (
+  <div className="overflow-x-auto mt-4 bg-white shadow-lg rounded-lg">
+    <table className="w-full border-collapse rounded-lg font-[roboto] shadow-lg">
+      <thead>
+        <tr className="bg-orange-100 font-semibold text-2xl border-b-12 border-white text-left">
+          <th className="py-[20px] px-4">Driver Name</th>
+          <th className="py-[20px] px-4">Email</th>
+          <th className="py-[20px] px-4">Status</th>
+          <th className="py-[20px] text-center px-4">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {isLoading ? (
+          <tr>
+            <td colSpan={4} className="text-center py-6 text-gray-500">
+              Loading approved applications...
+            </td>
+          </tr>
+        ) : isError ? (
+          <tr>
+            <td colSpan={4} className="text-center py-6 text-red-500">
+              Failed to load applications: {error?.message}
+            </td>
+          </tr>
+        ) : (() => {
+            const approvedApps = data?.filter(
+              (app) => app.applicationStatus?.status === "approved"
+            );
+
+            if (!approvedApps || approvedApps.length === 0) {
+              return (
+                <tr>
+                  <td colSpan={4} className="text-center py-6 text-gray-500">
+                    No approved applications found.
                   </td>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      )}
+              );
+            }
+
+            return approvedApps.map((app, index) => (
+              <tr
+                key={app._id || index}
+                className="border-b-12 border-white bg-gray-100 text-2xl hover:bg-gray-100"
+              >
+                <td className="py-[20px] px-4">{app.fullName}</td>
+                <td className="py-[20px] px-4">{app.emailAddress}</td>
+                <td className="py-[20px] px-4">
+                  {app.applicationStatus?.status}
+                </td>
+                <td className="py-[20px] px-4 flex justify-center gap-2">
+                  <button className="bg-[#14EF00] text-white px-3 py-1 rounded-md hover:bg-green-600">
+                    Approve
+                  </button>
+                  <button className="bg-[#FF0000] text-white px-3 py-1 rounded-md hover:bg-red-600">
+                    Reject
+                  </button>
+                </td>
+              </tr>
+            ));
+        })()}
+      </tbody>
+    </table>
+  </div>
+)}
+
+
       <div className="flex justify-between items-center p-4 mt-10">
         <h2 className="text-black text-2xl font-bold ">
           Approve or Reject Applications
         </h2>
       </div>
+
       {!isMobile && (
         <div className="overflow-x-auto mt-4 bg-white shadow-lg rounded-lg">
           <table className="w-full border-collapse rounded-lg font-[roboto] shadow-lg">
             <thead>
-              <tr className="bg-orange-100 font-semibold text-2xl font-[roboto] border-b-12 border-white text-left">
+              <tr className="bg-orange-100 font-semibold text-2xl border-b-12 border-white text-left">
                 <th className="py-[20px] px-4">Driver Name</th>
                 <th className="py-[20px] px-4">Application Date</th>
                 <th className="py-[20px] px-4">Status</th>
@@ -318,25 +369,72 @@ const Driver = () => {
               </tr>
             </thead>
             <tbody>
-              {approve.map((approve, index) => (
-                <tr
-                  key={index}
-                  className="border-b-12 border-white bg-gray-100 text-2xl hover:bg-gray-100"
-                >
-                  <td className="py-[20px] px-4">{approve.name}</td>
-                  <td className="py-[20px] px-4">{approve.email}</td>
-                  <td className="py-[20px] px-4">{approve.status}</td>
-
-                  <td className="py-[20px] px-4 flex justify-center gap-2">
-                    <button className="bg-[#14EF00] text-white px-3 py-1 rounded-md hover:bg-green-600">
-                      Approval
-                    </button>
-                    <button className="bg-[#FF0000] text-white px-3 py-1 rounded-md hover:bg-red-600">
-                      Reject
-                    </button>
+              {isLoading ? (
+                <tr>
+                  <td
+                    colSpan={4}
+                    className="py-6 text-center text-lg text-gray-500"
+                  >
+                    Loading applications...
                   </td>
                 </tr>
-              ))}
+              ) : isError ? (
+                <tr>
+                  <td
+                    colSpan={4}
+                    className="py-6 text-center text-lg text-red-500"
+                  >
+                    Failed to load applications: {error?.message}
+                  </td>
+                </tr>
+              ) : (
+                (() => {
+                  const filteredApplications = data?.filter(
+                    (app) =>
+                      app.applicationStatus?.status === "approved" ||
+                      app.applicationStatus?.status === "rejected"
+                  );
+
+                  if (
+                    !filteredApplications ||
+                    filteredApplications.length === 0
+                  ) {
+                    return (
+                      <tr>
+                        <td
+                          colSpan={4}
+                          className="py-6 text-center text-lg text-gray-500"
+                        >
+                          No approved or rejected applications found.
+                        </td>
+                      </tr>
+                    );
+                  }
+
+                  return filteredApplications.map((app, index) => (
+                    <tr
+                      key={app._id || index}
+                      className="border-b-12 border-white bg-gray-100 text-2xl hover:bg-gray-100"
+                    >
+                      <td className="py-[20px] px-4">{app.fullName}</td>
+                      <td className="py-[20px] px-4">
+                        {new Date(app.createdAt).toLocaleDateString()}
+                      </td>
+                      <td className="py-[20px] px-4">
+                        {app.applicationStatus?.status}
+                      </td>
+                      <td className="py-[20px] px-4 flex justify-center gap-2">
+                        <button className="bg-[#14EF00] text-white px-3 py-1 rounded-md hover:bg-green-600">
+                          Approve
+                        </button>
+                        <button className="bg-[#FF0000] text-white px-3 py-1 rounded-md hover:bg-red-600">
+                          Reject
+                        </button>
+                      </td>
+                    </tr>
+                  ));
+                })()
+              )}
             </tbody>
           </table>
         </div>

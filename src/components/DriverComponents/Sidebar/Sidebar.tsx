@@ -1,7 +1,18 @@
 // src/components/DriverComponents/Sidebar/Sidebar.tsx
 import React from "react";
-import { Link } from "react-router-dom";
-import { X, LayoutGrid, MapPin, IdCard, Briefcase, LogOut, FileText, Wrench, Mail, Settings } from "lucide-react";
+import { Link, useLocation } from "react-router-dom";
+import {
+  X,
+  LayoutGrid,
+  MapPin,
+  IdCard,
+  Briefcase,
+  LogOut,
+  FileText,
+  Wrench,
+  Mail,
+  Settings,
+} from "lucide-react";
 
 // Sidebar Props Interface
 interface SidebarProps {
@@ -17,14 +28,23 @@ interface SidebarItemProps {
 }
 
 // Sidebar Item Component
-const SidebarItem: React.FC<SidebarItemProps> = ({ icon: Icon, text, to }) => (
-  <li className="flex items-center px-6 py-3 text-lg cursor-pointer transition-colors hover:bg-orange-500 rounded-lg">
+const SidebarItem: React.FC<SidebarItemProps> = ({ icon: Icon, text, to }) => {
+  const location = useLocation();
+  const isActive = location.pathname === to;
+
+  return (
+    <li
+    className={`flex items-center px-6 py-3 text-lg cursor-pointer transition-colors rounded-lg ${
+      isActive ? "bg-orange-500 text-white" : "hover:bg-orange-500"
+    }`}
+  >
     <Link to={to} className="flex items-center w-full">
-      <Icon className="w-5 h-5 mr-4" />
+      <Icon className={`w-5 h-5 mr-4 ${isActive ? "text-white" : ""}`} />
       {text}
     </Link>
   </li>
-);
+  );
+};
 
 // Sidebar Component
 const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggleSidebar }) => {
@@ -67,14 +87,46 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggleSidebar }) => {
         {/* Sidebar Items */}
         <nav className="flex-grow overflow-y-auto">
           <ul className="space-y-3 px-4 lg:mt-22">
-            <SidebarItem icon={LayoutGrid} text="Dashboards" to="/driver-dashboard" />
-            <SidebarItem icon={MapPin} text="Real-Time Tracking" to="/driver-dashboard/real-time-tracking" />
-            <SidebarItem icon={IdCard} text="Drivers" to="/driver-dashboard/drivers" />
-            <SidebarItem icon={Briefcase} text="Trips" to="/driver-dashboard/trips" />
-            <SidebarItem icon={FileText} text="Reports" to="/driver-dashboard/reports" />
-            <SidebarItem icon={Wrench} text="Maintenance" to="/driver-dashboard/maintenance" />
-            <SidebarItem icon={Mail} text="Contact" to="/driver-dashboard/contact" />
-            <SidebarItem icon={Settings} text="Settings" to="/driver-dashboard/settings" />
+            <SidebarItem
+              icon={LayoutGrid}
+              text="Dashboards"
+              to="/driver-dashboard"
+            />
+            <SidebarItem
+              icon={MapPin}
+              text="Real-Time Tracking"
+              to="/driver-dashboard/real-time-tracking"
+            />
+            <SidebarItem
+              icon={IdCard}
+              text="Drivers"
+              to="/driver-dashboard/drivers"
+            />
+            <SidebarItem
+              icon={Briefcase}
+              text="Trips"
+              to="/driver-dashboard/trips"
+            />
+            <SidebarItem
+              icon={FileText}
+              text="Reports"
+              to="/driver-dashboard/reports"
+            />
+            <SidebarItem
+              icon={Wrench}
+              text="Maintenance"
+              to="/driver-dashboard/maintenance"
+            />
+            <SidebarItem
+              icon={Mail}
+              text="Contact"
+              to="/driver-dashboard/contact"
+            />
+            <SidebarItem
+              icon={Settings}
+              text="Settings"
+              to="/driver-dashboard/settings"
+            />
           </ul>
         </nav>
 

@@ -1,24 +1,259 @@
-
+import {
+  SubmitHandler,
+  useForm,
+  useFieldArray,
+  FieldError,
+} from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import {
+  driverFormSchema,
+  DriverFormValues,
+} from "../../Types/DriverTypes/driverSchema";
+import { useApplyDriver } from "../../Hooks/DriverHooks/useApplyDriver";
+import { useEffect } from "react";
 
 const DriverForm = () => {
+  const {
+    register,
+    handleSubmit,
+    control,
+    setValue,
+    watch,
+    formState: { errors },
+  } = useForm<DriverFormValues>({
+    resolver: zodResolver(driverFormSchema),
+    defaultValues: {
+      address: {
+        street: "",
+        city: "",
+        state: "",
+        zipCode: "",
+      },
+      cdl: {
+        number: "",
+        state: "",
+        expirationDate: new Date(),
+        endorsements: {
+          tanker: false,
+          hazmat: false,
+          doubleTriples: false,
+          other: "",
+        },
+        yearsOfExperience: 0,
+      },
+      employmentHistory: [
+        {
+          companyName: "",
+          position: "",
+          startDate: new Date(),
+          endDate: new Date(),
+          reasonForLeaving: "",
+        },
+      ],
+      references: [
+        {
+          name: "",
+          relationship: "",
+          phoneNumber: "",
+        },
+      ],
+      drivingHistory: {
+        hadAccidents: false,
+        accidentDetails: "",
+        hadViolations: false,
+        violationDetails: "",
+      },
+
+      documents: {
+        cdlDocument: undefined as unknown as File,
+        socialSecurityCard: undefined as unknown as File,
+        profilePhoto: undefined as unknown as File,
+        medicalCertificate: undefined as unknown as File,
+      },
+
+      isLegallyAuthorized: false,
+      hasBeenConvicted: false,
+      hasAgreedToTerms: true,
+      signature: "",
+      signatureDate: new Date(),
+    },
+  });
+
+  const { fields: employmentFields, append: appendEmployment } = useFieldArray({
+    control,
+    name: "employmentHistory",
+  });
+
+  const { fields: referenceFields, append: appendReference } = useFieldArray({
+    control,
+    name: "references",
+  });
+  const mutation = useApplyDriver();
+
+  const onSubmit: SubmitHandler<DriverFormValues> = async (data) => {
+    console.log("Form data before submission:", data);
+    try {
+      const formData = new FormData();
+
+      // Append simple fields
+      formData.append("fullName", data.fullName);
+      formData.append("dateOfBirth", new Date(data.dateOfBirth).toISOString());
+      formData.append("phoneNumber", data.phoneNumber);
+      formData.append("emailAddress", data.emailAddress);
+      formData.append(
+        "isLegallyAuthorized",
+        JSON.stringify(data.isLegallyAuthorized)
+      );
+      formData.append(
+        "hasBeenConvicted",
+        JSON.stringify(data.hasBeenConvicted)
+      );
+      formData.append(
+        "hasAgreedToTerms",
+        JSON.stringify(data.hasAgreedToTerms)
+      );
+      formData.append("signature", data.signature);
+      formData.append("signatureDate", data.signatureDate.toISOString());
+
+      // Append address
+      formData.append("address[street]", data.address.street);
+      formData.append("address[city]", data.address.city);
+      formData.append("address[state]", data.address.state);
+      formData.append("address[zipCode]", data.address.zipCode);
+
+      // Append CDL information
+      formData.append("cdl[number]", data.cdl.number);
+      formData.append("cdl[state]", data.cdl.state);
+      formData.append(
+        "cdl[expirationDate]",
+        data.cdl.expirationDate.toISOString()
+      );
+      formData.append(
+        "cdl[endorsements][tanker]",
+        JSON.stringify(data.cdl.endorsements.tanker)
+      );
+      formData.append(
+        "cdl[endorsements][hazmat]",
+        JSON.stringify(data.cdl.endorsements.hazmat)
+      );
+      formData.append(
+        "cdl[endorsements][doubleTriples]",
+        JSON.stringify(data.cdl.endorsements.doubleTriples)
+      );
+      formData.append("cdl[yearsOfExperience]", data.cdl.yearsOfExperience.toString());
+      if (data.cdl.endorsements.other?.trim()) {
+        formData.append(
+          "cdl[endorsements][other]",
+          data.cdl.endorsements.other
+        );
+      }
+
+      // Append employment history
+      data.employmentHistory.forEach((emp, index) => {
+        formData.append(
+          `employmentHistory[${index}][companyName]`,
+          emp.companyName
+        );
+        formData.append(`employmentHistory[${index}][position]`, emp.position);
+        formData.append(
+          `employmentHistory[${index}][startDate]`,
+          new Date(emp.startDate).toISOString()
+        );
+        if (emp.endDate) {
+          formData.append(
+            `employmentHistory[${index}][endDate]`,
+            new Date(emp.endDate).toISOString()
+          );
+        }
+
+        if (emp.reasonForLeaving) {
+          formData.append(
+            `employmentHistory[${index}][reasonForLeaving]`,
+            emp.reasonForLeaving
+          );
+        }
+      });
+
+      // Append driving history
+      formData.append(
+        "drivingHistory[hadAccidents]",
+        JSON.stringify(data.drivingHistory.hadAccidents)
+      );
+      if (data.drivingHistory.accidentDetails) {
+        formData.append(
+          "drivingHistory[accidentDetails]",
+          data.drivingHistory.accidentDetails
+        );
+      }
+      formData.append(
+        "drivingHistory[hadViolations]",
+        JSON.stringify(data.drivingHistory.hadViolations)
+      );
+      if (data.drivingHistory.violationDetails) {
+        formData.append(
+          "drivingHistory[violationDetails]",
+          data.drivingHistory.violationDetails
+        );
+      }
+
+      // Append references
+      data.references.forEach((ref, index) => {
+        formData.append(`references[${index}][name]`, ref.name);
+        formData.append(`references[${index}][relationship]`, ref.relationship);
+        formData.append(`references[${index}][phoneNumber]`, ref.phoneNumber);
+      });
+
+      // Append documents
+      formData.append("documents[cdlDocument]", data.documents.cdlDocument);
+      formData.append(
+        "documents[socialSecurityCard]",
+        data.documents.socialSecurityCard
+      );
+      formData.append("documents[profilePhoto]", data.documents.profilePhoto);
+      formData.append(
+        "documents[medicalCertificate]",
+        data.documents.medicalCertificate
+      );
+      formData.append("documents[drivingRecord]", data.documents.drivingRecord);
+
+      mutation.mutate(formData);
+    } catch (error) {
+      console.error("Submission error:", error);
+      alert(error instanceof Error ? error.message : "Form submission failed");
+    }
+  };
+  const documentFields = [
+    { name: "cdlDocument", label: "CDL Document" },
+    { name: "socialSecurityCard", label: "Social Security Card" },
+    { name: "profilePhoto", label: "Profile Photo" },
+    { name: "medicalCertificate", label: "Medical Certificate" },
+    { name: "drivingRecord", label: "Driving Record" },
+  ] as const;
+
+  type Documents = DriverFormValues["documents"];
+  type DocumentFieldName = keyof Documents;
+  useEffect(() => {
+    console.log("Form Errors:", errors);
+  }, [errors]);
+
   return (
     <div className="bg-black h-[132px]">
       <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-16 xl:px-36">
         <div className="relative w-[150px] sm:w-[200px] h-[250px] flex items-center mb-8 md:mb-0">
-          {/* White Radial Gradient Background */}
           <div className="absolute w-[250px] sm:w-[300px] h-full top-[-30px] left-[-98px] sm:left-[-220px] bg-[radial-gradient(circle,_#ffffff_0%,_rgba(255,255,255,0.3)_30%,_transparent_70%)] logo" />
-
-          {/* Logo Image */}
           <img
             src="/assets/image 54.png"
             alt="AXT Transportation Logo"
             className="relative left-[-26px] sm:left-[-150px] top-[-45px] z-10 w-[120px] sm:w-[150px] h-auto"
           />
         </div>
-        {/* Application Form */}
-        <div className=" flex flex-wrap gap-10">
-          {/* Form content left */}
-          <div className=" flex-1">
+
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="flex flex-wrap gap-10"
+        >
+          {/* Left Column */}
+          <div className="flex-1">
             <h2 className="text-[44px] font-bold mb-4">
               Driver Application Form
             </h2>
@@ -27,442 +262,447 @@ const DriverForm = () => {
               <br />
               Fill out the form to get a free consultation.
             </p>
+
             {/* Applicant Information */}
-            <h2 className="text-xl font-bold mb-4">Applicant Information</h2>
-            <div className="mb-4">
-              <input
-                className="w-full p-2 border-b border-gray-300 mb-14 outline-none"
-                placeholder="Full Name"
-              />
-              <input
-                className="w-full p-2 border-b border-gray-300 mb-14 outline-none"
-                placeholder="Date of Birth"
-              />
-              <input
-                className="w-full p-2 border-b border-gray-300 mb-14 outline-none"
-                placeholder="Phone Number"
-              />
-              <div className="mb-8">
+            <section className="mb-8">
+              <h2 className="text-xl font-bold mb-4">Applicant Information</h2>
+              <div className="space-y-4">
                 <input
+                  {...register("fullName")}
+                  className="w-full p-2 border-b border-gray-300 outline-none"
+                  placeholder="Full Name"
+                />
+                {errors.fullName && (
+                  <p className="text-red-500">{errors.fullName.message}</p>
+                )}
+
+                <input
+                  type="datetime-local"
+                  {...register("dateOfBirth")}
+                  className="w-full p-2 border-b border-gray-300 outline-none"
+                />
+                {errors.dateOfBirth && (
+                  <p className="text-red-500">{errors.dateOfBirth.message}</p>
+                )}
+
+                <input
+                  {...register("phoneNumber")}
+                  className="w-full p-2 border-b border-gray-300 outline-none"
+                  placeholder="Phone Number"
+                />
+                {errors.phoneNumber && (
+                  <p className="text-red-500">{errors.phoneNumber.message}</p>
+                )}
+
+                <input
+                  {...register("emailAddress")}
                   className="w-full p-2 border-b border-gray-300 outline-none"
                   placeholder="Email Address"
                 />
+                {errors.emailAddress && (
+                  <p className="text-red-500">{errors.emailAddress.message}</p>
+                )}
               </div>
-              <p className="text-sm mb-4 font-bold">Current Address:</p>
-              <input
-                className="w-full p-2 border-b border-gray-300 mb-14 outline-none"
-                placeholder="Street"
-              />
-              <div className="flex gap-4 mb-4">
+            </section>
+
+            {/* Address */}
+            <section className="mb-8">
+              <h2 className="text-xl font-bold mb-4">Current Address</h2>
+              <div className="space-y-4">
                 <input
-                  className="flex-1 p-2 border-b border-gray-300 outline-none"
-                  placeholder="City"
+                  {...register("address.street")}
+                  className="w-full p-2 border-b border-gray-300 outline-none"
+                  placeholder="Street"
                 />
-                <input
-                  className="w-16 p-2 border-b border-gray-300 outline-none"
-                  placeholder="State"
-                />
-                <input
-                  className="w-24 p-2 border-b border-gray-300 outline-none"
-                  placeholder="Zip"
-                />
+                {errors.address?.street && (
+                  <p className="text-red-500">
+                    {errors.address.street.message}
+                  </p>
+                )}
+
+                <div className="flex gap-4">
+                  <input
+                    {...register("address.city")}
+                    className="flex-1 p-2 border-b border-gray-300 outline-none"
+                    placeholder="City"
+                  />
+                  <input
+                    {...register("address.state")}
+                    className="w-24 p-2 border-b border-gray-300 outline-none"
+                    placeholder="State"
+                  />
+                  <input
+                    {...register("address.zipCode")}
+                    className="w-32 p-2 border-b border-gray-300 outline-none"
+                    placeholder="ZIP Code"
+                  />
+                </div>
+                {errors.address?.city && (
+                  <p className="text-red-500">{errors.address.city.message}</p>
+                )}
+                {errors.address?.state && (
+                  <p className="text-red-500">{errors.address.state.message}</p>
+                )}
+                {errors.address?.zipCode && (
+                  <p className="text-red-500">
+                    {errors.address.zipCode.message}
+                  </p>
+                )}
               </div>
-              <p className="mb-2">
-                Are you legally authorized to work in the U.S.?
-              </p>
-              <div className="flex gap-4 mb-4">
-                <label className="flex items-center cursor-pointer">
-                  <span className="w-4 h-4 rounded-full bg-orange-500 inline-block mr-2"></span>
-                  Yes
-                </label>
-                <label className="flex items-center cursor-pointer">
-                  <input type="radio" name="work_auth" className="hidden" />
-                  <span className="w-4 h-4 rounded-full border border-gray-300 inline-block mr-2"></span>
-                  No
-                </label>
+            </section>
+
+            {/* Legal Information */}
+            <section className="mb-8">
+              <h2 className="text-xl font-bold mb-4">Legal Information</h2>
+              <div className="space-y-4">
+                <div>
+                  <p>Are you legally authorized to work in the U.S.?</p>
+                  <div className="flex gap-4">
+                    <label className="flex items-center">
+                      <input
+                        type="checkbox"
+                        {...register("isLegallyAuthorized")}
+                      />
+                      <span className="ml-2">Yes</span>
+                    </label>
+                  </div>
+                  {errors.isLegallyAuthorized && (
+                    <p className="text-red-500">
+                      {errors.isLegallyAuthorized.message}
+                    </p>
+                  )}
+                </div>
+
+                <div>
+                  <p>Have you ever been convicted of a felony?</p>
+                  <div className="flex gap-4">
+                    <label className="flex items-center">
+                      <input
+                        type="checkbox"
+                        {...register("hasBeenConvicted")}
+                      />
+                      <span className="ml-2">Yes</span>
+                    </label>
+                  </div>
+                  {errors.hasBeenConvicted && (
+                    <p className="text-red-500">
+                      {errors.hasBeenConvicted.message}
+                    </p>
+                  )}
+                </div>
+
+                {watch("hasBeenConvicted") && (
+                  <textarea
+                    {...register("convictionExplanation")}
+                    className="w-full p-2 border-b border-gray-300 outline-none"
+                    placeholder="Conviction explanation"
+                  />
+                )}
               </div>
-              <p className="mb-2">Have you ever been convicted of a felony?</p>
-              <div className="flex gap-4 mb-4">
-                <label className="flex items-center cursor-pointer">
-                  <span className="w-4 h-4 rounded-full bg-orange-500 inline-block mr-2"></span>
-                  Yes
-                </label>
-                <label className="flex items-center cursor-pointer">
-                  <input type="radio" name="felony" className="hidden" />
-                  <span className="w-4 h-4 rounded-full border border-gray-300 inline-block mr-2"></span>
-                  No
-                </label>
-              </div>
-              <textarea
-                className="w-full bg-gray-100 p-2 mb-4 border-b border-gray-300 outline-none rounded-none"
-                rows={2}
-                placeholder="Explanation (if yes)"
-              ></textarea>
-              {/* CDL Information */}
+            </section>
+
+            {/* CDL Information */}
+            <section className="mb-8">
               <h2 className="text-xl font-bold mb-4">CDL Information</h2>
-              <div className="mb-4">
+              <div className="space-y-4">
                 <input
-                  className="w-full p-2 border-b border-gray-300 mb-4 outline-none"
+                  {...register("cdl.number")}
+                  className="w-full p-2 border-b border-gray-300 outline-none"
                   placeholder="CDL License Number"
                 />
-                <div className="flex gap-4 mb-4">
+                {errors.cdl?.number && (
+                  <p className="text-red-500">{errors.cdl.number.message}</p>
+                )}
+
+                <div className="flex gap-4">
                   <input
-                    className="w-24 p-2 border-b border-gray-300 outline-none"
+                    {...register("cdl.state")}
+                    className="flex-1 p-2 border-b border-gray-300 outline-none"
                     placeholder="State Issued"
                   />
                   <input
+                    type="datetime-local"
+                    {...register("cdl.expirationDate")}
                     className="flex-1 p-2 border-b border-gray-300 outline-none"
-                    placeholder="Expiration Date"
+                  />
+                </div>
+                {errors.cdl?.state && (
+                  <p className="text-red-500">{errors.cdl.state.message}</p>
+                )}
+                {errors.cdl?.expirationDate && (
+                  <p className="text-red-500">
+                    {errors.cdl.expirationDate.message}
+                  </p>
+                )}
+
+                <div className="flex flex-wrap gap-4 mb-4">
+                  <label className="flex items-center">
+                    <input
+                      type="checkbox"
+                      {...register("cdl.endorsements.tanker")}
+                    />
+                    <span className="ml-2">Tanker</span>
+                  </label>
+                  <label className="flex items-center">
+                    <input
+                      type="checkbox"
+                      {...register("cdl.endorsements.hazmat")}
+                    />
+                    <span className="ml-2">Hazmat</span>
+                  </label>
+                  <label className="flex items-center">
+                    <input
+                      type="checkbox"
+                      {...register("cdl.endorsements.doubleTriples")}
+                    />
+                    <span className="ml-2">Double/Triples</span>
+                  </label>
+                  <input
+                    {...register("cdl.endorsements.other")}
+                    className="p-1 border-b border-gray-300 w-32 outline-none"
+                    placeholder="Other"
                   />
                 </div>
 
-                <p className="mb-2">Endorsements:</p>
-                <div className="flex flex-wrap gap-4 mb-4">
-                  <label className="flex items-center cursor-pointer">
-                    <input type="checkbox" className="mr-2" />
-                    <span>Tanker</span>
-                  </label>
-                  <label className="flex items-center cursor-pointer">
-                    <input type="checkbox" className="mr-2" />
-                    <span>Hazmat</span>
-                  </label>
-                  <label className="flex items-center cursor-pointer">
-                    <input type="checkbox" className="mr-2" />
-                    <span>Doubles/Triples</span>
-                  </label>
-                  <div className="flex items-center">
-                    <input type="checkbox" className="mr-2" />
+                <input
+                  type="number"
+                  {...register("cdl.yearsOfExperience", {
+                    valueAsNumber: true,
+                  })}
+                  className="w-full p-2 border-b border-gray-300 outline-none"
+                  placeholder="Years of Experience"
+                />
+                {errors.cdl?.yearsOfExperience && (
+                  <p className="text-red-500">
+                    {errors.cdl.yearsOfExperience.message}
+                  </p>
+                )}
+              </div>
+            </section>
+
+            {/* Employment History */}
+            <section className="mb-8">
+              <h2 className="text-xl font-bold mb-4">Employment History</h2>
+              {employmentFields.map((field, index) => (
+                <div key={field.id} className="mb-4">
+                  <input
+                    {...register(`employmentHistory.${index}.companyName`)}
+                    className="w-full p-2 border-b border-gray-300 outline-none"
+                    placeholder="Company Name"
+                  />
+                  <input
+                    {...register(`employmentHistory.${index}.position`)}
+                    className="w-full p-2 border-b border-gray-300 outline-none"
+                    placeholder="Position Held"
+                  />
+                  <div className="flex gap-4 mt-2">
                     <input
-                      className="p-1 border-b border-gray-300 w-32 outline-none"
-                      placeholder="Other"
+                      type="datetime-local"
+                      {...register(`employmentHistory.${index}.startDate`)}
+                      className="flex-1 p-2 border-b border-gray-300 outline-none"
+                    />
+                    <input
+                      type="datetime-local"
+                      {...register(`employmentHistory.${index}.endDate`)}
+                      className="flex-1 p-2 border-b border-gray-300 outline-none"
                     />
                   </div>
+                  <input
+                    {...register(`employmentHistory.${index}.reasonForLeaving`)}
+                    className="w-full p-2 border-b border-gray-300 outline-none mt-2"
+                    placeholder="Reason for Leaving"
+                  />
+                </div>
+              ))}
+              <button
+                type="button"
+                onClick={() =>
+                  appendEmployment({
+                    companyName: "",
+                    position: "",
+                    startDate: new Date(),
+                    endDate: new Date(),
+                    reasonForLeaving: "",
+                  })
+                }
+                className="text-orange-500"
+              >
+                + Add Employment
+              </button>
+              {errors.employmentHistory && (
+                <p className="text-red-500">
+                  {errors.employmentHistory.message}
+                </p>
+              )}
+            </section>
+          </div>
+
+          {/* Right Column */}
+          <div className="flex-1">
+            {/* Driving History */}
+            <section className="mb-8">
+              <h2 className="text-xl font-bold mb-4">Driving History</h2>
+              <div className="space-y-4">
+                <div>
+                  <label className="flex items-center">
+                    <input
+                      type="checkbox"
+                      {...register("drivingHistory.hadAccidents")}
+                    />
+                    <span className="ml-2">Had accidents in past 3 years?</span>
+                  </label>
+                  {watch("drivingHistory.hadAccidents") && (
+                    <textarea
+                      {...register("drivingHistory.accidentDetails")}
+                      className="w-full p-2 border-b border-gray-300 outline-none"
+                      placeholder="Accident details"
+                    />
+                  )}
                 </div>
 
-                <input
-                  className="w-full p-2 border-b border-gray-300 mb-4 outline-none"
-                  placeholder="Years of CDL Experience"
-                />
-                {/* Employer 1 */}
-              </div>{" "}
-              <h2 className="text-xl font-bold mb-4">
-                Employment History (Last 3 Employers)
-              </h2>
-              <p className="font-semibold">1. Previous Employer</p>
-              <input
-                className="w-full p-2 border-b border-gray-300 mb-2 outline-none"
-                placeholder="Company Name"
-              />
-              <input
-                className="w-full p-2 border-b border-gray-300 mb-2 outline-none"
-                placeholder="Position Held"
-              />
-              <div className="flex gap-4 mb-2">
-                <input
-                  className="flex-1 p-2 border-b border-gray-300 outline-none"
-                  placeholder="From (Date)"
-                />
-                <input
-                  className="flex-1 p-2 border-b border-gray-300 outline-none"
-                  placeholder="To (Date)"
-                />
+                <div>
+                  <label className="flex items-center">
+                    <input
+                      type="checkbox"
+                      {...register("drivingHistory.hadViolations")}
+                    />
+                    <span className="ml-2">
+                      Had violations in past 3 years?
+                    </span>
+                  </label>
+                  {watch("drivingHistory.hadViolations") && (
+                    <textarea
+                      {...register("drivingHistory.violationDetails")}
+                      className="w-full p-2 border-b border-gray-300 outline-none"
+                      placeholder="Violation details"
+                    />
+                  )}
+                </div>
               </div>
-              <input
-                className="w-full p-2 border-b border-gray-300 mb-4 outline-none"
-                placeholder="Reason for Leaving"
-              />
-              {/* Employer 2 */}
-              <p className="font-semibold">2. Previous Employer</p>
-              <input
-                className="w-full p-2 border-b border-gray-300 mb-2 outline-none"
-                placeholder="Company Name"
-              />
-              <input
-                className="w-full p-2 border-b border-gray-300 mb-2 outline-none"
-                placeholder="Position Held"
-              />
-              <div className="flex gap-4 mb-2">
-                <input
-                  className="flex-1 p-2 border-b border-gray-300 outline-none"
-                  placeholder="From (Date)"
-                />
-                <input
-                  className="flex-1 p-2 border-b border-gray-300 outline-none"
-                  placeholder="To (Date)"
-                />
+            </section>
+
+            {/* References */}
+            <section className="mb-8">
+              <h2 className="text-xl font-bold mb-4">References</h2>
+              {referenceFields.map((field, index) => (
+                <div key={field.id} className="mb-4">
+                  <input
+                    {...register(`references.${index}.name`)}
+                    className="w-full p-2 border-b border-gray-300 outline-none"
+                    placeholder="Name"
+                  />
+                  <input
+                    {...register(`references.${index}.relationship`)}
+                    className="w-full p-2 border-b border-gray-300 outline-none mt-2"
+                    placeholder="Relationship"
+                  />
+                  <input
+                    {...register(`references.${index}.phoneNumber`)}
+                    className="w-full p-2 border-b border-gray-300 outline-none mt-2"
+                    placeholder="Phone Number"
+                  />
+                  {/* <input
+                    {...register(`references.${index}.email`)}
+                    className="w-full p-2 border-b border-gray-300 outline-none mt-2"
+                    placeholder="Email"
+                    type="email"
+                  /> */}
+                </div>
+              ))}
+              <button
+                type="button"
+                onClick={() =>
+                  appendReference({
+                    name: "",
+                    relationship: "",
+                    phoneNumber: "",
+                    // email: "",
+                  })
+                }
+                className="text-orange-500"
+              >
+                + Add Reference
+              </button>
+              {errors.references && (
+                <p className="text-red-500">{errors.references.message}</p>
+              )}
+            </section>
+
+            <section className="mb-8">
+              <h2 className="text-xl font-bold mb-4">Document Uploads</h2>
+              <div className="space-y-4">
+                {documentFields.map((doc) => (
+                  <div key={doc.name} className="mb-4">
+                    <label className="block mb-2">{doc.label}</label>
+                    <input
+                      type="file"
+                      onChange={(e) => {
+                        const file = e.target.files?.[0];
+                        if (file) {
+                          setValue(
+                            `documents.${doc.name}` as `documents.${DocumentFieldName}`,
+                            file
+                          );
+                        }
+                      }}
+                      className="w-full p-2 border rounded"
+                    />
+                    {errors.documents?.[doc.name] && (
+                      <p className="text-red-500">
+                        {(errors.documents[doc.name] as FieldError)?.message}
+                      </p>
+                    )}
+                  </div>
+                ))}
               </div>
-              <input
-                className="w-full p-2 border-b border-gray-300 mb-4 outline-none"
-                placeholder="Reason for Leaving"
-              />
-            </div>
-          </div>
-          
-          {/* Form content right */}
-          <div className="flex-1">
-            {/* Employer 3 */}
-            <p className="font-semibold">3. Previous Employer</p>
-            <input
-              className="w-full p-2 border-b border-gray-300 mb-2 outline-none"
-              placeholder="Company Name"
-            />
-            <input
-              className="w-full p-2 border-b border-gray-300 mb-2 outline-none"
-              placeholder="Position Held"
-            />
-            <div className="flex gap-4 mb-2">
-              <input
-                className="flex-1 p-2 border-b border-gray-300 outline-none"
-                placeholder="From (Date)"
-              />
-              <input
-                className="flex-1 p-2 border-b border-gray-300 outline-none"
-                placeholder="To (Date)"
-              />
-            </div>
-            <input
-              className="w-full p-2 border-b border-gray-300 mb-6 outline-none"
-              placeholder="Reason for Leaving"
-            />
-            <h2 className="text-xl font-bold mb-4">Driving History</h2>
-
-            <p className="mb-2">
-              Have you had any accidents in the past 3 years?
-            </p>
-            <div className="flex gap-4 mb-2">
-              <label className="flex items-center cursor-pointer">
-                <span className="w-4 h-4 rounded-full bg-orange-500 inline-block mr-2"></span>
-                Yes
-              </label>
-              <label className="flex items-center cursor-pointer">
-                <input type="radio" name="accidents" className="hidden" />
-                <span className="w-4 h-4 rounded-full border border-gray-300 inline-block mr-2"></span>
-                No
-              </label>
-            </div>
-            <textarea
-              className="w-full bg-gray-100 p-2 mb-4 border-b border-gray-300 outline-none rounded-none"
-              rows={2}
-              placeholder="If yes, provide details"
-            ></textarea>
-
-            <p className="mb-2">
-              Have you had any moving violations in the past 3 years?
-            </p>
-            <div className="flex gap-4 mb-2">
-              <label className="flex items-center cursor-pointer">
-                <span className="w-4 h-4 rounded-full bg-orange-500 inline-block mr-2"></span>
-                Yes
-              </label>
-              <label className="flex items-center cursor-pointer">
-                <input type="radio" name="violations" className="hidden" />
-                <span className="w-4 h-4 rounded-full border border-gray-300 inline-block mr-2"></span>
-                No
-              </label>
-            </div>
-            <textarea
-              className="w-full bg-gray-100 p-2 mb-4 border-b border-gray-300 outline-none rounded-none"
-              rows={2}
-              placeholder="If yes, provide details"
-            ></textarea>
-            <h2 className="text-xl font-bold mb-4">References</h2>
-
-            {/* Reference 1 */}
-            <div className="flex gap-4 mb-4">
-              <input
-                className="flex-1 p-2 border-b border-gray-300 outline-none"
-                placeholder="Name"
-              />
-              <input
-                className="flex-1 p-2 border-b border-gray-300 outline-none"
-                placeholder="Relationship"
-              />
-              <input
-                className="flex-1 p-2 border-b border-gray-300 outline-none"
-                placeholder="Phone Number"
-              />
-            </div>
-
-            {/* Reference 2 */}
-            <div className="flex gap-4 mb-6">
-              <input
-                className="flex-1 p-2 border-b border-gray-300 outline-none"
-                placeholder="Name"
-              />
-              <input
-                className="flex-1 p-2 border-b border-gray-300 outline-none"
-                placeholder="Relationship"
-              />
-              <input
-                className="flex-1 p-2 border-b border-gray-300 outline-none"
-                placeholder="Phone Number"
-              />
-            </div>
-
-            <h2 className="text-[44px] font-bold mb-4">Upload Documents</h2>
-            {/* Driver’s License Copy */}
-            <h3 className="text-lg font-semibold mb-2">
-              Upload Driver’s License Copy
-            </h3>
-            <label className="border border-dashed border-gray-300 p-4 mb-6 rounded flex justify-center items-center cursor-pointer">
-              <input type="file" className="hidden" />
-              <span className="text-gray-500 flex items-center text-sm">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-4 w-4 mr-1"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0l-4 4m4-4v12"
+            </section>
+            {/* Consent Section */}
+            <section className="mb-8">
+              <h2 className="text-xl font-bold mb-4">Consent & Agreement</h2>
+              <div className="space-y-4">
+                <label className="flex items-center">
+                  <input
+                    type="checkbox"
+                    {...register("hasAgreedToTerms")}
+                    className="mr-2"
                   />
-                </svg>
-                <span>Click to Upload</span>
-              </span>
-            </label>
-            {/* National ID or Passport Copy */}
-            <h3 className="text-lg font-semibold mb-2">
-            National ID or Passport Copy
-            </h3>
-            <label className="border border-dashed border-gray-300 p-4 mb-6 rounded flex justify-center items-center cursor-pointer">
-              <input type="file" className="hidden" />
-              <span className="text-gray-500 flex items-center text-sm">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-4 w-4 mr-1"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0l-4 4m4-4v12"
-                  />
-                </svg>
-                <span>Click to Upload</span>
-              </span>
-            </label>
-            
-            {/* Recent photograph Copy */}
-            <h3 className="text-lg font-semibold mb-2">
-            Recent photograph Copy
-            </h3>
-            <label className="border border-dashed border-gray-300 p-4 mb-6 rounded flex justify-center items-center cursor-pointer">
-              <input type="file" className="hidden" />
-              <span className="text-gray-500 flex items-center text-sm">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-4 w-4 mr-1"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0l-4 4m4-4v12"
-                  />
-                </svg>
-                <span>Click to Upload</span>
-              </span>
-            </label>
-            {/* Medical Fitness Certificate Copy */}
-            <h3 className="text-lg font-semibold mb-2">
-            Medical Fitness Certificate Copy
-            </h3>
-            <label className="border border-dashed border-gray-300 p-4 mb-6 rounded flex justify-center items-center cursor-pointer">
-              <input type="file" className="hidden" />
-              <span className="text-gray-500 flex items-center text-sm">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-4 w-4 mr-1"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0l-4 4m4-4v12"
-                  />
-                </svg>
-                <span>Click to Upload</span>
-              </span>
-            </label>
-            
-            <button className="w-full h-[54px] bg-orange-500 text-white p-2  mb-4">
-              SUBMIT
+                  <span>I agree to the terms and conditions</span>
+                </label>
+                {errors.hasAgreedToTerms && (
+                  <p className="text-red-500">
+                    {errors.hasAgreedToTerms.message}
+                  </p>
+                )}
+
+                <input
+                  {...register("signature")}
+                  className="w-full p-2 border-b border-gray-300 outline-none"
+                  placeholder="Signature"
+                />
+                {errors.signature && (
+                  <p className="text-red-500">{errors.signature.message}</p>
+                )}
+
+                <input
+                  type="datetime-local"
+                  {...register("signatureDate")}
+                  className="w-full p-2 border-b border-gray-300 outline-none"
+                />
+                {errors.signatureDate && (
+                  <p className="text-red-500">{errors.signatureDate.message}</p>
+                )}
+              </div>
+            </section>
+
+            <button
+              type="submit"
+              className="w-full h-[54px] bg-orange-500 text-white p-2 rounded"
+              disabled={mutation.isPending}
+            >
+              {mutation.isPending ? "Submitting..." : "SUBMIT APPLICATION"}
             </button>
-            <h3 className="text-lg font-semibold mb-2 flex items-center">
-              Consent & Agreement
-              <span className="text-red-500 ml-1">*</span>
-            </h3>
-            <p className="text-sm mb-4">
-              I certify that the information provided is true and complete. I
-              authorize AX Transportation to conduct background checks,
-              including employment history, driving records, and criminal
-              records. I understand that false or misleading information may
-              disqualify me from employment.
-            </p>
-            <div className="flex items-center mb-4">
-              <input type="checkbox" className="mr-2" />
-              <p>I agree to the terms and conditions</p>
-            </div>
-
-            <div className="flex gap-4 mb-6">
-              <input
-                className="flex-1 p-2 border-b border-gray-300 outline-none"
-                placeholder="Signature"
-              />
-              <input
-                className="w-32 p-2 border-b border-gray-300 outline-none"
-                placeholder="Date"
-              />
-            </div>
-            <button className="w-full h-[54px] bg-orange-500 text-white p-2  mb-4">
-              SUBMIT APPLICATION
-            </button>
-
-            <div className="border-t border-gray-300 pt-4 text-xs text-gray-500">
-              <p className="font-semibold">For Office Use Only</p>
-              <div className="flex flex-wrap gap-4 mt-2">
-                <label className="flex items-center">
-                  <input type="checkbox" className="mr-1" />
-                  <span>Application Reviewed</span>
-                </label>
-                <label className="flex items-center">
-                  <input type="checkbox" className="mr-1" />
-                  <span>Background Check Completed</span>
-                </label>
-                <label className="flex items-center">
-                  <input type="checkbox" className="mr-1" />
-                  <span>Interview Scheduled</span>
-                </label>
-                <label className="flex items-center">
-                  <input type="checkbox" className="mr-1" />
-                  <span>Hired</span>
-                </label>
-                <label className="flex items-center">
-                  <input type="checkbox" className="mr-1" />
-                  <span>Not Hired</span>
-                </label>
-              </div>
-              <textarea
-                className="w-full bg-gray-100 p-2 mt-2 border-b border-gray-300 outline-none rounded-none"
-                rows={1}
-                placeholder="Comments"
-              ></textarea>
-            </div>
           </div>
-        </div>
+        </form>
       </div>
     </div>
   );

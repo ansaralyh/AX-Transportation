@@ -7,12 +7,15 @@ import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import { LineChart, Line } from "recharts";
 import ProgressBar from "../../../components/AdminComponents/ProgressBar/ProgressBar";
-
-interface Driver {
-  name: string;
-  date: string;
-  status: string;
-}
+import { useQuery } from "@tanstack/react-query";
+import { get } from "react-hook-form";
+import { Driver } from "../../../Types/UserTypes/driverTypes";
+import { getAllDrivers } from "../../../components/Services/DriverServices";
+// interface Driver {
+//   name: string;
+//   date: string;
+//   status: string;
+// }
 interface Routes {
   name: string;
   available: string;
@@ -47,12 +50,12 @@ const Home = () => {
     { name: "E", value: 5 },
     { name: "F", value: 7 },
   ];
-  const drivers: Driver[] = [
-    { name: "Jhone", date: "01/02/2025", status: "Pending" },
-    { name: "Jhone", date: "01/02/2025", status: "Pending" },
-    { name: "Jhone", date: "01/02/2025", status: "Pending" },
-    { name: "Jhone", date: "01/02/2025", status: "Pending" },
-  ];
+  // const drivers: Driver[] = [
+  //   { name: "Jhone", date: "01/02/2025", status: "Pending" },
+  //   { name: "Jhone", date: "01/02/2025", status: "Pending" },
+  //   { name: "Jhone", date: "01/02/2025", status: "Pending" },
+  //   { name: "Jhone", date: "01/02/2025", status: "Pending" },
+  // ];
   const applications: Application[] = [
     { name: "Jhone", applied: "01/02/2025", status: "Pending" },
     { name: "Jhone", applied: "01/02/2025", status: "Pending" },
@@ -92,6 +95,10 @@ const Home = () => {
     },
   ];
 
+  const { data, isLoading, isError,error } = useQuery<Driver[]>({
+    queryKey: ["DriverDetails"],
+    queryFn: getAllDrivers,
+  });
   const [isMobile, setIsMobile] = useState(false);
   const [selectedTrip, setSelectedTrip] = useState<Driver | null>(null);
   useEffect(() => {
@@ -105,11 +112,18 @@ const Home = () => {
     return () => window.removeEventListener("resize", checkIfMobile);
   }, []);
 
-  useEffect(() => {
-    if (isMobile && drivers.length > 0 && !selectedTrip) {
-      setSelectedTrip(drivers[0]);
-    }
-  }, [isMobile, selectedTrip]);
+  // useEffect(() => {
+  //   if (isMobile && drivers.length > 0 && !selectedTrip) {
+  //     setSelectedTrip(drivers[0]);
+  //   }
+  // }, [isMobile, selectedTrip]);
+
+  const activeDrivers =
+    data?.filter((d) => d.applicationStatus?.status === "active").length ?? 0;
+  const pendingApplications =
+    data?.filter((d) => d.applicationStatus?.status === "pending").length ?? 0;
+  const totalTrips = data?.reduce((sum, d) => sum + (d.tripCount || 0), 0) ?? 0;
+
   return (
     <div className="ml-[279px] p-5 bg-[#F6F6F6]">
       <div className="flex  font-[Poppins]  flex-col sm:flex-column justify-center items-start  gap-4 mb-20">
@@ -121,55 +135,66 @@ const Home = () => {
       <div className="flex gap-14 justify-start">
         <StatCard
           icon={TbSteeringWheelFilled}
-          value={56}
+          value={activeDrivers}
           label="Active Drivers"
         />
         <StatCard
           icon={ClipboardList}
-          value={567}
+          value={pendingApplications}
           label="Pending Applications"
         />
-        <StatCard icon={Route} value={3253} label="Total Trips" />
+        <StatCard icon={Route} value={totalTrips} label="Total Trips" />
       </div>
 
       <div className="w-full">
         <h2 className="text-black text-2xl font-bold mt-10">
           Detailed Trip Data
         </h2>
-
-        {!isMobile && (
-          <div className="overflow-x-auto mt-4 bg-white shadow-lg rounded-lg">
-            <table className="w-full border-collapse rounded-lg font-[roboto] shadow-lg">
-              <thead>
-                <tr className="bg-orange-100 font-semibold text-2xl font-[roboto] border-b-12 border-white text-left">
-                  <th className="py-[20px] px-4">Driver Name</th>
-                  <th className="py-[20px] px-4">Application Date</th>
-                  <th className="py-[20px] px-4">Status</th>
-                  <th className="py-[20px] text-center px-4">Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                {drivers.map((driver, index) => (
-                  <tr
-                    key={index}
-                    className="border-b-12 border-white bg-gray-100 text-2xl hover:bg-gray-100"
-                  >
-                    <td className="py-[20px] px-4">{driver.name}</td>
-                    <td className="py-[20px] px-4">{driver.date}</td>
-                    <td className="py-[20px] px-4">{driver.status}</td>
-                    <td className="py-[20px] px-4 flex justify-center gap-2">
-                      <button className="bg-green-500 text-white px-3 py-1 rounded-md hover:bg-green-600">
-                        Approval
-                      </button>
-                      <button className="bg-red-500 text-white px-3 py-1 rounded-md hover:bg-red-600">
-                        Reject
-                      </button>
-                    </td>
+        {isLoading ? (
+          <p>Loading...</p>
+        ) : isError ? (
+          <p>Failed to load applications: {error?.message}</p>
+        ) : data && data.length > 0 ? (
+          !isMobile && (
+            <div className="overflow-x-auto mt-4 bg-white shadow-lg rounded-lg">
+              <table className="w-full border-collapse rounded-lg font-[roboto] shadow-lg">
+                <thead>
+                  <tr className="bg-orange-100 font-semibold text-2xl font-[roboto] border-b-12 border-white text-left">
+                    <th className="py-[20px] px-4">Driver Name</th>
+                    <th className="py-[20px] px-4">Application Date</th>
+                    <th className="py-[20px] px-4">Status</th>
+                    <th className="py-[20px] text-center px-4">Action</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+                </thead>
+                <tbody>
+                  {data.map((driver) => (
+                    <tr
+                      key={driver._id}
+                      className="border-b-12 border-white bg-gray-100 text-2xl hover:bg-gray-100"
+                    >
+                      <td className="py-[20px] px-4">{driver.fullName}</td>
+                      <td className="py-[20px] px-4">
+                        {new Date(driver.createdAt).toLocaleDateString()}
+                      </td>
+                      <td className="py-[20px] px-4">
+                        {driver.applicationStatus?.status}
+                      </td>
+                      <td className="py-[20px] px-4 flex justify-center gap-2">
+                        <button className="bg-green-500 text-white px-3 py-1 rounded-md hover:bg-green-600">
+                          Approve
+                        </button>
+                        <button className="bg-red-500 text-white px-3 py-1 rounded-md hover:bg-red-600">
+                          Reject
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )
+        ) : (
+          <p>No driver applications found.</p>
         )}
 
         {isMobile && selectedTrip && (
@@ -315,14 +340,18 @@ const Home = () => {
                 </tr>
               </thead>
               <tbody>
-                {applications.map((application, index) => (
+                {data?.map((driver) => (
                   <tr
-                    key={index}
+                    key={driver._id}
                     className="border-b-12 border-white bg-gray-100 text-2xl hover:bg-gray-100"
                   >
-                    <td className="py-[20px] px-4">{application.name}</td>
-                    <td className="py-[20px] px-4">{application.applied}</td>
-                    <td className="py-[20px] px-4">{application.status}</td>
+                    <td className="py-[20px] px-4">{driver.fullName}</td>
+                    <td className="py-[20px] px-4">
+                      {new Date(driver.createdAt).toLocaleDateString()}
+                    </td>
+                    <td className="py-[20px] px-4">
+                      {driver.applicationStatus?.status}
+                    </td>
                     <td className="py-[20px] px-4 flex justify-center gap-2">
                       <button className="border-green-500  px-8 py-2 border rounded-md">
                         Assign
