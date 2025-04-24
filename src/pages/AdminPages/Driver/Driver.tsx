@@ -10,20 +10,21 @@ import DriverCard, {
   DriverProfile,
 } from "../../../components/AdminComponents/DriverCard/DriverCard";
 import "swiper/swiper-bundle.css";
-import { getAllDrivers } from "../../../components/Services/DriverServices";
+import { getAllDrivers, rejectApplicationStatus, updateApplicationStatus } from "../../../components/Services/DriverServices";
 import { Driver } from "../../../Types/UserTypes/driverTypes";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { toast } from "react-toastify";
 interface Drivers {
   name: string;
   email: string;
   status: string;
   route: string;
 }
-interface Approve {
-  name: string;
-  email: string;
-  status: string;
-}
+// interface Approve {
+//   name: string;
+//   email: string;
+//   status: string;
+// }
 interface History {
   id: number;
   date: string;
@@ -174,30 +175,33 @@ const Driver = () => {
       route: "Route A",
     },
   ];
-  const approve: Approve[] = [
-    {
-      name: "Jhone",
-      email: "john@example.com",
-      status: "Pending",
-    },
-    {
-      name: "Jhone",
-      email: "john@example.com",
-      status: "Pending",
-    },
-    {
-      name: "Jhone",
-      email: "john@example.com",
-      status: "Pending",
-    },
-    {
-      name: "Jhone",
-      email: "john@example.com",
-      status: "Pending",
-    },
-  ];
+  // const approve: Approve[] = [
+  //   {
+  //     name: "Jhone",
+  //     email: "john@example.com",
+  //     status: "Pending",
+  //   },
+  //   {
+  //     name: "Jhone",
+  //     email: "john@example.com",
+  //     status: "Pending",
+  //   },
+  //   {
+  //     name: "Jhone",
+  //     email: "john@example.com",
+  //     status: "Pending",
+  //   },
+  //   {
+  //     name: "Jhone",
+  //     email: "john@example.com",
+  //     status: "Pending",
+  //   },
+  // ];
   const [isMobile, setIsMobile] = useState(false);
   const [selectedTrip, setSelectedTrip] = useState<Drivers | null>(null);
+    const queryClient = useQueryClient();
+  
+    const [selectedDriver, setSelectedDriver] = useState<Driver | null>(null);
   const { data, isLoading, isError, error } = useQuery<Driver[]>({
     queryKey: ["DriverDetails"],
     queryFn: getAllDrivers,
@@ -219,11 +223,52 @@ const Driver = () => {
     }
   }, [isMobile, selectedTrip]);
   const activeDrivers =
-    data?.filter((d) => d.applicationStatus?.status === "active").length ?? 0;
+    data?.filter((d) => d.applicationStatus?.status === "approved").length ?? 0;
   const pendingApplications =
     data?.filter((d) => d.applicationStatus?.status === "pending").length ?? 0;
   const rejectedApplications =
     data?.filter((d) => d.applicationStatus?.status === "rejected").length ?? 0;
+
+
+     const mutation = useMutation({
+        mutationFn: async ({
+          id,
+          status,
+          token,
+        }: {
+          id: string;
+          status: "approve" | "reject";
+          token: string;
+        }) => {
+          if (status === "approve") {
+            return updateApplicationStatus(id, token);
+          } else {
+            return rejectApplicationStatus(id, token);
+          }
+        },
+        onSuccess: (_, variables) => {
+          queryClient.invalidateQueries({queryKey:["DriverDetails"]});
+          setSelectedDriver(null);
+      
+          toast.success(`Application ${variables.status}d successfully!`);
+        },
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        onError: (error: any) => {
+          console.log(error)
+          toast.error(error?.response?.data?.message || "Failed to update status");
+        },
+      });
+    
+      const handleDecision = (status: "approve" | "reject") => {
+        const token = localStorage.getItem("token");
+        if (!token || !selectedDriver?._id) return;
+    
+        mutation.mutate({
+          id: selectedDriver._id,
+          status,
+          token,
+        });
+      };
   return (
     <div className="ml-[279px] p-5 bg-[#F6F6F6]">
       {/* Header Section */}
@@ -335,12 +380,40 @@ const Driver = () => {
                   {app.applicationStatus?.status}
                 </td>
                 <td className="py-[20px] px-4 flex justify-center gap-2">
-                  <button className="bg-[#14EF00] text-white px-3 py-1 rounded-md hover:bg-green-600">
-                    Approve
-                  </button>
-                  <button className="bg-[#FF0000] text-white px-3 py-1 rounded-md hover:bg-red-600">
-                    Reject
-                  </button>
+                <button
+                          onClick={() => {
+                            setSelectedDriver(app);
+                            handleDecision("approve");
+                          }}
+                          disabled={
+                            app.applicationStatus?.status === "approved" ||
+                            mutation.isPending
+                          }
+                          className={`px-3 py-1 rounded-md text-white ${
+                            app.applicationStatus?.status === "approved"
+                              ? "bg-gray-400 cursor-not-allowed"
+                              : "bg-green-500 hover:bg-green-600"
+                          }`}
+                        >
+                          Approve
+                        </button>
+                        <button
+                          onClick={() => {
+                            setSelectedDriver(app);
+                            handleDecision("reject");
+                          }}
+                          disabled={
+                            app.applicationStatus?.status === "rejected" ||
+                            mutation.isPending
+                          }
+                          className={`px-3 py-1 rounded-md text-white ${
+                            app.applicationStatus?.status === "rejected"
+                              ? "bg-gray-400 cursor-not-allowed"
+                              : "bg-red-500 hover:bg-red-600"
+                          }`}
+                        >
+                          Reject
+                        </button>
                 </td>
               </tr>
             ));
@@ -424,10 +497,38 @@ const Driver = () => {
                         {app.applicationStatus?.status}
                       </td>
                       <td className="py-[20px] px-4 flex justify-center gap-2">
-                        <button className="bg-[#14EF00] text-white px-3 py-1 rounded-md hover:bg-green-600">
+                      <button
+                          onClick={() => {
+                            setSelectedDriver(app);
+                            handleDecision("approve");
+                          }}
+                          disabled={
+                            app.applicationStatus?.status === "approved" ||
+                            mutation.isPending
+                          }
+                          className={`px-3 py-1 rounded-md text-white ${
+                            app.applicationStatus?.status === "approved"
+                              ? "bg-gray-400 cursor-not-allowed"
+                              : "bg-green-500 hover:bg-green-600"
+                          }`}
+                        >
                           Approve
                         </button>
-                        <button className="bg-[#FF0000] text-white px-3 py-1 rounded-md hover:bg-red-600">
+                        <button
+                          onClick={() => {
+                            setSelectedDriver(app);
+                            handleDecision("reject");
+                          }}
+                          disabled={
+                            app.applicationStatus?.status === "rejected" ||
+                            mutation.isPending
+                          }
+                          className={`px-3 py-1 rounded-md text-white ${
+                            app.applicationStatus?.status === "rejected"
+                              ? "bg-gray-400 cursor-not-allowed"
+                              : "bg-red-500 hover:bg-red-600"
+                          }`}
+                        >
                           Reject
                         </button>
                       </td>

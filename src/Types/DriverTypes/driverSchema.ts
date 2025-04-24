@@ -1,6 +1,7 @@
 import { z } from "zod";
 
 // Address Schema
+const fullNameRegex = /^[a-zA-Z]+ [a-zA-Z]+(?: [a-zA-Z]+)*$/;
 const addressSchema = z.object({
   street: z.string().min(1, "Street is required"),
   city: z.string().min(1, "City is required"),
@@ -56,7 +57,7 @@ const documentsSchema = z.object({
 
 // Main Schema
 export const driverFormSchema = z.object({
-  fullName: z.string().min(1, "Full name is required"),
+  fullName: z.string().min(1, "Full name is required").regex(fullNameRegex, "Please enter both first and last names"),
   dateOfBirth: z.coerce.date().refine((date) => {
     const age = new Date().getFullYear() - date.getFullYear();
     return age >= 21;

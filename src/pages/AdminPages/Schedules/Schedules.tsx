@@ -2,6 +2,9 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import { Driver } from "../../../Types/UserTypes/driverTypes";
+import { getAllDrivers } from "../../../components/Services/DriverServices";
+import { assignShift } from "../../../components/Services/shiftsServices";
 
 const assignShiftSchema = z.object({
   driverId: z.string().min(1, "Driver is required"),
@@ -19,7 +22,7 @@ const Schedules = () => {
     resolver: zodResolver(assignShiftSchema),
   });
 
-  const { data, isLoading: loadingDrivers } = useQuery({
+  const { data, isLoading: loadingDrivers } = useQuery<Driver[]>({
     queryKey: ["drivers"],
     queryFn: getAllDrivers,
   });
@@ -120,12 +123,13 @@ const Schedules = () => {
             </label>
             <select
               {...register("driverId")}
-              className="w-full p-2 rounded bg-gray-100"
+              className="w-full p-2 rounded border bg-gray-100"
             >
               <option value="">Select Driver</option>
-              {data.map((driver: any) => (
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
+              {data?.map((driver) => (
                 <option key={driver._id} value={driver._id}>
-                  {driver.name}
+                  {driver.fullName}
                 </option>
               ))}
             </select>
@@ -140,7 +144,7 @@ const Schedules = () => {
             <input
               type="date"
               {...register("date")}
-              className="w-full p-2 rounded bg-gray-100"
+              className="w-full p-2 border rounded bg-gray-100"
             />
             {errors.date && (
               <p className="text-red-500 text-sm">{errors.date.message}</p>
@@ -153,7 +157,7 @@ const Schedules = () => {
             <input
               type="time"
               {...register("startTime")}
-              className="w-full p-2 rounded bg-gray-100"
+              className="w-full p-2 rounded border bg-gray-100"
             />
             {errors.startTime && (
               <p className="text-red-500 text-sm">{errors.startTime.message}</p>
@@ -166,7 +170,7 @@ const Schedules = () => {
             <input
               type="time"
               {...register("endTime")}
-              className="w-full p-2 rounded bg-gray-100"
+              className="w-full p-2 rounded border bg-gray-100"
             />
             {errors.endTime && (
               <p className="text-red-500 text-sm">{errors.endTime.message}</p>

@@ -11,6 +11,7 @@ import {
 } from "../../Types/DriverTypes/driverSchema";
 import { useApplyDriver } from "../../Hooks/DriverHooks/useApplyDriver";
 import { useEffect } from "react";
+import { toast } from "react-toastify";
 
 const DriverForm = () => {
   const {
@@ -91,7 +92,6 @@ const DriverForm = () => {
   const mutation = useApplyDriver();
 
   const onSubmit: SubmitHandler<DriverFormValues> = async (data) => {
-    console.log("Form data before submission:", data);
     try {
       const formData = new FormData();
 
@@ -218,8 +218,8 @@ const DriverForm = () => {
 
       mutation.mutate(formData);
     } catch (error) {
-      console.error("Submission error:", error);
-      alert(error instanceof Error ? error.message : "Form submission failed");
+
+      toast.error(error instanceof Error ? error.message : "Form submission failed");
     }
   };
   const documentFields = [

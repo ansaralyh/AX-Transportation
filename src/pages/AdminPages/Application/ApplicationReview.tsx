@@ -52,7 +52,7 @@ const ApplicationReview = () => {
       }
     },
     onSuccess: () => {
-      queryClient.invalidateQueries(["DriverDetails"]);
+      queryClient.invalidateQueries({queryKey:["DriverDetails"]});
       setSelectedDriver(null);
     },
     onError: (error) => {

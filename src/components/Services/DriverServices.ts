@@ -4,7 +4,7 @@ import { Instance } from "../../Apis/GlobelApi";
 export async function getAllDrivers(): Promise<any> {
     try {
         const token = localStorage.getItem("token");
-        console.log("Sending token:", token);
+        // console.log("Sending token:", token);
       const response = await Instance.get("/drivers", {
         headers: {
           "Content-Type": "application/json",

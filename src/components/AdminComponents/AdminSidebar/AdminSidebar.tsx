@@ -96,7 +96,7 @@ navigate('/');
         {/* Sidebar Items */}
         <nav className="flex-grow overflow-y-auto">
           <ul className="space-y-3 px-4 lg:mt-22">
-            <SidebarItem icon={LayoutGrid} text="Dashboards" to="/admin-dashboard" />
+            <SidebarItem icon={LayoutGrid} text="Dashboards" to="/admin-dashboard/" />
             <SidebarItem icon={TbSteeringWheelFilled} text="Driver" to="/admin-dashboard/driver" />
             <SidebarItem icon={FileCheck } text="Application Review" to="/admin-dashboard/application-review" />
             <SidebarItem icon={GrSchedules} text="Work Scehdule" to="/admin-dashboard/schedules" />

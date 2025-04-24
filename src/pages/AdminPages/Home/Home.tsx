@@ -7,10 +7,15 @@ import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import { LineChart, Line } from "recharts";
 import ProgressBar from "../../../components/AdminComponents/ProgressBar/ProgressBar";
-import { useQuery } from "@tanstack/react-query";
-import { get } from "react-hook-form";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+// import { get } from "react-hook-form";
 import { Driver } from "../../../Types/UserTypes/driverTypes";
-import { getAllDrivers } from "../../../components/Services/DriverServices";
+import {
+  getAllDrivers,
+  rejectApplicationStatus,
+  updateApplicationStatus,
+} from "../../../components/Services/DriverServices";
+import { toast } from "react-toastify";
 // interface Driver {
 //   name: string;
 //   date: string;
@@ -22,11 +27,11 @@ interface Routes {
   destination: string;
   time: string;
 }
-interface Application {
-  name: string;
-  applied: string;
-  status: string;
-}
+// interface Application {
+//   name: string;
+//   applied: string;
+//   status: string;
+// }
 const Home = () => {
   const barData = [
     { name: "1", value: 8 },
@@ -56,12 +61,12 @@ const Home = () => {
   //   { name: "Jhone", date: "01/02/2025", status: "Pending" },
   //   { name: "Jhone", date: "01/02/2025", status: "Pending" },
   // ];
-  const applications: Application[] = [
-    { name: "Jhone", applied: "01/02/2025", status: "Pending" },
-    { name: "Jhone", applied: "01/02/2025", status: "Pending" },
-    { name: "Jhone", applied: "01/02/2025", status: "Rejected" },
-    { name: "Jhone", applied: "01/02/2025", status: "Pending" },
-  ];
+  // const applications: Application[] = [
+  //   { name: "Jhone", applied: "01/02/2025", status: "Pending" },
+  //   { name: "Jhone", applied: "01/02/2025", status: "Pending" },
+  //   { name: "Jhone", applied: "01/02/2025", status: "Rejected" },
+  //   { name: "Jhone", applied: "01/02/2025", status: "Pending" },
+  // ];
   const routes: Routes[] = [
     {
       name: "Jhone",
@@ -95,11 +100,14 @@ const Home = () => {
     },
   ];
 
-  const { data, isLoading, isError,error } = useQuery<Driver[]>({
+  const { data, isLoading, isError, error } = useQuery<Driver[]>({
     queryKey: ["DriverDetails"],
     queryFn: getAllDrivers,
   });
   const [isMobile, setIsMobile] = useState(false);
+  const queryClient = useQueryClient();
+
+  const [selectedDriver, setSelectedDriver] = useState<Driver | null>(null);
   const [selectedTrip, setSelectedTrip] = useState<Driver | null>(null);
   useEffect(() => {
     const checkIfMobile = () => {
@@ -111,7 +119,45 @@ const Home = () => {
 
     return () => window.removeEventListener("resize", checkIfMobile);
   }, []);
+  const mutation = useMutation({
+    mutationFn: async ({
+      id,
+      status,
+      token,
+    }: {
+      id: string;
+      status: "approve" | "reject";
+      token: string;
+    }) => {
+      if (status === "approve") {
+        return updateApplicationStatus(id, token);
+      } else {
+        return rejectApplicationStatus(id, token);
+      }
+    },
+    onSuccess: (_, variables) => {
+      queryClient.invalidateQueries({queryKey:["DriverDetails"]});
+      setSelectedDriver(null);
+  
+      toast.success(`Application ${variables.status}d successfully!`);
+    },
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    onError: (error: any) => {
+      console.log(error)
+      toast.error(error?.response?.data?.message || "Failed to update status");
+    },
+  });
 
+  const handleDecision = (status: "approve" | "reject") => {
+    const token = localStorage.getItem("token");
+    if (!token || !selectedDriver?._id) return;
+
+    mutation.mutate({
+      id: selectedDriver._id,
+      status,
+      token,
+    });
+  };
   // useEffect(() => {
   //   if (isMobile && drivers.length > 0 && !selectedTrip) {
   //     setSelectedTrip(drivers[0]);
@@ -122,7 +168,7 @@ const Home = () => {
     data?.filter((d) => d.applicationStatus?.status === "approved").length ?? 0;
   const pendingApplications =
     data?.filter((d) => d.applicationStatus?.status === "pending").length ?? 0;
-  const totalTrips = data?.reduce((sum, d) => sum + (d.tripCount || 0), 0) ?? 0;
+  // const totalTrips = data?.reduce((sum, d) => sum + (d.tripCount || 0), 0) ?? 0;
 
   return (
     <div className="ml-[279px] p-5 bg-[#F6F6F6]">
@@ -143,7 +189,7 @@ const Home = () => {
           value={pendingApplications}
           label="Pending Applications"
         />
-        <StatCard icon={Route} value={totalTrips} label="Total Trips" />
+        <StatCard icon={Route} value={0} label="Total Trips" />
       </div>
 
       <div className="w-full">
@@ -180,10 +226,38 @@ const Home = () => {
                         {driver.applicationStatus?.status}
                       </td>
                       <td className="py-[20px] px-4 flex justify-center gap-2">
-                        <button className="bg-green-500 text-white px-3 py-1 rounded-md hover:bg-green-600">
+                        <button
+                          onClick={() => {
+                            setSelectedDriver(driver);
+                            handleDecision("approve");
+                          }}
+                          disabled={
+                            driver.applicationStatus?.status === "approved" ||
+                            mutation.isPending
+                          }
+                          className={`px-3 py-1 rounded-md text-white ${
+                            driver.applicationStatus?.status === "approved"
+                              ? "bg-gray-400 cursor-not-allowed"
+                              : "bg-green-500 hover:bg-green-600"
+                          }`}
+                        >
                           Approve
                         </button>
-                        <button className="bg-red-500 text-white px-3 py-1 rounded-md hover:bg-red-600">
+                        <button
+                          onClick={() => {
+                            setSelectedDriver(driver);
+                            handleDecision("reject");
+                          }}
+                          disabled={
+                            driver.applicationStatus?.status === "rejected" ||
+                            mutation.isPending
+                          }
+                          className={`px-3 py-1 rounded-md text-white ${
+                            driver.applicationStatus?.status === "rejected"
+                              ? "bg-gray-400 cursor-not-allowed"
+                              : "bg-red-500 hover:bg-red-600"
+                          }`}
+                        >
                           Reject
                         </button>
                       </td>
