@@ -42,7 +42,14 @@ function App() {
         <Route path="/driver-form" element={<DriverForm />} />
 
         {/*Driver Dashboard Route with Nested Routes */}
-        <Route path="/driver-dashboard" element={<DriverDashboard />}>
+        <Route
+          path="/driver-dashboard"
+          element={
+            <ProtectedRoute allowedRoles={['admin', 'super-admin','driver']}>
+              <DriverDashboard />
+            </ProtectedRoute>
+          }
+        >
           <Route index element={<DashboardContent />} />
           <Route
             path="real-time-tracking"
@@ -77,7 +84,7 @@ function App() {
         <Route
           path="/admin-dashboard"
           element={
-            <ProtectedRoute>
+            <ProtectedRoute allowedRoles={["admin","super-admin"]}>
               <AdminDashboard />
             </ProtectedRoute>
           }

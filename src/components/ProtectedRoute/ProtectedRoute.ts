@@ -1,20 +1,27 @@
 import { useNavigate } from "react-router-dom";
 import { ReactNode, useEffect } from "react";
 
-const ProtectedRoute = ({ children }: { children: ReactNode }) => {
+interface ProtectedRouteProps {
+  children: ReactNode;
+  allowedRoles: string[]; 
+}
+
+const ProtectedRoute = ({ children, allowedRoles }: ProtectedRouteProps) => {
   const navigate = useNavigate();
-  const auth: string | null = localStorage.getItem("isAuthenticated");
+  const auth = localStorage.getItem("isAuthenticated");
+  const userRole = localStorage.getItem("role"); // e.g. "admin", "superAdmin", "driver"
 
   useEffect(() => {
-    if (!auth) {
-      navigate("/");
+    if (!auth || !allowedRoles.includes(userRole || "")) {
+      navigate("/"); // Redirect if not authenticated or not authorized
     }
-  }, [auth, navigate]);
-  if (auth) {
+  }, [auth, userRole, allowedRoles, navigate]);
+
+  if (auth && allowedRoles.includes(userRole || "")) {
     return children;
-  } else {
-    return null;
   }
+
+  return null;
 };
 
 export default ProtectedRoute;
