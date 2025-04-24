@@ -7,7 +7,7 @@ const ProtectedRoute = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     if (!auth) {
-      navigate("/admin/dashboard/");
+      navigate("/");
     }
   }, [auth, navigate]);
   if (auth) {
