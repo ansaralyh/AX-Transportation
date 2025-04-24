@@ -20,7 +20,7 @@ export async function login({
 
     localStorage.setItem("isAuthenticated", "true");
     localStorage.setItem("token", token);
-console.log(token)
+    console.log(token);
     return response.data;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {
@@ -39,10 +39,10 @@ export async function AdminLogout() {
     localStorage.removeItem("token");
     localStorage.removeItem("isAuthenticated");
     return response.data;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {
     throw new Error(
-      error.response?.data?.message || error.message || 'Failed to Logout',
+      error.response?.data?.message || error.message || "Failed to Logout"
     );
   }
 }
