@@ -1,6 +1,6 @@
 // src/components/DriverComponents/Sidebar/Sidebar.tsx
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
   X,
   LayoutGrid,
@@ -13,6 +13,9 @@ import {
   Mail,
   Settings,
 } from "lucide-react";
+import { useMutation } from "@tanstack/react-query";
+import { AdminLogout } from "../../Services/outhServices";
+import { toast } from "react-toastify";
 
 // Sidebar Props Interface
 interface SidebarProps {
@@ -31,6 +34,7 @@ interface SidebarItemProps {
 const SidebarItem: React.FC<SidebarItemProps> = ({ icon: Icon, text, to }) => {
   const location = useLocation();
   const isActive = location.pathname === to;
+ 
 
   return (
     <li
@@ -48,6 +52,19 @@ const SidebarItem: React.FC<SidebarItemProps> = ({ icon: Icon, text, to }) => {
 
 // Sidebar Component
 const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggleSidebar }) => {
+  const navigate = useNavigate();
+  const {mutate} = useMutation({
+    mutationFn: AdminLogout,
+    onSuccess:()=>{
+navigate('/');
+    },
+    onError:(error)=>{
+      toast.error(`Logout failed: ${error.message}`);
+    }
+  })
+  const onLogout=()=>{
+    mutate();
+  }
   return (
     <>
       {/* Background Overlay - Click to Close Sidebar */}
@@ -90,7 +107,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggleSidebar }) => {
             <SidebarItem
               icon={LayoutGrid}
               text="Dashboards"
-              to="/driver-dashboard"
+              to="/driver-dashboard/"
             />
             <SidebarItem
               icon={MapPin}
@@ -132,7 +149,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggleSidebar }) => {
 
         {/* Logout Button */}
         <div className="px-6 pb-2">
-          <button className="flex items-center w-full px-4 py-3 text-lg text-white hover:bg-red-600 rounded-lg">
+          <button onClick={onLogout} className="flex items-center w-full px-4 py-3 text-lg text-white hover:bg-red-600 rounded-lg">
             <LogOut className="w-6 h-6 mr-3 text-orange-500" />
             Log Out
           </button>
